@@ -1,5 +1,5 @@
 "フォントの設定
-set guifont=Consolas:h10 guifontwide=MS_Gothic:h10
+set guifont=Consolas:h10 guifontwide=Ricty\ Diminished:h10
 
 "文字コードの設定
 set encoding=utf-8
