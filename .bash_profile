@@ -10,7 +10,8 @@ alias gvim='HOME=c:\\Users\\tsc start c:\\Users\\tsc\\app\\vim\\gvim.exe '
 alias ls='ls -al --color --show-control-chars '
 
 ## alias for git
-alias gss='git status -s'
+alias gs='git status -s'
+alias gl='git log --graph --pretty="format:%C(yellow)%h%Cred%d%Creset %s %C(green)%an, %ar%Creset"'
 
 ## prompt
 git-info() {
