@@ -24,8 +24,8 @@ set softtabstop=4
 " foldingを無効にする
 set nofoldenable
 
-"NeoComplCacheを起動
-let g:neocomplcache_enable_at_startup = 1
+"neocomplete
+let g:neocomplete#enable_at_startup = 1
 
 " neobundleの設定
 filetype off
@@ -48,7 +48,8 @@ NeoBundle 'git://github.com/tpope/vim-surround.git'
 NeoBundle 'https://github.com/PProvost/vim-ps1.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'https://github.com/thinca/vim-quickrun.git'
-NeoBundle 'https://github.com/Shougo/neocomplcache.vim.git'
+"NeoBundle 'https://github.com/Shougo/neocomplcache.vim.git'
+NeoBundle 'https://github.com/Shougo/neocomplete.vim.git'
 NeoBundle 'https://github.com/Shougo/unite-outline.git'
 "NeoBundle 'https://github.com/hallison/vim-markdown.git'
 "NeoBundle 'https://github.com/plasticboy/vim-markdown.git'
