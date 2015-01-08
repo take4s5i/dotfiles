@@ -41,7 +41,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 let g:neobundle#install_process_timeout=600
 
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
+"NeoBundle 'Shougo/vimproc'
 "NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
 NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
 NeoBundle 'git://github.com/tpope/vim-surround.git'
@@ -62,6 +62,7 @@ NeoBundle 'https://github.com/tpope/vim-fugitive'
 NeoBundle 'https://github.com/mattn/emmet-vim'
 NeoBundle 'https://github.com/itchyny/lightline.vim.git'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
 
 call neobundle#end()
 NeoBundleCheck
@@ -145,6 +146,21 @@ function! OraConnectionGet()
     endif
     return g:my_ora_connection
 endfunction
+
+" vim shell
+let g:vimshell_split_command="tabnew"
+
+" vimshellでは$PATHで\区切りで設定されているパスが働かない
+let $PATH=substitute($PATH,'\','/','g')
+
+if s:is_win
+    let $PATH = $PATH . ';c:/MinGW/bin'
+    let $PATH = $PATH . ';c:/MinGW/msys/1.0/bin'
+endif
+
+if has('gui_running')
+    let g:vimshell_editor_command=v:progname
+endif
 
 "runtime! plugin/**/*.vim
 
