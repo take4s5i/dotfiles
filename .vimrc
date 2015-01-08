@@ -1,18 +1,10 @@
 " windowsかどうかを示す変数
 let s:is_win = has('win32') || has('win64')
 
-"フォントの設定
-set guifont=Consolas:h10 guifontwide=Ricty\ Diminished:h10
 
 "文字コードの設定
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs-2
-
-"メニュー、ツールバーの設定(UTF8化するとメニューが化けるので一旦削除して再表示)
-source $VIMRUNTIME/delmenu.vim
-set langmenu=ja_jp.utf-8
-source $VIMRUNTIME/menu.vim
-set guioptions-=T
 
 "クリップボードを使えるようにする
 set clipboard=unnamed
@@ -153,5 +145,5 @@ function! OraConnectionGet()
     return g:my_ora_connection
 endfunction
 
-runtime! plugin/**/*.vim
+"runtime! plugin/**/*.vim
 
