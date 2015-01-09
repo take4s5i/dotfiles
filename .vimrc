@@ -158,6 +158,23 @@ if s:is_win
     let $PATH = $PATH . ';c:/MinGW/msys/1.0/bin'
 endif
 
+let g:vimshell_prompt='$ '
+let g:vimshell_user_prompt = 'MyVimShellUserPrpmpt()'
+
+function! MyVimShellUserPrpmpt()
+    let l:uname = s:is_win ? $USERNAME : $USER
+    let l:gitinfo = ''
+    if executable('git')
+        let l:branch =  system('git rev-parse --abbrev-ref HEAD')
+        let l:branch = v:shell_error == 0 ? l:branch : ''
+        if l:branch != ''
+            let l:gitinfo = " [" . substitute(l:branch,'\n','','g') . "]"
+        endif
+    endif
+    return "\n" . l:uname . "@" . hostname() . " " . getcwd() . l:gitinfo
+endfunction
+
+
 if has('gui_running')
     let g:vimshell_editor_command=v:progname
 endif
