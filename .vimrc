@@ -63,6 +63,7 @@ NeoBundle 'https://github.com/mattn/emmet-vim'
 NeoBundle 'https://github.com/itchyny/lightline.vim.git'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
+NeoBundle 'https://github.com/take4s5i/previm.git'
 
 call neobundle#end()
 NeoBundleCheck
@@ -180,6 +181,10 @@ endfunction
 if has('gui_running')
     let g:vimshell_editor_command=v:progname
 endif
+
+" previm
+let g:previm_open_cmd = 'start'
+
 
 "runtime! plugin/**/*.vim
 
