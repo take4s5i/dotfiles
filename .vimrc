@@ -144,7 +144,7 @@ function! OraConnectionSet()
 endfunction
 function! OraConnectionGet()
     if !exists('g:my_ora_connection')
-        call OraConnectionSet
+        call OraConnectionSet()
     endif
     return g:my_ora_connection
 endfunction
