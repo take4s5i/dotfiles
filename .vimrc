@@ -93,8 +93,10 @@ let g:indent_guides_guide_size=1
 au BufEnter * execute ":lcd " . expand("%:p:h")
 
 "キーバインド
-nnoremap <C-b> :Unite buffer file file/new<CR>
+nnoremap <C-b> :Unite buffer<CR>
 nnoremap <C-q> :@q
+nnoremap <C-Left> gT
+nnoremap <C-Right> gt
 
 "バッファ切り替え時に保存を促す警告を出さない
 set hidden
