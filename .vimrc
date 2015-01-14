@@ -179,7 +179,8 @@ endfunction
 
 
 if has('gui_running')
-    let g:vimshell_editor_command=v:progname
+    let g:vimshell_editor_command=
+                \ substitute(substitute($VIM,'\','/','g'),' ','\\ ','g') .'/' . v:progname
 endif
 
 " previm
