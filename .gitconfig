@@ -4,5 +4,6 @@
 [core]
 	autocrlf = false
 	safecrlf = true
+	editor = gvim
 [alias]
 	graph = log --graph --pretty=\"format:%C(yellow)%h%Cred%d%Creset %s %C(green)%an, %ar%Creset\"

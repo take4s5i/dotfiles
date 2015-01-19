@@ -6,7 +6,6 @@ export PATH=$PATH:/c/bin
 export PATH=$PATH:~/bin
 
 ## alias
-alias gvim='HOME=c:\\Users\\tsc start c:\\Users\\tsc\\app\\vim\\gvim.exe '
 alias ls='ls -al --color --show-control-chars '
 
 ## alias for git
