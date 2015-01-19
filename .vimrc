@@ -156,11 +156,6 @@ let g:vimshell_split_command="tabnew"
 " vimshellでは$PATHで\区切りで設定されているパスが働かない
 let $PATH=substitute($PATH,'\','/','g')
 
-if s:is_win
-    let $PATH = $PATH . ';c:/MinGW/bin'
-    let $PATH = $PATH . ';c:/MinGW/msys/1.0/bin'
-endif
-
 let g:vimshell_prompt='$ '
 let g:vimshell_user_prompt = 'MyVimShellUserPrpmpt()'
 
