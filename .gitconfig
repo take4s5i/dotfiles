@@ -1,0 +1,8 @@
+[user]
+	name = take4s5i
+	email = take4s5i.0000@gmail.com
+[core]
+	autocrlf = false
+	safecrlf = true
+[alias]
+	graph = log --graph --pretty=\"format:%C(yellow)%h%Cred%d%Creset %s %C(green)%an, %ar%Creset\"
