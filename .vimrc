@@ -1,36 +1,71 @@
-" windowsかどうかを示す変数
 let s:is_win = has('win32') || has('win64')
 
-
-"文字コードの設定
+" ==================== vim options ====================
+" encodings
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs-2
 if s:is_win
     set termencoding='cp932'
 endif
 
-"クリップボードを使えるようにする
+" use clipboard on yank
 set clipboard=unnamed
 
-"コントロール文字の表示設定
+" show control chars
 set list
 set listchars=tab:»\ ,trail:·,eol:˅,extends:»,precedes:«,nbsp:·
+
+" show line number
 set number
+
+" show status line
 set statusline=%m\ %n\ %F\ %r%<%=[%l/%L\ ,\ %c]\ [%{&fileencoding}]\ [%{&fileformat}]\ %y
 
-"タブの設定　スペースインデントのインデント幅4
+" tabs
 set expandtab
 set tabstop=8
 set shiftwidth=4
 set softtabstop=4
 
-" foldingを無効にする
+" no folding
 set nofoldenable
 
-"neocomplete
-let g:neocomplete#enable_at_startup = 1
+" hidden warning on not saved
+set hidden
 
-" neobundleの設定
+" no wrap lines
+set nowrap
+
+" search options
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+
+" show tabline
+set showtabline=2
+set guioptions-=e
+
+" swap , backup
+set swapfile
+set nobackup
+
+" syntax
+syntax enable
+
+
+" ==================== key maps ====================
+nnoremap <C-b> :Unite buffer<CR>
+nnoremap <C-q> :@q
+nnoremap <C-Left> gT
+nnoremap <C-Right> gt
+
+
+" ==================== key maps ====================
+au BufEnter * execute ":lcd " . expand("%:p:h")
+
+" ==================== plugins ====================
+" neobundle
 filetype off
 filetype plugin indent off
 
@@ -40,7 +75,6 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
-"NeoBundleInstallでのタイムアウト時間を設定
 let g:neobundle#install_process_timeout=600
 
 NeoBundle 'Shougo/neobundle.vim'
@@ -74,56 +108,29 @@ NeoBundleCheck
 filetype plugin indent on
 filetype on
 
-"カラースキームjellybeansの設定
-syntax enable
-colorscheme jellybeans
-
-"バックアップファイルとswpファイルの場所を変更
-set swapfile
-set nobackup
-
-"Uniteの設定
+" ===== unite =====
 let g:unite_split_rule="topleft"
 let g:unite_enable_split_vertically=0
 let g:unite_winwidth= 50
 let g:unite_winheight=200
 
-" vim-indent-guides
+" ===== vim-indent-guides =====
 let g:indent_guides_auto_colors=1
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
-"開いているファイルをカレントディレクトリにする
-au BufEnter * execute ":lcd " . expand("%:p:h")
+" ===== neocomplete =====
+let g:neocomplete#enable_at_startup = 1
 
-"キーバインド
-nnoremap <C-b> :Unite buffer<CR>
-nnoremap <C-q> :@q
-nnoremap <C-Left> gT
-nnoremap <C-Right> gt
+" ===== jellybeans =====
+colorscheme jellybeans
 
-"バッファ切り替え時に保存を促す警告を出さない
-set hidden
-
-"ウィンドウに収まらない行を折り返さない
-set nowrap
-
-" search options
-set ignorecase
-set smartcase
-set incsearch
-set wrapscan
-
-"tablineを出す
-set showtabline=2
-set guioptions-=e
-
-" lightline.vim
+" ===== lightline.vim =====
 let g:lightline = {
     \ 'colorscheme' : 'jellybeans'
     \}
 
-" quickrun configuration
+" ===== quickrun =====
 let g:quickrun_config = {
 \   '_' : {
 \       'hook/output_encode/enable' : 1,
@@ -142,7 +149,6 @@ let g:quickrun_config = {
 \   }
 \}
 
-" set and get function for oracle connection string
 function! OraConnectionSet()
    let g:my_ora_connection = input('oracle connection > ')
 endfunction
@@ -153,10 +159,9 @@ function! OraConnectionGet()
     return g:my_ora_connection
 endfunction
 
-" vim shell
+" ===== vimshell =====
 let g:vimshell_split_command="tabnew"
 
-" vimshellでは$PATHで\区切りで設定されているパスが働かない
 let $PATH=substitute($PATH,'\','/','g')
 
 let g:vimshell_prompt='$ '
@@ -175,15 +180,11 @@ function! MyVimShellUserPrpmpt()
     return "\n" . l:uname . "@" . hostname() . " " . getcwd() . l:gitinfo
 endfunction
 
-
 if has('gui_running')
     let g:vimshell_editor_command=
                 \ substitute(substitute($VIM,'\','/','g'),' ','\\ ','g') .'/' . v:progname
 endif
 
-" previm
+" ===== previm =====
 let g:previm_open_cmd = 'start'
-
-
-"runtime! plugin/**/*.vim
 
