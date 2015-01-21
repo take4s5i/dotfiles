@@ -101,6 +101,7 @@ NeoBundle 'https://github.com/itchyny/lightline.vim.git'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
 NeoBundle 'https://github.com/take4s5i/previm.git'
+NeoBundle 'https://github.com/freitass/todo.txt-vim'
 
 call neobundle#end()
 NeoBundleCheck
