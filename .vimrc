@@ -5,6 +5,9 @@ let s:is_win = has('win32') || has('win64')
 "文字コードの設定
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs-2
+if s:is_win
+    set termencoding='cp932'
+endif
 
 "クリップボードを使えるようにする
 set clipboard=unnamed
@@ -123,8 +126,8 @@ let g:lightline = {
 " quickrun configuration
 let g:quickrun_config = {
 \   '_' : {
-\       'hook/output_encode/enable' : s:is_win ? 1 : 0,
-\       'hook/output_encode/encoding' : s:is_win ? 'cp932:utf-8' : '&fileencoding'
+\       'hook/output_encode/enable' : 1,
+\       'hook/output_encode/encoding' : '&termencoding'
 \   },
 \   'ruby':{
 \       'hook/output_encode/enable' : 0
