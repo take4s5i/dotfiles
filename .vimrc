@@ -55,6 +55,8 @@ syntax enable
 
 
 " ==================== key maps ====================
+let mapleader=','
+
 nnoremap <C-b> :Unite buffer<CR>
 nnoremap <C-q> :@q
 nnoremap <C-Left> gT
