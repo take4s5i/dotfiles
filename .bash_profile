@@ -6,7 +6,7 @@ export PATH=$PATH:/c/bin
 export PATH=$PATH:~/bin
 
 ## alias
-alias ls='ls -al --color --show-control-chars '
+alias ls='ls --color --show-control-chars'
 
 ## alias for git
 alias gs='git status -s'
