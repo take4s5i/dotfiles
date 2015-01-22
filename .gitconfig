@@ -6,7 +6,7 @@
 	safecrlf = true
 	editor = gvim
 [alias]
-	graph = log --graph --pretty=\"format:%C(yellow)%h%Cred%d%Creset %s %C(green)%an, %ar%Creset\"
+	graph = log --graph --date=short --pretty=\"format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset\"
 [push]
 	default=simple
 [diff]
