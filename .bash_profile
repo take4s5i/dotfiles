@@ -37,6 +37,22 @@ opd(){
     fi
 }
 
+# gcd : git cd
+# change current directory to the relative path from root of git directory
+gcd(){
+    # return if out of git repository.
+    git rev-parse HEAD > /dev/null 2>&1 || return 1
+
+    DIR=$1
+    if [ "${DIR:0:1}" != "/" ] ; then
+        cd $DIR
+    else
+        cd "$(git rev-parse --show-toplevel)$1"
+    fi
+}
+# this completion work when pass a relative path to gcd.
+complete -A directory gcd
+
 gem(){
     cmd "/C gem.bat ${*}"
 }
