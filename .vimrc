@@ -58,7 +58,7 @@ syntax enable
 let mapleader=','
 
 nnoremap <C-b> :Unite buffer<CR>
-nnoremap <C-q> :@q
+nnoremap <C-q> :@q<CR>
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 
