@@ -63,7 +63,7 @@ nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 
 
-" ==================== key maps ====================
+" ==================== auto cmds ====================
 au BufEnter * execute ":lcd " . expand("%:p:h")
 
 " ==================== plugins ====================
