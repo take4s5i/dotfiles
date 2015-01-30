@@ -59,6 +59,26 @@ let mapleader=','
 
 nnoremap <C-b> :Unite buffer<CR>
 nnoremap <C-q> :@q<CR>
+" move current window
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+" split window
+nnoremap ss :split<CR>
+nnoremap sv :vsplit<CR>
+" exchange window. e[x]change , [r]otate
+nnoremap sx <C-w>x
+nnoremap sr <C-w>r
+nnoremap sR <C-w>R
+" toggole split direction to [h]rizontal , [v]ertical.
+nnoremap sth <C-w>t<C-w>H
+nnoremap stv <C-w>t<C-w>K
+" change window size. = : even. | : maximize horizontal. _ : maximize vertical.
+nnoremap s= <C-w>=
+nnoremap s<Bar> <C-w><Bar>
+nnoremap s_ <C-w>_
+" move tab.
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 
