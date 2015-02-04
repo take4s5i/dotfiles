@@ -64,6 +64,11 @@ nnoremap sh <C-w>h
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
+" move window
+nnoremap sH <C-w>H
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
 " split window
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
