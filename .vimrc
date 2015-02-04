@@ -58,7 +58,7 @@ syntax enable
 let mapleader=','
 
 nnoremap <C-b> :Unite buffer<CR>
-nnoremap <C-q> :@q<CR>
+nnoremap <C-q> @q
 " move current window
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
