@@ -57,3 +57,10 @@ gem(){
     cmd "/C gem.bat ${*}"
 }
 
+# run gvim with stdin as file.
+vimpager(){
+    local tmp=$(mktemp)
+    cat - > $tmp
+    gvim  -M -R $tmp
+    rm $tmp
+}
