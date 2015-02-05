@@ -9,3 +9,7 @@ set guioptions-=T
 
 " resetting colorscheme on system gvimrc
 colorscheme jellybeans
+
+" resize window size
+set lines=500
+set columns=500
