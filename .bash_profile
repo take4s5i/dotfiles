@@ -64,3 +64,8 @@ vimpager(){
     gvim  -M -R $tmp
     rm $tmp
 }
+
+# run gvim with invoke Agit command
+agit(){
+    gvim -c "Agit --dir=$(pwd)"
+}

@@ -129,6 +129,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
 NeoBundle 'https://github.com/take4s5i/previm.git'
 NeoBundle 'https://github.com/freitass/todo.txt-vim'
+NeoBundle 'https://github.com/cohama/agit.vim.git'
 
 call neobundle#end()
 NeoBundleCheck
@@ -215,4 +216,7 @@ endif
 
 " ===== previm =====
 let g:previm_open_cmd = 'start'
+
+" ===== agit =====
+let g:agit_diff_option = '-w --find-renames=100%'
 
