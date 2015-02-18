@@ -89,7 +89,8 @@ nnoremap <C-Right> gt
 
 
 " ==================== auto cmds ====================
-au BufEnter * execute ":lcd " . expand("%:p:h")
+" lcd to the directory of the buffer when a buffer entered.
+"au BufEnter * execute ":lcd " . expand("%:p:h")
 
 " ==================== plugins ====================
 " neobundle
