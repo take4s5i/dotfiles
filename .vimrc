@@ -47,7 +47,7 @@ set showtabline=2
 set guioptions-=e
 
 " swap , backup
-set swapfile
+set noswapfile
 set nobackup
 
 " syntax
