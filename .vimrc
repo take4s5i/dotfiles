@@ -200,7 +200,8 @@ let g:vimshell_user_prompt = 'MyVimShellUserPrpmpt()'
 function! MyVimShellUserPrpmpt()
     let l:uname = s:is_win ? $USERNAME : $USER
     let l:gitinfo = ''
-    if executable('git')
+    let l:showgitinfo = 0
+    if l:showgitinfo && executable('git')
         let l:branch =  system('git rev-parse --abbrev-ref HEAD')
         let l:branch = v:shell_error == 0 ? l:branch : ''
         if l:branch != ''
