@@ -49,6 +49,7 @@ set guioptions-=e
 " swap , backup
 set noswapfile
 set nobackup
+set noundofile
 
 " syntax
 syntax enable
