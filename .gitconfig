@@ -1,6 +1,5 @@
-[user]
-	name = take4s5i
-	email = take4s5i.0000@gmail.com
+[include]
+	path = ~/.gitconfig.local
 [core]
 	autocrlf = false
 	safecrlf = true
