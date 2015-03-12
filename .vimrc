@@ -223,3 +223,54 @@ let g:previm_open_cmd = 'start'
 " ===== agit =====
 let g:agit_diff_option = '-w --find-renames=100%'
 
+" ===== indent =====
+command! -nargs=1 Indent call SetIndent(<q-args>)
+
+function! ExecSetCmd(setl,setg,cmd)
+    if a:setl
+    execute 'setlocal ' . a:cmd
+    endif
+    if a:setg
+    execute 'set ' . a:cmd
+    endif
+endfunction
+
+function! SetIndent(str)
+    let cnt = 0
+    let setl = 1
+    let setg = 0
+
+    for s in split(a:str,'\zs')
+        if s =~# '\d\|\-'
+            if cnt % 3 == 0
+            call ExecSetCmd(setl,setg,'tabstop=' . s)
+            elseif cnt % 3 == 1
+            call ExecSetCmd(setl,setg,'softtabstop=' . s)
+            else
+            call ExecSetCmd(setl,setg,'shiftwidth=' . s)
+            endif
+            let cnt = cnt + 1
+        elseif s =~# 'e'
+            call ExecSetCmd(setl,setg,'expandtab')
+        elseif s =~# 'n'
+            call ExecSetCmd(setl,setg,'noexpandtab')
+        elseif s =~# 'l'
+            let cnt = 0
+            let setl = 1
+        elseif s =~# 'L'
+            let cnt = 0
+            let setl = 0
+        elseif s =~# 'g'
+            let cnt = 0
+            let setg = 1
+        elseif s =~# 'G'
+            let cnt = 0
+            let setg = 0
+        elseif s =~# 'r'
+            retab
+        elseif s =~# 'R'
+            retab!
+        endif
+    endfor
+endfunction
+
