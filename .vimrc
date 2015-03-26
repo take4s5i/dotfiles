@@ -7,6 +7,8 @@ set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs-2
 if s:is_win
     set termencoding='cp932'
 endif
+set fileformat=unix
+set fileformats=unix,dos
 
 " use clipboard on yank
 set clipboard=unnamed
