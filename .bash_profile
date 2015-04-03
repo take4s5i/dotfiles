@@ -10,7 +10,43 @@ alias ls='ls --color --show-control-chars'
 
 ## alias for git
 alias gs='git status -s'
-alias gl='git log --graph --pretty="format:%C(yellow)%h%Cred%d%Creset %s %C(green)%an, %ar%Creset"'
+
+alias gl='git graph'
+alias gla='git graph --all'
+alias glt='git graph --all --since="today"'
+alias gly='git graph --all --since="yesterday"'
+alias gl3='git graph --all --since="3 days ago"'
+alias gl4='git graph --all --since="4 days ago"'
+alias gl5='git graph --all --since="5 days ago"'
+alias gl6='git graph --all --since="6 days ago"'
+alias glw='git graph --all --since="a week ago"'
+
+alias ga='git add .'
+alias gap='git add -p'
+alias gae='git add -e'
+
+alias gco='git checkout'
+alias gcod='git checkout develop'
+alias gcom='git checkout master'
+
+alias gm='git merge'
+alias gmff='git merge --ff'
+alias gmnf='git merge --no-ff'
+
+alias gr='git rebase'
+alias grd='git rebase develop'
+alias gri='git rebase -i'
+alias grid='git rebase -i develop'
+
+alias gc='git commit'
+alias gcv='git commit -v'
+alias gca='git commit -v --amend'
+
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gb='git branch'
+alias gbd='git branch -d'
+
 
 ## prompt
 git-info() {
