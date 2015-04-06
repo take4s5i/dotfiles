@@ -15,6 +15,7 @@ alias ls='ls --color --show-control-chars'
 alias gs='git status -s'
 
 alias gl='git graph'
+alias glx='git graph --all -15'
 alias gla='git graph --all'
 alias glt='git graph --all --since="today"'
 alias gly='git graph --all --since="yesterday"'
