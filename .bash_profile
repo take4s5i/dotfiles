@@ -1,5 +1,8 @@
 #!/bin/sh
 
+## LANG
+export LANG=ja_JP.utf8
+
 ## path
 export PATH=$PATH:/c/PROGRA~2/Git/bin
 export PATH=$PATH:/c/bin
