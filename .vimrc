@@ -51,7 +51,9 @@ set guioptions-=e
 " swap , backup
 set noswapfile
 set nobackup
-set noundofile
+if has('persistent_undo')
+    set noundofile
+endif
 
 " syntax
 syntax enable
