@@ -97,136 +97,136 @@ nnoremap <C-Right> gt
 
 " ==================== plugins ====================
 if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
-" neobundle
-filetype off
-filetype plugin indent off
+    " neobundle
+    filetype off
+    filetype plugin indent off
 
-if has('vim_starting')
-    set nocompatible
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand('~/.vim/bundle/'))
+    if has('vim_starting')
+        set nocompatible
+        set runtimepath+=~/.vim/bundle/neobundle.vim/
+    endif
+    call neobundle#begin(expand('~/.vim/bundle/'))
 
-let g:neobundle#install_process_timeout=600
+    let g:neobundle#install_process_timeout=600
 
-NeoBundle 'Shougo/neobundle.vim'
-"NeoBundle 'Shougo/vimproc'
-"NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
-NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
-NeoBundle 'https://github.com/tpope/vim-surround.git'
-NeoBundle 'https://github.com/PProvost/vim-ps1.git'
-NeoBundle 'https://github.com/Shougo/unite.vim.git'
-NeoBundle 'https://github.com/thinca/vim-quickrun.git'
-"NeoBundle 'https://github.com/Shougo/neocomplcache.vim.git'
-NeoBundle 'https://github.com/Shougo/neocomplete.vim.git'
-NeoBundle 'https://github.com/Shougo/unite-outline.git'
-"NeoBundle 'https://github.com/hallison/vim-markdown.git'
-"NeoBundle 'https://github.com/plasticboy/vim-markdown.git'
-NeoBundle 'https://github.com/rcmdnk/vim-markdown.git'
-"NeoBundle 'https://github.com/thinca/vim-ref.git'
-NeoBundle 'https://github.com/nanotech/jellybeans.vim.git'
-"NeoBundle 'https://github.com/yuku-t/vim-ref-ri.git'
-NeoBundle 'https://github.com/terryma/vim-multiple-cursors.git'
-NeoBundle 'https://github.com/tpope/vim-fugitive'
-NeoBundle 'https://github.com/mattn/emmet-vim'
-NeoBundle 'https://github.com/itchyny/lightline.vim.git'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
-NeoBundle 'https://github.com/kannokanno/previm.git'
-NeoBundle 'https://github.com/freitass/todo.txt-vim'
-NeoBundle 'https://github.com/cohama/agit.vim.git'
+    NeoBundle 'Shougo/neobundle.vim'
+    "NeoBundle 'Shougo/vimproc'
+    "NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
+    NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
+    NeoBundle 'https://github.com/tpope/vim-surround.git'
+    NeoBundle 'https://github.com/PProvost/vim-ps1.git'
+    NeoBundle 'https://github.com/Shougo/unite.vim.git'
+    NeoBundle 'https://github.com/thinca/vim-quickrun.git'
+    "NeoBundle 'https://github.com/Shougo/neocomplcache.vim.git'
+    NeoBundle 'https://github.com/Shougo/neocomplete.vim.git'
+    NeoBundle 'https://github.com/Shougo/unite-outline.git'
+    "NeoBundle 'https://github.com/hallison/vim-markdown.git'
+    "NeoBundle 'https://github.com/plasticboy/vim-markdown.git'
+    NeoBundle 'https://github.com/rcmdnk/vim-markdown.git'
+    "NeoBundle 'https://github.com/thinca/vim-ref.git'
+    NeoBundle 'https://github.com/nanotech/jellybeans.vim.git'
+    "NeoBundle 'https://github.com/yuku-t/vim-ref-ri.git'
+    NeoBundle 'https://github.com/terryma/vim-multiple-cursors.git'
+    NeoBundle 'https://github.com/tpope/vim-fugitive'
+    NeoBundle 'https://github.com/mattn/emmet-vim'
+    NeoBundle 'https://github.com/itchyny/lightline.vim.git'
+    NeoBundle 'nathanaelkane/vim-indent-guides'
+    NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
+    NeoBundle 'https://github.com/kannokanno/previm.git'
+    NeoBundle 'https://github.com/freitass/todo.txt-vim'
+    NeoBundle 'https://github.com/cohama/agit.vim.git'
 
-call neobundle#end()
-NeoBundleCheck
+    call neobundle#end()
+    NeoBundleCheck
 
-filetype plugin indent on
-filetype on
+    filetype plugin indent on
+    filetype on
 
-" ===== unite =====
-let g:unite_split_rule="topleft"
-let g:unite_enable_split_vertically=0
-let g:unite_winwidth= 50
-let g:unite_winheight=200
+    " ===== unite =====
+    let g:unite_split_rule="topleft"
+    let g:unite_enable_split_vertically=0
+    let g:unite_winwidth= 50
+    let g:unite_winheight=200
 
-" ===== vim-indent-guides =====
-let g:indent_guides_auto_colors=1
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
+    " ===== vim-indent-guides =====
+    let g:indent_guides_auto_colors=1
+    let g:indent_guides_enable_on_vim_startup=1
+    let g:indent_guides_guide_size=1
 
-" ===== neocomplete =====
-let g:neocomplete#enable_at_startup = 1
+    " ===== neocomplete =====
+    let g:neocomplete#enable_at_startup = 1
 
-" ===== jellybeans =====
-colorscheme jellybeans
+    " ===== jellybeans =====
+    colorscheme jellybeans
 
-" ===== lightline.vim =====
-let g:lightline = {
-    \ 'colorscheme' : 'jellybeans'
+    " ===== lightline.vim =====
+    let g:lightline = {
+        \ 'colorscheme' : 'jellybeans'
+        \}
+
+    " ===== quickrun =====
+    let g:quickrun_config = {
+    \   '_' : {
+    \       'hook/output_encode/enable' : 1,
+    \       'hook/output_encode/encoding' : '&termencoding'
+    \   },
+    \   'ruby':{
+    \       'hook/output_encode/enable' : 0
+    \   },
+    \   'sql' : {
+    \       'type' : executable('sqlplus') ? 'sql/oracle' : ''
+    \   },
+    \   'sql/oracle' : {
+    \       'command' : 'sqlplus',
+    \       'cmdopt' : '%{OraConnectionGet()}',
+    \       'exec' : ['%c -S %o < %s']
+    \   }
     \}
 
-" ===== quickrun =====
-let g:quickrun_config = {
-\   '_' : {
-\       'hook/output_encode/enable' : 1,
-\       'hook/output_encode/encoding' : '&termencoding'
-\   },
-\   'ruby':{
-\       'hook/output_encode/enable' : 0
-\   },
-\   'sql' : {
-\       'type' : executable('sqlplus') ? 'sql/oracle' : ''
-\   },
-\   'sql/oracle' : {
-\       'command' : 'sqlplus',
-\       'cmdopt' : '%{OraConnectionGet()}',
-\       'exec' : ['%c -S %o < %s']
-\   }
-\}
-
-function! OraConnectionSet()
-   let g:my_ora_connection = input('oracle connection > ')
-endfunction
-function! OraConnectionGet()
-    if !exists('g:my_ora_connection')
-        call OraConnectionSet()
-    endif
-    return g:my_ora_connection
-endfunction
-
-" ===== vimshell =====
-let g:vimshell_split_command="tabnew"
-
-let $PATH=substitute($PATH,'\','/','g')
-
-let g:vimshell_prompt='$ '
-let g:vimshell_user_prompt = 'MyVimShellUserPrpmpt()'
-
-function! MyVimShellUserPrpmpt()
-    let l:uname = s:is_win ? $USERNAME : $USER
-    let l:gitinfo = ''
-    let l:showgitinfo = 0
-    if l:showgitinfo && executable('git')
-        let l:branch =  system('git rev-parse --abbrev-ref HEAD')
-        let l:branch = v:shell_error == 0 ? l:branch : ''
-        if l:branch != ''
-            let l:gitinfo = " [" . substitute(l:branch,'\n','','g') . "]"
+    function! OraConnectionSet()
+       let g:my_ora_connection = input('oracle connection > ')
+    endfunction
+    function! OraConnectionGet()
+        if !exists('g:my_ora_connection')
+            call OraConnectionSet()
         endif
+        return g:my_ora_connection
+    endfunction
+
+    " ===== vimshell =====
+    let g:vimshell_split_command="tabnew"
+
+    let $PATH=substitute($PATH,'\','/','g')
+
+    let g:vimshell_prompt='$ '
+    let g:vimshell_user_prompt = 'MyVimShellUserPrpmpt()'
+
+    function! MyVimShellUserPrpmpt()
+        let l:uname = s:is_win ? $USERNAME : $USER
+        let l:gitinfo = ''
+        let l:showgitinfo = 0
+        if l:showgitinfo && executable('git')
+            let l:branch =  system('git rev-parse --abbrev-ref HEAD')
+            let l:branch = v:shell_error == 0 ? l:branch : ''
+            if l:branch != ''
+                let l:gitinfo = " [" . substitute(l:branch,'\n','','g') . "]"
+            endif
+        endif
+        return "\n" . l:uname . "@" . hostname() . " " . getcwd() . l:gitinfo
+    endfunction
+
+    if has('gui_running')
+        let g:vimshell_editor_command=
+                    \ substitute(substitute($VIM,'\','/','g'),' ','\\ ','g') .'/' . v:progname
     endif
-    return "\n" . l:uname . "@" . hostname() . " " . getcwd() . l:gitinfo
-endfunction
 
-if has('gui_running')
-    let g:vimshell_editor_command=
-                \ substitute(substitute($VIM,'\','/','g'),' ','\\ ','g') .'/' . v:progname
-endif
+    " ===== previm =====
+    let g:previm_open_cmd = 'start'
 
-" ===== previm =====
-let g:previm_open_cmd = 'start'
+    " ===== agit =====
+    let g:agit_diff_option = '-w --find-renames=100%'
 
-" ===== agit =====
-let g:agit_diff_option = '-w --find-renames=100%'
-
-endif
+    endif
 " ===== end plugins =====
 
 " ===== indent =====
