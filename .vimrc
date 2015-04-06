@@ -96,6 +96,7 @@ nnoremap <C-Right> gt
 "au BufEnter * execute ":lcd " . expand("%:p:h")
 
 " ==================== plugins ====================
+if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 " neobundle
 filetype off
 filetype plugin indent off
@@ -224,6 +225,9 @@ let g:previm_open_cmd = 'start'
 
 " ===== agit =====
 let g:agit_diff_option = '-w --find-renames=100%'
+
+endif
+" ===== end plugins =====
 
 " ===== indent =====
 command! -nargs=1 Indent call SetIndent(<q-args>)
