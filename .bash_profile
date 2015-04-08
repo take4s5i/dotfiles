@@ -25,7 +25,7 @@ alias gl5='git graph --all --since="5 days ago"'
 alias gl6='git graph --all --since="6 days ago"'
 alias glw='git graph --all --since="a week ago"'
 
-alias ga='git add .'
+alias ga='git add'
 alias gap='git add -p'
 alias gae='git add -e'
 
