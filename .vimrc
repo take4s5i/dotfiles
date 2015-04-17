@@ -88,9 +88,12 @@ nnoremap stv <C-w>t<C-w>K
 nnoremap s= <C-w>=
 nnoremap s<Bar> <C-w><Bar>
 nnoremap s_ <C-w>_
-" move tab.
-nnoremap <C-Left> gT
-nnoremap <C-Right> gt
+" tab
+nnoremap stt :tabe %<CR>
+nnoremap s] gt
+nnoremap s[ gT
+nnoremap s} :tabmove +1<CR>
+nnoremap s{ :tabmove -1<CR>
 
 
 " ==================== auto cmds ====================
