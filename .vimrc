@@ -127,22 +127,10 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundle 'https://github.com/tpope/vim-surround.git'
     NeoBundle 'https://github.com/PProvost/vim-ps1.git'
     NeoBundle 'https://github.com/thinca/vim-quickrun.git'
-    "NeoBundle 'https://github.com/Shougo/neocomplcache.vim.git'
-    NeoBundle 'https://github.com/Shougo/unite-outline.git'
-    "NeoBundle 'https://github.com/hallison/vim-markdown.git'
-    "NeoBundle 'https://github.com/plasticboy/vim-markdown.git'
     NeoBundle 'https://github.com/rcmdnk/vim-markdown.git'
-    "NeoBundle 'https://github.com/thinca/vim-ref.git'
     NeoBundle 'https://github.com/nanotech/jellybeans.vim.git'
-    "NeoBundle 'https://github.com/yuku-t/vim-ref-ri.git'
-    NeoBundle 'https://github.com/terryma/vim-multiple-cursors.git'
-    NeoBundle 'https://github.com/tpope/vim-fugitive'
     NeoBundle 'https://github.com/mattn/emmet-vim'
     NeoBundle 'https://github.com/itchyny/lightline.vim.git'
-    NeoBundle 'nathanaelkane/vim-indent-guides'
-    NeoBundle 'https://github.com/kannokanno/previm.git'
-    NeoBundle 'https://github.com/freitass/todo.txt-vim'
-    NeoBundle 'https://github.com/cohama/agit.vim.git'
 
     call neobundle#end()
     NeoBundleCheck
