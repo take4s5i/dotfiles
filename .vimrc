@@ -111,7 +111,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     let g:neobundle#install_process_timeout=600
 
-    if v:version >= 702
+    if v:version > 702
         NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
         NeoBundle 'https://github.com/Shougo/unite.vim.git'
     endif
