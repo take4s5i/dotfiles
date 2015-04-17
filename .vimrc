@@ -138,7 +138,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     call neobundle#end()
     NeoBundleCheck
 
-    filetype plugin indent on
+    filetype plugin on
     filetype on
 
     " ===== unite =====
