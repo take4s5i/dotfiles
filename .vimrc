@@ -15,7 +15,7 @@ set clipboard=unnamed
 
 " show control chars
 set list
-set listchars=tab:»\ ,trail:·,eol:˅,extends:»,precedes:«,nbsp:·
+set listchars=tab:>-,trail:.,eol:$,nbsp:.,extends:>,precedes:<
 
 " show line number
 set number
