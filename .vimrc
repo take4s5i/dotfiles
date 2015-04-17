@@ -22,6 +22,7 @@ set number
 
 " show status line
 set statusline=%m\ %n\ %F\ %r%<%=[%l/%L\ ,\ %c]\ [%{&fileencoding}]\ [%{&fileformat}]\ %y
+set laststatus=2
 
 " tabs
 set expandtab
