@@ -111,16 +111,23 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     let g:neobundle#install_process_timeout=600
 
+    if v:version >= 702
+        NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
+        NeoBundle 'https://github.com/Shougo/unite.vim.git'
+    endif
+
+    if has('lua')
+        NeoBundle 'https://github.com/Shougo/neocomplete.vim.git'
+    endif
+
     NeoBundle 'Shougo/neobundle.vim'
     "NeoBundle 'Shougo/vimproc'
     "NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
     NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
     NeoBundle 'https://github.com/tpope/vim-surround.git'
     NeoBundle 'https://github.com/PProvost/vim-ps1.git'
-    NeoBundle 'https://github.com/Shougo/unite.vim.git'
     NeoBundle 'https://github.com/thinca/vim-quickrun.git'
     "NeoBundle 'https://github.com/Shougo/neocomplcache.vim.git'
-    NeoBundle 'https://github.com/Shougo/neocomplete.vim.git'
     NeoBundle 'https://github.com/Shougo/unite-outline.git'
     "NeoBundle 'https://github.com/hallison/vim-markdown.git'
     "NeoBundle 'https://github.com/plasticboy/vim-markdown.git'
@@ -133,7 +140,6 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundle 'https://github.com/mattn/emmet-vim'
     NeoBundle 'https://github.com/itchyny/lightline.vim.git'
     NeoBundle 'nathanaelkane/vim-indent-guides'
-    NeoBundle 'https://github.com/Shougo/vimshell.vim.git'
     NeoBundle 'https://github.com/kannokanno/previm.git'
     NeoBundle 'https://github.com/freitass/todo.txt-vim'
     NeoBundle 'https://github.com/cohama/agit.vim.git'
