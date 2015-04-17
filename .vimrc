@@ -126,7 +126,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     NeoBundle 'Shougo/neobundle.vim'
     "NeoBundle 'Shougo/vimproc'
-    "NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
+    NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
     NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
     NeoBundle 'https://github.com/tpope/vim-surround.git'
     NeoBundle 'https://github.com/PProvost/vim-ps1.git'
@@ -156,12 +156,9 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " ===== neocomplete =====
     let g:neocomplete#enable_at_startup = 1
 
-    " ===== jellybeans =====
-    colorscheme jellybeans
-
     " ===== lightline.vim =====
     let g:lightline = {
-        \ 'colorscheme' : 'jellybeans'
+        \ 'colorscheme' : 'default'
         \}
 
     " ===== quickrun =====
