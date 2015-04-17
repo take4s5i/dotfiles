@@ -70,10 +70,10 @@ export PS1='\n\[\033[32m\]\u@\h \[\033[33m\w\033[0m\]\[\033[00m\]\n\$ '
 # open directory with windows explorer
 opd(){
     if [ $# -eq 0 ] ; then
-        explorer $(pwd -W | tr '/' '\')
+        explorer $(pwd -W | tr '/' '\\')
     else
         for d in $@ ; do
-            explorer "$((cd $d ; pwd -W) | tr '/' '\')"
+            explorer "$((cd $d ; pwd -W) | tr '/' '\\')"
         done
     fi
 }
