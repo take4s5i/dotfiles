@@ -78,6 +78,7 @@ nnoremap sL <C-w>L
 " split window
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
+nnoremap sx :q
 " exchange window. e[x]change , [r]otate
 nnoremap sx <C-w>x
 nnoremap sr <C-w>r
@@ -89,6 +90,11 @@ nnoremap stv <C-w>t<C-w>K
 nnoremap s= <C-w>=
 nnoremap s<Bar> <C-w><Bar>
 nnoremap s_ <C-w>_
+" resize window
+nnoremap s< <C-w><
+nnoremap s> <C-w>>
+nnoremap s+ <C-w>+
+nnoremap s- <C-w>-
 " tab
 nnoremap stt :tabe %<CR>
 nnoremap s] gt
