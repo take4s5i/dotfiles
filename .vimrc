@@ -58,9 +58,8 @@ if has('persistent_undo')
     set noundofile
 endif
 
-" syntax
-syntax enable
-
+" set terminal color
+set t_Co=16
 
 " ==================== key maps ====================
 let mapleader=','
@@ -163,9 +162,19 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     " ===== neocomplete =====
     let g:neocomplete#enable_at_startup = 1
 
+    " ===== solarized =====
+    syntax enable
+    let g:solarized_termcolors = 16
+    let g:solarized_termtrans  = 1
+    let g:solarized_bold       = 0
+    let g:solarized_underline       = 0
+    let g:solarized_italic       = 0
+    set background=dark
+    colorscheme solarized
+
     " ===== lightline.vim =====
     let g:lightline = {
-        \ 'colorscheme' : 'default'
+        \ 'colorscheme' : '16color'
         \}
 
     " ===== quickrun =====
