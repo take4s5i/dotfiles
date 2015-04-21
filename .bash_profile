@@ -9,7 +9,7 @@ export PATH=$PATH:/c/bin
 export PATH=$PATH:~/bin
 
 ## alias
-alias ls='ls --color --show-control-chars'
+alias tmux="TERM=xterm-256color tmux"
 
 ## alias for git
 alias gs='git status -s'
