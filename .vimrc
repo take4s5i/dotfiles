@@ -79,8 +79,7 @@ nnoremap sL <C-w>L
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
 nnoremap sx :q
-" exchange window. e[x]change , [r]otate
-nnoremap sx <C-w>x
+" rorate window
 nnoremap sr <C-w>r
 nnoremap sR <C-w>R
 " toggole split direction to [h]rizontal , [v]ertical.
