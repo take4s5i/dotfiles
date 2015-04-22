@@ -193,7 +193,15 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     \       'command' : 'sqlplus',
     \       'cmdopt' : '%{OraConnectionGet()}',
     \       'exec' : ['%c -S %o < %s']
-    \   }
+    \   },
+    \  'javascript': {
+    \    'type': executable('node') ? 'javascript/nodejs':
+    \            executable('phantomjs') ? 'javascript/phantomjs':
+    \            executable('js') ? 'javascript/spidermonkey':
+    \            executable('d8') ? 'javascript/v8':
+    \            executable('jrunscript') ? 'javascript/rhino':
+    \            executable('cscript') ? 'javascript/cscript': '',
+    \  }
     \}
 
     function! OraConnectionSet()
