@@ -65,7 +65,7 @@ set t_Co=16
 let mapleader=','
 
 nnoremap <C-b> :Unite buffer<CR>
-nnoremap <C-q> @q
+nnoremap ` @q
 " move current window
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
