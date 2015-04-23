@@ -66,6 +66,7 @@ let mapleader=','
 
 nnoremap <C-b> :Unite buffer<CR>
 nnoremap ` @q
+nnoremap & @:
 " move current window
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
@@ -174,7 +175,13 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     " ===== lightline.vim =====
     let g:lightline = {
-        \ 'colorscheme' : '16color'
+        \ 'colorscheme' : '16color',
+        \ 'component' : {
+        \     'cd' : '%.35(%{fnamemodify(getcwd(), ":~")}%)'
+        \ },
+        \ 'tabline' : {
+        \     'right' : [['cd']]
+        \}
         \}
 
     " ===== quickrun =====
