@@ -10,6 +10,10 @@ set guioptions-=T
 " resetting colorscheme on system gvimrc
 colorscheme jellybeans
 
+" ressetting lightline
+let g:lightline.colorscheme = 'jellybeans'
+call LightlineUpdate()
+
 " resize window size
 set lines=500
 set columns=500

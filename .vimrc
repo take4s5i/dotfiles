@@ -183,6 +183,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
         \     'right' : [['cd']]
         \}
         \}
+    function! LightlineUpdate()
+        call lightline#init()
+        call lightline#colorscheme()
+        call lightline#update()
+    endfunction
 
     " ===== quickrun =====
     let g:quickrun_config = {
