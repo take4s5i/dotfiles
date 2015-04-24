@@ -11,5 +11,6 @@
 	default=simple
 [diff]
 	guitool = gvimdiff
+	noprefix = true
 [difftool.gvimdiff]
 	cmd = gvim -d $LOCAL $REMOTE
