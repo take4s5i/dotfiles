@@ -80,7 +80,7 @@ nnoremap sL <C-w>L
 " split window
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
-nnoremap sx :q
+nnoremap sx :q<CR>
 " rorate window
 nnoremap sr <C-w>r
 nnoremap sR <C-w>R
@@ -100,8 +100,15 @@ nnoremap s- <C-w>-
 nnoremap stt :tabe %<CR>
 nnoremap s] gt
 nnoremap s[ gT
-nnoremap s} :tabmove +1<CR>
-nnoremap s{ :tabmove -1<CR>
+nnoremap s} :execute 'tabmove ' . ((tabpagenr() + tabpagenr('$')) % tabpagenr('$'))<CR>
+nnoremap s{ :execute 'tabmove ' . ((tabpagenr() - 2 + tabpagenr('$')) % tabpagenr('$'))<CR>
+" edit
+nnoremap ses :split ./<CR>
+nnoremap sev :vertical split ./<CR>
+nnoremap set :tabedit ./<CR>
+nnoremap sEs :split %:h<CR>
+nnoremap sEv :vertical split %:h<CR>
+nnoremap sEt :tabedit %:h<CR>
 
 
 " ==================== auto cmds ====================
