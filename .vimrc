@@ -11,13 +11,14 @@ if s:is_win
 endif
 set fileformat=unix
 set fileformats=unix,dos
+set ambiwidth=double
 
 " use clipboard on yank
 set clipboard=unnamed
 
 " show control chars
 set list
-set listchars=tab:>-,trail:.,eol:$,nbsp:.,extends:>,precedes:<
+set listchars=tab:»\ ,trail:.,eol:˅,nbsp:.,extends:»,precedes:«
 
 " show line number
 set number
