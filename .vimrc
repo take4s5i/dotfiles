@@ -60,7 +60,7 @@ if has('persistent_undo')
 endif
 
 " set terminal color
-set t_Co=16
+"set t_Co=256
 
 " ==================== key maps ====================
 let mapleader=','
@@ -181,9 +181,11 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     set background=dark
     colorscheme solarized
 
+    colorscheme jellybeans
+
     " ===== lightline.vim =====
     let g:lightline = {
-        \ 'colorscheme' : '16color',
+        \ 'colorscheme' : 'jellybeans',
         \ 'component' : {
         \     'cd' : '%.35(%{fnamemodify(getcwd(), ":~")}%)'
         \ },
