@@ -34,7 +34,9 @@ set shiftwidth=4
 set softtabstop=4
 
 " no folding
-set nofoldenable
+if has('folding')
+    set nofoldenable
+endif
 
 " hidden warning on not saved
 set hidden
