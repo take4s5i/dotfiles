@@ -8,6 +8,9 @@ export PATH=$PATH:/c/PROGRA~2/Git/bin
 export PATH=$PATH:/c/bin
 export PATH=$PATH:~/bin
 
+## less
+export LESS="-iMRS --shift 5"
+
 ## alias
 alias tmux="TERM=xterm-256color tmux"
 
