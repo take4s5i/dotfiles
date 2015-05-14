@@ -5,7 +5,7 @@ let s:is_win = has('win32') || has('win64')
 
 " ==================== vim options ====================
 " encodings
-set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs-2
+set fileencodings=utf-8,cp932,euc-jp
 if s:is_win
     set termencoding='cp932'
 endif
