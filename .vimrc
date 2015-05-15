@@ -153,6 +153,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundle 'https://github.com/mattn/emmet-vim'
     NeoBundle 'https://github.com/itchyny/lightline.vim.git'
     NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
+    NeoBundle 'https://github.com/lambdalisue/vim-unified-diff.git'
 
     call neobundle#end()
     NeoBundleCheck
@@ -201,6 +202,9 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
         call lightline#colorscheme()
         call lightline#update()
     endfunction
+
+    " ===== vim-unified-diff =====
+    set diffexpr=unified_diff#diffexpr()
 
     " ===== quickrun =====
     let g:quickrun_config = {
