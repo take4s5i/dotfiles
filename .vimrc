@@ -326,3 +326,59 @@ function! SetIndent(str)
     endfor
 endfunction
 
+function! DetectIndent(bufname)
+    " get indent each line.
+    let l:indents = map(
+\       map(
+\           filter(getbufline(a:bufname,1,'$'),'match(v:val,''^\s*$'') < 0'),
+\          'matchstr(v:val,''^\s*'')'),
+\               '(match(v:val,''\t'') < 0 ? ''s'' : ''t'') . len(v:val)')
+
+    " get frequency of indents
+    let l:freq = {}
+    for idt in l:indents
+        if has_key(l:freq,idt)
+            let l:freq[idt] += 1
+        else
+            let l:freq[idt] = 1
+        endif
+    endfor
+
+    let l:maxcnt = 0
+    let l:itype  = 's'
+    let l:ilevel = 0
+    for it in keys(l:freq)
+        let l:cnt = 0
+        if str2nr(it[1:]) <= 1
+            continue
+        endif
+        for that in keys(l:freq)
+            " it has same indent type(space/tab) with that ,And that indent
+            " level is multiple of it indent level.
+            if it[0] == that[0] && str2nr(that[1:]) % str2nr(it[1:]) == 0
+                let l:cnt += l:freq[that]
+            endif
+        endfor
+
+        if l:cnt > l:maxcnt
+            let l:maxcnt = l:cnt
+            let l:itype = it[0]
+            let l:ilevel = str2nr(it[1:])
+        endif
+    endfor
+
+    if l:itype == 's' && l:ilevel > 0
+        setlocal expandtab
+        execute 'setlocal shiftwidth=' . l:ilevel
+        execute 'setlocal softtabstop=' . l:ilevel
+    elseif  l:itype == 't'
+        setlocal noexpandtab
+        execute 'setlocal shiftwidth=' . &tabstop
+        setlocal softtabstop=0
+    endif
+endfunction
+augroup vim_rc_loading
+    autocmd!
+    autocmd BufRead * call DetectIndent(expand('#'))
+augroup END
+
