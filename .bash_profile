@@ -9,7 +9,11 @@ export PATH=$PATH:/c/bin
 export PATH=$PATH:~/bin
 
 ## less
-export LESS="-iMRS --shift 5"
+export LESS="-iMRSX --shift 5"
+
+## basics
+export PAGER="less"
+export EDITOR="vim"
 
 ## alias
 alias tmux="TERM=xterm-256color tmux"
