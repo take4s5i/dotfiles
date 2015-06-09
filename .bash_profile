@@ -4,6 +4,7 @@
 export LANG=ja_JP.utf8
 
 ## path
+export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/c/PROGRA~2/Git/bin
 export PATH=$PATH:/c/bin
 export PATH=$PATH:~/bin
@@ -117,3 +118,7 @@ vimpager(){
 agit(){
     gvim -c "Agit --dir=$(pwd)"
 }
+
+
+test -r ~/.bash_profile.local && source ~/.bash_profile.local
+
