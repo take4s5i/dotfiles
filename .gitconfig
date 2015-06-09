@@ -14,3 +14,5 @@
 	noprefix = true
 [difftool.gvimdiff]
 	cmd = gvim -d $LOCAL $REMOTE
+[url "https://"]
+	insteadOf = git://
