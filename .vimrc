@@ -23,6 +23,9 @@ set listchars=tab:»\ ,trail:.,eol:˅,nbsp:.,extends:»,precedes:«
 " show line number
 set number
 
+" backspace
+set backspace=start,eol,indent
+
 " show status line
 set statusline=%m\ %n\ %F\ %r%<%=[%l/%L\ ,\ %c]\ [%{&fileencoding}]\ [%{&fileformat}]\ %y
 set laststatus=2
@@ -49,6 +52,7 @@ set ignorecase
 set smartcase
 set incsearch
 set wrapscan
+set hlsearch
 
 " show tabline
 set showtabline=2
@@ -381,8 +385,22 @@ function! DetectIndent(bufname)
         setlocal softtabstop=0
     endif
 endfunction
+
 augroup vim_rc_loading
     autocmd!
     autocmd BufRead * call DetectIndent(expand('#'))
 augroup END
 
+" load local settings
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+  autocmd BufReadPre .vimprojects set ft=vim
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimprojects', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
