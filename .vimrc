@@ -107,15 +107,20 @@ nnoremap s- <C-w>-
 nnoremap stt :tabe %<CR>
 nnoremap s] gt
 nnoremap s[ gT
-nnoremap s} :execute 'tabmove ' . ((tabpagenr() + tabpagenr('$')) % tabpagenr('$'))<CR>
-nnoremap s{ :execute 'tabmove ' . ((tabpagenr() - 2 + tabpagenr('$')) % tabpagenr('$'))<CR>
+nnoremap s0 :tabfirst<CR>
+nnoremap s$ :tablast<CR>
+nnoremap s} :+tabmove<CR>
+nnoremap s{ :-tabmov<CR>
 " edit
 nnoremap ses :split ./<CR>
 nnoremap sev :vertical split ./<CR>
 nnoremap set :tabedit ./<CR>
-nnoremap sEs :split %:h<CR>
-nnoremap sEv :vertical split %:h<CR>
-nnoremap sEt :tabedit %:h<CR>
+nnoremap sos :split %:h<CR>
+nnoremap sov :vertical split %:h<CR>
+nnoremap sot :tabedit %:h<CR>
+
+" complete
+imap <C-f> <C-x><C-o>
 
 
 " ==================== auto cmds ====================
