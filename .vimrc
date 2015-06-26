@@ -163,6 +163,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundle 'https://github.com/itchyny/lightline.vim.git'
     NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
     NeoBundle 'https://github.com/lambdalisue/vim-unified-diff.git'
+    NeoBundle 'https://github.com/digitaltoad/vim-jade.git'
 
     call neobundle#end()
     NeoBundleCheck
@@ -225,12 +226,18 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     \       'hook/output_encode/enable' : 0
     \   },
     \   'sql' : {
-    \       'type' : executable('sqlplus') ? 'sql/oracle' : ''
+    \       'type' : executable('mysql') ? 'sql/mysql' :
+    \                executable('sqlplus') ? 'sql/oracle' : ''
     \   },
     \   'sql/oracle' : {
     \       'command' : 'sqlplus',
     \       'cmdopt' : '%{OraConnectionGet()}',
     \       'exec' : ['%c -S %o < %s']
+    \   },
+    \   'sql/mysql' : {
+    \       'command' : 'mysql',
+    \       'cmdopt' : '%{MysqlConnectionGet()}',
+    \       'exec' : [ '%c %o < %s' ]
     \   },
     \  'javascript': {
     \    'type': executable('node') ? 'javascript/nodejs':
@@ -250,6 +257,21 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
             call OraConnectionSet()
         endif
         return g:my_ora_connection
+    endfunction
+
+    function! MysqlConnectionSet()
+        let g:my_mysql_user = input('mysql user > ')
+        let g:my_mysql_pass = input('mysql pass > ')
+        let g:my_mysql_db   = input('mysql db > ')
+    endfunction
+    function! MysqlConnectionGet()
+        if !exists('g:my_mysql_user')
+            call MysqlConnectionSet()
+        endif
+        let l:conn = '-u ' . g:my_mysql_user
+        let l:conn = l:conn. (g:my_mysql_pass == '' ? '' : ' -p ' . g:my_mysql_pass)
+        let l:conn = l:conn . ' ' . g:my_mysql_db
+        return l:conn
     endfunction
 
     " ===== vimshell =====

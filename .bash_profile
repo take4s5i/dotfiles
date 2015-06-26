@@ -1,5 +1,8 @@
 #!/bin/sh
 
+## use vi mode
+set -o vi
+
 ## LANG
 export LANG=ja_JP.utf8
 
