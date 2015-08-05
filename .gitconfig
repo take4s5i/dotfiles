@@ -16,3 +16,5 @@
 	cmd = gvim -d $LOCAL $REMOTE
 [url "https://"]
 	insteadOf = git://
+[credential]
+	helper = cache
