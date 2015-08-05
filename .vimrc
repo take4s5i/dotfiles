@@ -65,6 +65,10 @@ if has('persistent_undo')
     set noundofile
 endif
 
+" indent
+set smartindent
+set autoindent
+
 " set terminal color
 "set t_Co=256
 
@@ -164,6 +168,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
     NeoBundle 'https://github.com/lambdalisue/vim-unified-diff.git'
     NeoBundle 'https://github.com/digitaltoad/vim-jade.git'
+    NeoBundle 'https://github.com/kchmck/vim-coffee-script.git'
 
     call neobundle#end()
     NeoBundleCheck
