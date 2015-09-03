@@ -169,6 +169,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundle 'https://github.com/lambdalisue/vim-unified-diff.git'
     NeoBundle 'https://github.com/digitaltoad/vim-jade.git'
     NeoBundle 'https://github.com/kchmck/vim-coffee-script.git'
+    NeoBundle 'https://github.com/moznion/vim-ltsv.git'
 
     call neobundle#end()
     NeoBundleCheck
