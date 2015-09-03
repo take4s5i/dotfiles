@@ -22,7 +22,7 @@ alias tmux="TERM=xterm-256color tmux"
 
 ## alias for git
 alias gs='git status -s'
-alias glx='git graph --all -15'
+alias glx='git graph -15'
 
 ## prompt
 git-info() {
