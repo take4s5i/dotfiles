@@ -21,6 +21,7 @@ export EDITOR="vim"
 alias tmux="TERM=xterm-256color tmux"
 
 ## alias for git
+alias g='git'
 alias gs='git status -s'
 alias glx='git graph -15'
 
