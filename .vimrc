@@ -119,9 +119,9 @@ nnoremap s{ :-tabmov<CR>
 nnoremap ses :split ./<CR>
 nnoremap sev :vertical split ./<CR>
 nnoremap set :tabedit ./<CR>
-nnoremap sos :split %:h<CR>
-nnoremap sov :vertical split %:h<CR>
-nnoremap sot :tabedit %:h<CR>
+nnoremap sos :split %:h/<CR>
+nnoremap sov :vertical split %:h/<CR>
+nnoremap sot :tabedit %:h/<CR>
 
 " complete
 imap <C-f> <C-x><C-o>
