@@ -17,6 +17,9 @@ export LESS="-iMRSX --shift 5"
 export PAGER="less"
 export EDITOR="vim"
 
+## nodejs
+export NODE_PATH=$(npm root -g)
+
 ## alias
 alias tmux="TERM=xterm-256color tmux"
 
