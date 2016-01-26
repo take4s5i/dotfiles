@@ -72,6 +72,9 @@ set autoindent
 " set terminal color
 "set t_Co=256
 
+" git grep for :grep
+set grepprg=git\ grep\ --no-index\ -I\ --line-number
+
 " ==================== key maps ====================
 let mapleader=','
 
@@ -122,6 +125,8 @@ nnoremap set :tabedit ./<CR>
 nnoremap sos :split %:h/<CR>
 nnoremap sov :vertical split %:h/<CR>
 nnoremap sot :tabedit %:h/<CR>
+" other
+nnoremap gf :tabe <cfile><CR>
 
 " complete
 imap <C-f> <C-x><C-o>
