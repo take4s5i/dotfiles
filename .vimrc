@@ -125,6 +125,9 @@ nnoremap set :tabedit ./<CR>
 nnoremap sos :split %:h/<CR>
 nnoremap sov :vertical split %:h/<CR>
 nnoremap sot :tabedit %:h/<CR>
+" yank to file
+map <C-y> :w! ~/.vimyanks<CR>
+map <C-p> :r ~/.vimyanks<CR>
 " other
 nnoremap gf :tabe <cfile><CR>
 
@@ -195,6 +198,9 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     " ===== neocomplete =====
     let g:neocomplete#enable_at_startup = 1
+
+    " ===== emmet-vim ==== "
+    let g:user_emmet_leader_key = '<C-e>'
 
     " ===== solarized =====
     syntax enable
