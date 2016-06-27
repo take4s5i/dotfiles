@@ -25,8 +25,11 @@ alias tmux="TERM=xterm-256color tmux"
 
 ## alias for git
 alias g='git'
-alias gs='git status -s'
-alias glx='git graph -15'
+
+## git subcmd alias
+for a in $(git config --list | grep -E '^alias\.' | sed -E 's/^alias\.([^=]+)=.+$/\1/'); do
+  alias "g${a}=git ${a}"
+done
 
 ## prompt
 git-info() {
@@ -43,3 +46,7 @@ export PS1='\n\[\033[32m\]\u@\h \[\033[33m\w\033[0m\] \[\033[1;34m\]$(git-info)\
 ## function 
 test -r ~/.bash_profile.local && source ~/.bash_profile.local
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/admin/.sdkman"
+[[ -s "/home/admin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/admin/.sdkman/bin/sdkman-init.sh"
