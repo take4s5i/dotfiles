@@ -1,4 +1,14 @@
 #!/bin/sh
+function _push_path(){
+  if [ -z "$(echo $PATH | tr ':' '\n' | grep -F "$1")" ]; then
+    if [ "$2" == "first" ] ; then
+      export PATH=$1:$PATH
+    else
+      export PATH=$PATH:$1
+    fi
+  fi
+}
+
 
 ## use vi mode
 set -o vi
@@ -7,8 +17,9 @@ set -o vi
 export LANG=ja_JP.utf8
 
 ## path
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:~/bin
+_push_path /opt/rbenv/bin first
+_push_path /usr/local/bin last
+_push_path ~/bin last
 
 ## less
 export LESS="-iMRSX --shift 5"
@@ -45,8 +56,3 @@ export PS1='\n\[\033[32m\]\u@\h \[\033[33m\w\033[0m\] \[\033[1;34m\]$(git-info)\
 
 ## function 
 test -r ~/.bash_profile.local && source ~/.bash_profile.local
-
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/admin/.sdkman"
-[[ -s "/home/admin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/admin/.sdkman/bin/sdkman-init.sh"

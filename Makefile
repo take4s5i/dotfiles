@@ -1,5 +1,5 @@
 
-DOTFILE = .gitconfig .bash_profile .vimrc .gvimrc .tmux.conf .gitignore_global
+DOTFILE = .gitconfig .bash_profile .vimrc .gvimrc .tmux.conf .gitignore_global .inputrc
 SSHCONFIG = ~/.ssh/config
 
 usage:
