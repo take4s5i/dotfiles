@@ -82,10 +82,10 @@ nnoremap <C-b> :Unite buffer<CR>
 nnoremap ` @q
 nnoremap & @:
 " move current window
-nnoremap sh <C-w>h
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 " move window
 nnoremap sH <C-w>H
 nnoremap sJ <C-w>J
@@ -112,8 +112,8 @@ nnoremap s+ <C-w>+
 nnoremap s- <C-w>-
 " tab
 nnoremap stt :tabe %<CR>
-nnoremap s] gt
-nnoremap s[ gT
+nnoremap <Right> gt
+nnoremap <Left> gT
 nnoremap s0 :tabfirst<CR>
 nnoremap s$ :tablast<CR>
 nnoremap s} :+tabmove<CR>
@@ -130,6 +130,7 @@ map <C-y> :w! ~/.vimyanks<CR>
 map <C-p> :r ~/.vimyanks<CR>
 " other
 nnoremap gf :tabe <cfile><CR>
+nnoremap sp :set paste!<CR>
 
 " complete
 imap <C-f> <C-x><C-o>
