@@ -82,10 +82,10 @@ nnoremap <C-b> :Unite buffer<CR>
 nnoremap ` @q
 nnoremap & @:
 " move current window
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
 " move window
 nnoremap sH <C-w>H
 nnoremap sJ <C-w>J
@@ -116,8 +116,8 @@ nnoremap <Right> gt
 nnoremap <Left> gT
 nnoremap s0 :tabfirst<CR>
 nnoremap s$ :tablast<CR>
-nnoremap s} :+tabmove<CR>
-nnoremap s{ :-tabmov<CR>
+nnoremap <Down> :+tabmove<CR>
+nnoremap <Up> :-tabmov<CR>
 " edit
 nnoremap ses :split ./<CR>
 nnoremap sev :vertical split ./<CR>
