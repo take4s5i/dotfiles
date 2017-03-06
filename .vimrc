@@ -132,6 +132,9 @@ map <C-p> :r ~/.vimyanks<CR>
 nnoremap gf :tabe <cfile><CR>
 nnoremap sp :set paste!<CR>
 
+" repeatable paste
+vnoremap p "0p
+
 " complete
 imap <C-f> <C-x><C-o>
 

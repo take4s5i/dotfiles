@@ -42,6 +42,15 @@ for a in $(git config --list | grep -E '^alias\.' | sed -E 's/^alias\.([^=]+)=.+
   alias "g${a}=git ${a}"
 done
 
+## ssh-agent
+ssh_agent_env=~/.ssh/agent_env.sh
+test -r ${ssh_agent_env} && source ${ssh_agent_env}
+if [ -z "${SSH_AGENT_PID}" -o -z "${SSH_AUTH_SOCK}" ] ; then
+  eval $(ssh-agent)
+  echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > ${ssh_agent_env}
+  echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> ${ssh_agent_env}
+fi
+
 ## prompt
 git-info() {
     git rev-parse HEAD > /dev/null 2>&1 || return 1
