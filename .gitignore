@@ -1,4 +1,5 @@
 *.swp
+.DS_Store
 /init/*/install.log
 /init/*/tmp
 /init/local/*
