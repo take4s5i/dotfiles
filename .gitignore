@@ -1,1 +1,3 @@
 *.swp
+/init/*/install.log
+/init/*/tmp
