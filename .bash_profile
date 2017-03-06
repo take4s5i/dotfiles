@@ -23,6 +23,7 @@ _push_path ~/bin last
 
 ## less
 export LESS="-iMRSX --shift 5"
+export LESSCHARSET=utf-8
 
 ## basics
 export PAGER="less"
