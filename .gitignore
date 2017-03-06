@@ -3,3 +3,4 @@
 /init/*/tmp
 /init/local/*
 !/init/local/.gitkeep
+!/init/local/install-order.sh
