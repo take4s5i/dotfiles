@@ -8,6 +8,13 @@ help:
 	@echo "make install	gitをインストールする"
 
 install:
+	if [ $$(uname) == "Darwin" ] ; then \
+		brew install git ; \
+	else \
+		make compile ; \
+	fi
+
+compile:
 	@mkdir -p $${DOTFILES_TMP}
 	@if [ -d $(src) ] ; then \
 		git fetch origin  ;\
@@ -16,6 +23,7 @@ install:
 	fi
 	@cd $(src); \
 		git checkout $(git_tag) ; \
+		(test  && make configure) ; \
 		make prefix=$(prefix) all doc info ; \
 		sudo make install prefix=$(prefix)
 
