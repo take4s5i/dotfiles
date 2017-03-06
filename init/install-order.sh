@@ -4,8 +4,4 @@ echo package
 echo git
 echo vim
 
-if [ -r ./local/install-order.sh ] ; then
-    for p in $(./local/install-order.sh); do
-        echo "local/${p}"
-    done
-fi
+test -r ./local/install-order.sh && bash ./local/install-order.sh

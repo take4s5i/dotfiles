@@ -1,6 +1,5 @@
 
-workdir=tmp
-src=$(workdir)/src
+src=$${DOTFILES_TMP}/src
 source_url=https://github.com/vim/vim.git
 prefix=/usr/local
 git_tag=v8.0.0425
@@ -9,7 +8,7 @@ help:
 	@echo "make install	vimをインストールする"
 
 install:
-	@mkdir -p $(workdir)
+	@mkdir -p $${DOTFILES_TMP}
 	@if [ -d $(src) ] ; then \
 		git fetch origin  ;\
 	else \

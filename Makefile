@@ -1,5 +1,9 @@
 
 DOTFILE = .gitconfig .bash_profile .vimrc .gvimrc .tmux.conf .gitignore_global .inputrc
+DOTFILES_REPO=$$(git rev-parse --show-toplevel)
+DOTFILES_HOME=~/.dotfiles.d
+
+export DOTFILES_HOME
 
 help:
 	@echo "make help	# show this help"
@@ -19,13 +23,15 @@ clean:
 
 .PHONY:delpy
 deploy: clean
+	mkdir -p ~/.dotfiles.d
 	echo "$(DOTFILE)" | tr ' ' "\\n" | xargs -I {} ln -s $$(pwd)/{} ~/{}
 
 .PHONY:install
 install:
 	@sudo echo 'start'
-	@export DOTFILES_HOME=$$(git rev-parse --show-toplevel) ;\
-	  for target in $$($${DOTFILES_HOME}/init/install-order.sh); do \
+	@for target in $$(bash $(DOTFILES_REPO)/init/install-order.sh); do \
+		  export DOTFILES_TMP=$(DOTFILES_HOME)/init/tmp/$${target} ;\
 		  echo installing $${target} ;\
-		  cd $${DOTFILES_HOME}/init/$${target} && make install 2>&1 > install.log;\
+		  mkdir -p $(DOTFILES_HOME)/init/log/$${target} ;\
+		  cd $(DOTFILES_REPO)/init/$${target} && make install 2>&1 > $(DOTFILES_HOME)/init/log/$${target}/install.log;\
 	  done
