@@ -1,5 +1,8 @@
 "フォントの設定
 set guifont=Consolas:h10 guifontwide=Ricty\ Diminished:h10
+
+if has('mac')
+  set guifont=Consolas:h15 guifontwide=Ricty\ Diminished:h15
 "
 "メニュー、ツールバーの設定(UTF8化するとメニューが化けるので一旦削除して再表示)
 source $VIMRUNTIME/delmenu.vim
