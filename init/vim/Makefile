@@ -31,7 +31,7 @@ compile:
 	@cd $(src) ; \
 		git checkout $(git_tag) ; \
 		echo $$(pwd) ; \
-		./src/configure --with-features=huge --prefix=$(prefix); \
+		./configure --with-features=huge --prefix=$(prefix); \
 		make ; \
 		sudo make install ; \
 		vim --version > $(version_file)
