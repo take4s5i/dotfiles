@@ -26,12 +26,20 @@ deploy: clean
 	mkdir -p ~/.dotfiles.d
 	echo "$(DOTFILE)" | tr ' ' "\\n" | xargs -I {} ln -s $$(pwd)/{} ~/{}
 
-.PHONY:install
-install:
+.PHONY:make-target
+make-target:
 	@sudo echo 'start'
 	@for target in $$(bash $(DOTFILES_REPO)/init/install-order.sh); do \
 		  export DOTFILES_TMP=$(DOTFILES_HOME)/init/tmp/$${target} ;\
-		  echo installing $${target} ;\
+		  echo $(TARGET) $${target} ;\
 		  mkdir -p $(DOTFILES_HOME)/init/log/$${target} ;\
-		  cd $(DOTFILES_REPO)/init/$${target} && make install 2>&1 > $(DOTFILES_HOME)/init/log/$${target}/install.log;\
-	  done
+		  cd $(DOTFILES_REPO)/init/$${target} && make $(TARGET) 2>&1 > $(DOTFILES_HOME)/init/log/$${target}/install.log;\
+	done
+
+.PHONY:install
+install:
+	@make make-target TARGET=install
+
+.PHONY:clean-install
+clean-install:
+	@make make-target TARGET=clean
