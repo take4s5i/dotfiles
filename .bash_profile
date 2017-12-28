@@ -5,7 +5,7 @@ set -o vi
 
 ## env variables
 export LANG=ja_JP.utf8
-export PATH=$PATH:/usr/local/bin:~/bin
+export PATH="$PATH:/usr/local/bin:~/bin:$(npm config get prefix 2> /dev/null)"
 export PAGER="less"
 export EDITOR="vim"
 

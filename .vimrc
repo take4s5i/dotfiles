@@ -185,6 +185,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundle 'https://github.com/elixir-lang/vim-elixir.git'
     NeoBundle 'othree/yajs.vim'
     NeoBundle 'othree/es.next.syntax.vim'
+    NeoBundle 'https://github.com/asciidoc/vim-asciidoc.git'
 
     call neobundle#end()
     NeoBundleCheck
