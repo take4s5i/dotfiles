@@ -183,6 +183,8 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
     NeoBundle 'https://github.com/kchmck/vim-coffee-script.git'
     NeoBundle 'https://github.com/moznion/vim-ltsv.git'
     NeoBundle 'https://github.com/elixir-lang/vim-elixir.git'
+    NeoBundle 'othree/yajs.vim'
+    NeoBundle 'othree/es.next.syntax.vim'
 
     call neobundle#end()
     NeoBundleCheck
@@ -445,6 +447,11 @@ augroup vimrc-local
   autocmd!
   autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
   autocmd BufReadPre .vimprojects set ft=vim
+augroup END
+
+augroup ext-ft-map
+  autocmd!
+  autocmd BufNewFile,BufRead *.vue set ft=html
 augroup END
 
 function! s:vimrc_local(loc)
