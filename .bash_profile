@@ -1,33 +1,17 @@
 #!/bin/sh
-function _push_path(){
-  if [ -z "$(echo $PATH | tr ':' '\n' | grep -F "$1")" ]; then
-    if [ "$2" == "first" ] ; then
-      export PATH=$1:$PATH
-    else
-      export PATH=$PATH:$1
-    fi
-  fi
-}
-
 
 ## use vi mode
 set -o vi
 
-## LANG
+## env variables
 export LANG=ja_JP.utf8
-
-## path
-_push_path /opt/rbenv/bin first
-_push_path /usr/local/bin last
-_push_path ~/bin last
+export PATH=$PATH:/usr/local/bin:~/bin
+export PAGER="less"
+export EDITOR="vim"
 
 ## less
 export LESS="-iMRSX --shift 5"
 export LESSCHARSET=utf-8
-
-## basics
-export PAGER="less"
-export EDITOR="vim"
 
 ## nodejs
 export NODE_PATH=$(npm root -g)
@@ -52,17 +36,18 @@ if [ -z "${SSH_AGENT_PID}" -o -z "${SSH_AUTH_SOCK}" ] ; then
   echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> ${ssh_agent_env}
 fi
 
+# direnv
+if type direnv > /dev/null 2>&1 ; then
+  eval $(direnv hook bash)
+fi
+
 ## prompt
-git-info() {
-    git rev-parse HEAD > /dev/null 2>&1 || return 1
+git_branch=""
+if type git > /dev/null 2>&1 ; then
+  git_branch='$(git rev-parse --is-inside-work-tree > /dev/null 2>&1 && echo "[$(git rev-parse --abbrev-ref HEAD)]")'
+fi
 
-    local BRANCH=$(git rev-parse --abbrev-ref HEAD)
-#    local STAT=$(git status -s | cut -c1 |grep -v "!" |tr " MADRCU\?" "\@\*\+\-RCU\?" | uniq -c | tr -d "\n")
-    echo -n "[${BRANCH}]"
-
-}
-export PS1='\n\[\033[32m\]\u@\h \[\033[33m\w\033[0m\] \[\033[1;34m\]$(git-info)\[\033[00m\]\n\$ '
-#export PS1='\n\[\033[32m\]\u@\h \[\033[33m\w\033[0m\]\[\033[00m\]\n\$ '
+export PS1="\n\[\033[32m\]\u@\h \[\033[33m\w\033[0m\] \[\033[1;34m\]${git_branch}\[\033[00m\]\n\$ "
 
 ## function 
 test -r ~/.bash_profile.local && source ~/.bash_profile.local

@@ -26,8 +26,9 @@
     sb = show-branch master develop @
     sh = show
 	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-    cb= "!cb(){ echo -n $(git rev-parse --abbrev-ref HEAD)$(test \"$1\" == \"-u\" && echo -n '@{u}') ;}; cb"
+    cb= "!cb(){ printf $(git rev-parse --abbrev-ref HEAD)$(test \"$1\" == \"-u\" && printf '@{u}') ;}; cb"
     dfile= "!df(){ local a=$1; shift; local b=$1; shift ; git diff $@ HEAD:${GIT_PREFIX}{$a,$b} ;}; df"
+    sw="!sw(){ git branch | peco | cut -c3- | xargs git checkout ;}; sw"
 [push]
 	default=simple
 [pager]
