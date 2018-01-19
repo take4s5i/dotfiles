@@ -8,9 +8,16 @@
 	excludesfile = ~/.gitignore_global
 [alias]
 	graph = log --graph --date=short --pretty=\"format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset\"
-    g  = !git graph
-	lx = !git graph -15
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+    current-branch= "!cb(){ git ls-ref | grep '*' | awk '{print $3}';}; cb"
+    diff-file= "!df(){ local a=$1; shift; local b=$1; shift ; git diff $@ HEAD:${GIT_PREFIX}{$a,$b} ;}; df"
+    ls-ref="!lsr(){ git for-each-ref --format='%(HEAD),%(objectname:short),%(refname:short),%(upstream:short)' | column -t -s, ;}; lsr"
+    switch-branch="!sw(){ git ls-ref | peco | cut -c2- | awk '{ print $2} '| xargs git checkout $@ ;}; sw"
+    push-upstream="!pu(){ git push $@ -u $(git current-branch);}; pu"
+    g = !git graph
+	l = !git graph -15
 	co = checkout
+    cb = !git current-branch
 	rb = rebase
 	rs = reset
 	cm = commit
@@ -18,18 +25,14 @@
 	m = merge --no-ff
 	a = add
 	p = push
+    pu = !git push-upstream
 	pl = pull --ff-only
 	d = diff
 	dl = diff --name-status
-	s = show
 	s = status -s
     sb = show-branch master develop @
     sh = show
-	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-    cb= "!cb(){ printf $(git rev-parse --abbrev-ref HEAD)$(test \"$1\" == \"-u\" && printf '@{u}') ;}; cb"
-    dfile= "!df(){ local a=$1; shift; local b=$1; shift ; git diff $@ HEAD:${GIT_PREFIX}{$a,$b} ;}; df"
-    ls-ref="!lsr(){ git for-each-ref --format='%(HEAD),%(objectname:short),%(refname:short),%(upstream:short)' | column -t -s, ;}; lsr"
-    sw="!sw(){ git ls-ref | peco | cut -c2- | awk '{ print $2} '| xargs git checkout $@ ;}; sw"
+    sw = !git switch-branch
 [push]
 	default=simple
 [pager]
