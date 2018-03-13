@@ -14,6 +14,9 @@
     ls-ref="!lsr(){ git for-each-ref --format='%(HEAD),%(objectname:short),%(refname:short),%(upstream:short)' | column -t -s, ;}; lsr"
     switch-branch="!sw(){ git ls-ref | peco | cut -c2- | awk '{ print $2} '| xargs git checkout $@ ;}; sw"
     push-upstream="!pu(){ git push $@ -u $(git current-branch);}; pu"
+    edit="!edt(){ $EDITOR -p $@ $(echo $(git status -s | cut -c4- )); }; edt $@"
+    update="!_upd(){ git remote | xargs -I{} git fetch {} ;}; _upd $@"
+    mff="!_mff(){ git merge --ff $1/$(git current-branch) ;}; _mff $@"
     g = !git graph
 	l = !git graph -15
 	co = checkout
@@ -43,10 +46,11 @@
 	diffFilter = (diff-highlight 2>/dev/null || cat)
 [diff]
 	guitool = gvimdiff
+	tool = vimdiff
 	noprefix = true
 	compactionHeuristic = true
-[difftool.gvimdiff]
-	cmd = gvim -d $LOCAL $REMOTE
+[merge]
+	tool = vimdiff
 [url "https://"]
 	insteadOf = git://
 [credential]

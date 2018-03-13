@@ -15,6 +15,9 @@ export PLATFORM=$(uname)
 ## alias
 alias tmux="TERM=xterm-256color tmux"
 alias g='git'
+alias d='docker'
+alias dcom='docker-compose'
+alias vim='vim -p'
 
 ls_color_opt="$(test "$PLATFORM" == "Linux" && echo '--color' || echo '-G')"
 alias ls="ls $ls_color_opt"
