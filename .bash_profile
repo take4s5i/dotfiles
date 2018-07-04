@@ -43,7 +43,7 @@ fi
 ## npm
 if has npm ; then 
   export NODE_PATH=$(npm root -g)
-  export PATH="$PATH:$(npm config get prefix 2> /dev/null)"
+  export PATH="$PATH:$(npm config get prefix 2> /dev/null)/bin"
 fi
 
 ## direnv
