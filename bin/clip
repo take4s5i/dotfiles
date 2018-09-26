@@ -1,0 +1,29 @@
+#!/bin/sh
+
+function has(){
+  type $1 > /dev/null 2>&1
+}
+
+function paste(){
+  if has pbpaste ; then
+    pbpaste
+  else
+    printf '\033]52;;?\033\\'
+  fi
+}
+
+function copy(){
+  if has pbcopy ; then
+    pbcopy
+  else
+    printf "\033]52;;"
+    cat - | base64
+    printf "\033\\"
+  fi
+}
+
+if [ -t 0 ] ; then
+  paste
+else
+  cat - | copy
+fi

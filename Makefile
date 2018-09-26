@@ -25,6 +25,8 @@ clean:
 deploy: clean
 	mkdir -p ~/.dotfiles.d
 	echo "$(DOTFILE)" | tr ' ' "\\n" | xargs -I {} ln -s $$(pwd)/{} ~/{}
+	mkdir -p ~/bin
+	ls -1 bin | xargs -i ln -s $$(pwd)/bin/{} ~/bin/{}
 
 .PHONY:make-target
 make-target:
