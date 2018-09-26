@@ -163,6 +163,7 @@ if isdirectory(expand('~/.vim/bundle/neobundle.vim'))
 
     NeoBundle 'Shougo/neobundle.vim'
     NeoBundle 'sheerun/vim-polyglot'
+    NeoBundle 'google/vim-jsonnet'
     NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
     NeoBundle 'https://github.com/tpope/vim-surround.git'
     NeoBundle 'https://github.com/thinca/vim-quickrun.git'
@@ -258,6 +259,7 @@ augroup END
 augroup ext-ft-map
   autocmd!
   autocmd BufNewFile,BufRead *.vue set ft=html
+  autocmd BufNewFile,BufRead *.vtc set ft=vcl
 augroup END
 
 function! s:vimrc_local(loc)
