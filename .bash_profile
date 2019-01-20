@@ -30,6 +30,10 @@ function has(){
   return $?
 }
 
+function kcsw() {
+  kc config use-context $(kc config get-contexts -o name | peco)
+}
+
 function decorate(){
   # fg
   case $1 in
