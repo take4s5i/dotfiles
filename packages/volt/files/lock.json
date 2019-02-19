@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "current_profile_name": "default",
+  "repos": [
+    {
+      "type": "git",
+      "path": "github.com/sheerun/vim-polyglot",
+      "version": "c161994e9607399a7b365ab274592bfc4f100306"
+    },
+    {
+      "type": "git",
+      "path": "github.com/thinca/vim-quickrun",
+      "version": "875253cf98415de2aef411a50f35e2d7cb94aeac"
+    },
+    {
+      "type": "git",
+      "path": "github.com/nanotech/jellybeans.vim",
+      "version": "ddf78cf0ad5239d50bd893ac8b770c663a0326b6"
+    },
+    {
+      "type": "git",
+      "path": "github.com/mattn/emmet-vim",
+      "version": "d698f1658770ca5fa58c87e80421c8d65bbe9065"
+    },
+    {
+      "type": "git",
+      "path": "github.com/itchyny/lightline.vim",
+      "version": "83ae633be323a7fb5baf77e493232cf3358d02bf"
+    },
+    {
+      "type": "git",
+      "path": "github.com/vim-jp/vimdoc-ja",
+      "version": "e016949ea51af523c31df47bdc1847e386d084b3"
+    },
+    {
+      "type": "git",
+      "path": "github.com/lambdalisue/vim-unified-diff",
+      "version": "486ee3573789899492c3fb9f8ca671ba456e7240"
+    },
+    {
+      "type": "git",
+      "path": "github.com/w0rp/ale",
+      "version": "fefc093e707716da755ca2c326f852495f1b56fb"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "default",
+      "repos_path": [
+        "github.com/sheerun/vim-polyglot",
+        "github.com/thinca/vim-quickrun",
+        "github.com/nanotech/jellybeans.vim",
+        "github.com/mattn/emmet-vim",
+        "github.com/itchyny/lightline.vim",
+        "github.com/vim-jp/vimdoc-ja",
+        "github.com/lambdalisue/vim-unified-diff",
+        "github.com/w0rp/ale"
+      ]
+    }
+  ]
+}
