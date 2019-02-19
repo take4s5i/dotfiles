@@ -16,7 +16,7 @@ download:
 install:
 	@mkdir -p ~/bin
 	@cp -f tmp/volt ~/bin
-	@unlink ~/volt
+	@test -d ~/volt && unlink ~/volt || :
 	@ln -sf $$PWD/files ~/volt
-	@~/bin/volt build
+	@~/bin/volt get -l
 	@touch install
