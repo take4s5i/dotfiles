@@ -1,3 +1,5 @@
 *.swp
 .DS_Store
-/home/volt/repos
+
+packages/*/bootstrap
+packages/*/install

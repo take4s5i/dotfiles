@@ -1,0 +1,76 @@
+#!/bin/bash
+
+program=$(readlink $0)
+if [ $? -eq 0 ] ; then
+  cd $(dirname $program)
+else 
+  cd $(dirname $0)
+fi
+cd ../../../
+
+subcmd=$1
+force_run=0
+target_pkg=""
+shift
+
+function _list(){
+  if [ "$target_pkg" == "" ] ; then
+    ls -1A packages
+  else
+    if [ -d packages/$target_pkg ] ; then
+      echo $target_pkg
+    else
+      echo unknown package $target_pkg > /dev/stderr
+      exit 2
+    fi
+  fi
+}
+
+function _make(){
+  for pkg in $(_list); do
+    echo $1 $pkg;
+    if [ "$force_run" == "1" ] ; then
+      (cd packages/${pkg} && test -f $1 && rm -f $1);
+    fi
+
+    (cd packages/${pkg} && (make -q $1 ; test "$?" == "1") && make $1);
+  done
+}
+
+function _bootstrap(){
+  _make bootstrap
+}
+
+function _install(){
+  _make install
+}
+
+function _help(){
+  cat <<EOS
+dfpgk - dotfile package manager
+
+Usage:
+  dfpgk list
+  dfpgk bootstrap [-f] [-t <pkg>]
+  dfpgk install [-f] [-t <pkg>]
+EOS
+}
+
+case "$subcmd" in
+  install) subcmd=_install ;;
+  bootstrap) subcmd=_bootstrap ;;
+  list) subcmd=_list ;;
+  *) _help ;;
+esac
+
+while getopts ft: OPT
+do
+    case $OPT in
+        f) force_run=1
+            ;;
+        t) target_pkg=$OPTARG
+            ;;
+    esac
+done
+
+$subcmd
