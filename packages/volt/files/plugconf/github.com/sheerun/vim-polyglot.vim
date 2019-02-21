@@ -3,7 +3,11 @@
 function! s:on_load_pre()
   " Plugin configuration like the code written in vimrc.
   " This configuration is executed *before* a plugin is loaded.
-  let g:polyglot_disabled = ['javascript']
+  let g:polyglot_disabled = []
+
+  " jsx - https://github.com/mxw/vim-jsx
+  let g:polyglot_disabled = g:polyglot_disabled + ["jsx"]
+
 endfunction
 
 function! s:on_load_post()

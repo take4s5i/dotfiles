@@ -32,6 +32,7 @@ set smartindent
 set autoindent
 
 " misc
+set completeopt+=noinsert
 set hidden
 set nowrap
 set clipboard=unnamed
