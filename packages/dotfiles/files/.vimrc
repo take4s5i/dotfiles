@@ -22,6 +22,7 @@ set statusline=%m\ %n\ %F\ %r%<%=[%l/%L\ ,\ %c]\ [%{&fileencoding}]\ [%{&filefor
 set laststatus=2
 set showtabline=2
 set guioptions-=e
+set signcolumn=yes
 
 " tab
 set expandtab
