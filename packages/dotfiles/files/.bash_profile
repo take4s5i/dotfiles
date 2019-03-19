@@ -14,6 +14,7 @@ export PLATFORM=$(uname)
 
 ## alias
 alias tmux="TERM=xterm-256color tmux"
+alias tsw="TERM=xterm-256color tmux split-window"
 alias g='git'
 alias d='docker'
 alias dcom='docker-compose'

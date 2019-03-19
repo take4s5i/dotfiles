@@ -6,6 +6,14 @@ function! s:on_load_pre()
   let g:ale_completion_enabled = 1
   let g:ale_list_window_size = 3
   let g:ale_sign_column_always = 1
+  let g:ale_close_preview_on_insert = 1
+
+  nnoremap <C-h> :ALEHover<CR>
+
+  augroup ale
+    autocmd!
+    autocmd FileType ale-preview.message wincmd J | resize 2
+  augroup END
 endfunction
 
 function! s:on_load_post()

@@ -20,7 +20,7 @@ set number
 set backspace=start,eol,indent
 set statusline=%m\ %n\ %F\ %r%<%=[%l/%L\ ,\ %c]\ [%{&fileencoding}]\ [%{&fileformat}]\ %y
 set laststatus=2
-set showtabline=2
+set showtabline=0
 set guioptions-=e
 set signcolumn=yes
 
@@ -55,19 +55,14 @@ if has('folding')
     set nofoldenable
 endif
 
-let mapleader=','
+let mapleader=' '
 
 nnoremap ` @q
-nnoremap <Right> gt
-nnoremap <Left> gT
-nnoremap <Down> :+tabmove<CR>
-nnoremap <Up> :-tabmov<CR>
-nnoremap se :tabedit ./<CR>
-nnoremap so :tabedit %:h/<CR>
-nnoremap gf :tabe <cfile><CR>
-
-" repeatable paste
-vnoremap p "0p
+nnoremap <silent><leader>e :e %:h/<CR>
+nnoremap <silent><leader>n :bn<CR>
+nnoremap <silent><leader>p :bp<CR>
+nnoremap <silent><leader>b :b #<CR>
+nnoremap <silent><leader>d :bd<CR>
 
 filetype plugin on
 filetype on
@@ -78,3 +73,4 @@ augroup ext-ft-map
   autocmd BufNewFile,BufRead *.vue set ft=html
   autocmd BufNewFile,BufRead *.vtc set ft=vcl
 augroup END
+
