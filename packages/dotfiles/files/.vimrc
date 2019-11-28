@@ -73,4 +73,3 @@ augroup ext-ft-map
   autocmd BufNewFile,BufRead *.vue set ft=html
   autocmd BufNewFile,BufRead *.vtc set ft=vcl
 augroup END
-

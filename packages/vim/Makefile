@@ -1,15 +1,24 @@
+WORK=work
+PREFIX ?= ~
 
-bootstrap:
-	@make compile
-	@touch bootstrap
+.PHONY:install uninstall checkout clean
 
-.PHONY:compile
-compile:
-	@test -d src || git clone https://github.com/vim/vim src
-	@cd src/src && \
-		./configure --with-features=huge && \
-		make
+clean:
+	rm -rf $(WORK)
+
+checkout:
+	mkdir -p $(WORK)
+	test -d $(WORK)/src || git clone https://github.com/vim/vim $(WORK)/src
+	cd $(WORK)/src && git fetch origin && git reset --hard && git checkout origin/master
 
 install:
-	@cd src/src && sudo make install
-	@touch install
+	make checkout
+	cd $(WORK)/src && \
+		./configure --with-features=huge --prefix=$(PREFIX) && \
+		make PREFIX=$(PREFIX) && \
+		make PREFIX=$(PREFIX) install
+
+uninstall:
+	make checkout
+	cd $(WORK)/src && \
+		make PREFIX=$(PREFIX) uninstall

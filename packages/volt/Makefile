@@ -2,21 +2,21 @@
 VERSION=v0.3.5a
 SYS="$$(uname | tr '[:upper:]' '[:lower:]')"
 ARCH=386
+WORK=work
+PREFIX ?= ~
 
-bootstrap:
-	@make download
-	@touch bootstrap
+.PHONY:install uninstall clean
 
-.PHONY:download
-download:
-	@mkdir -p tmp
-	@curl -L -o tmp/volt "https://github.com/vim-volt/volt/releases/download/$(VERSION)/volt-$(VERSION)-$(SYS)-$(ARCH)"
-	@chmod 755 tmp/volt
+clean:
+	rm -rf $(WORK)
 
 install:
-	@mkdir -p ~/bin
-	@cp -f tmp/volt ~/bin
-	@test -d ~/volt && unlink ~/volt || :
-	@ln -sf $$PWD/files ~/volt
-	@~/bin/volt get -l
-	@touch install
+	mkdir -p $(WORK)
+	curl -L -o $(WORK)/volt "https://github.com/vim-volt/volt/releases/download/$(VERSION)/volt-$(VERSION)-$(SYS)-$(ARCH)"
+	install -d $(PREFIX)/bin
+	install -m 755 $(WORK)/volt $(PREFIX)/bin/volt
+	ln -sf $$PWD/files $(PREFIX)/volt
+
+uninstall:
+	rm -f $(PREFIX)/bin/volt
+	unlink -f $(PREFIX)/volt

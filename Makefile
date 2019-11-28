@@ -1,10 +1,15 @@
+PREFIX ?= ~
 
-.PHONY:install
+.PHONY:install uninstall clean test
+clean:
+	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$(PREFIX) clean
+
 install:
-	./packages/bin/files/dfpkg bootstrap || :
-	./packages/bin/files/dfpkg install || :
+	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$(PREFIX) install
 
-.PHONY:force-install
-force-install:
-	./packages/bin/files/dfpkg bootstrap -f || :
-	./packages/bin/files/dfpkg install -f || :
+uninstall:
+	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$(PREFIX) uninstall
+
+test:
+	rm -rf tmp
+	make PREFIX=$$PWD/tmp install

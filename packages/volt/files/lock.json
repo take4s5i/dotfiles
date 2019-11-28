@@ -5,42 +5,47 @@
     {
       "type": "git",
       "path": "github.com/sheerun/vim-polyglot",
-      "version": "c161994e9607399a7b365ab274592bfc4f100306"
+      "version": "3ddca5da461ebfaa82104f82e3cbf19d1c326ade"
     },
     {
       "type": "git",
       "path": "github.com/thinca/vim-quickrun",
-      "version": "875253cf98415de2aef411a50f35e2d7cb94aeac"
+      "version": "008dd08aad2a544938acbbcf7cee6d3735ebd2fb"
     },
     {
       "type": "git",
       "path": "github.com/nanotech/jellybeans.vim",
-      "version": "ddf78cf0ad5239d50bd893ac8b770c663a0326b6"
+      "version": "ef83bf4dc8b3eacffc97bf5c96ab2581b415c9fa"
     },
     {
       "type": "git",
       "path": "github.com/mattn/emmet-vim",
-      "version": "d698f1658770ca5fa58c87e80421c8d65bbe9065"
+      "version": "461700696ea317722c4a8d92a31a7267cdcc0bfb"
     },
     {
       "type": "git",
       "path": "github.com/itchyny/lightline.vim",
-      "version": "83ae633be323a7fb5baf77e493232cf3358d02bf"
+      "version": "1afe1e9bd5726550014d78ee244499d65beeb686"
     },
     {
       "type": "git",
       "path": "github.com/vim-jp/vimdoc-ja",
-      "version": "e016949ea51af523c31df47bdc1847e386d084b3"
+      "version": "36b2578f384889dfc91e3a85d08e49641f826dd8"
     },
     {
       "type": "git",
       "path": "github.com/lambdalisue/vim-unified-diff",
-      "version": "486ee3573789899492c3fb9f8ca671ba456e7240"
+      "version": "bc463025b8c4f504539a0956fdebabc3b43448e4"
     },
     {
       "type": "git",
       "path": "github.com/w0rp/ale",
       "version": "fefc093e707716da755ca2c326f852495f1b56fb"
+    },
+    {
+      "type": "git",
+      "path": "github.com/neoclide/coc.nvim",
+      "version": "d9f01a6023da4f2186291d32f6a1bf71b47309e6"
     }
   ],
   "profiles": [
@@ -54,7 +59,7 @@
         "github.com/itchyny/lightline.vim",
         "github.com/vim-jp/vimdoc-ja",
         "github.com/lambdalisue/vim-unified-diff",
-        "github.com/w0rp/ale"
+        "github.com/neoclide/coc.nvim"
       ]
     }
   ]

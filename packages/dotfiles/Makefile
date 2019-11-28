@@ -1,4 +1,13 @@
+PREFIX ?= ~
 
-.PHONY:install
+.PHONY:install uninstall clean
+
+clean:
+	rm -rf $(WORK)
+
 install:
-	@ls -1A files | xargs -I{} ln -sf $$PWD/files/{} ~/{}
+	install -d $(PREFIX)
+	ls -1A files | xargs -I{} ln -sf $$PWD/files/{} $(PREFIX)/{}
+
+uninstall:
+	ls -1A files | xargs -I{} unlink -f $$PWD/files/{} $(PREFIX)/{}

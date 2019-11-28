@@ -15,6 +15,7 @@ export PLATFORM=$(uname)
 ## alias
 alias tmux="TERM=xterm-256color tmux"
 alias tsw="TERM=xterm-256color tmux split-window"
+alias tnw="TERM=xterm-256color tmux new-window"
 alias g='git'
 alias d='docker'
 alias dcom='docker-compose'
@@ -33,6 +34,18 @@ function has(){
 
 function kcsw() {
   kc config use-context $(kc config get-contexts -o name | peco)
+}
+
+function kcgp() {
+  kc get pod | peco | awk '{print $1}'
+}
+
+function kcexec() {
+  kc exec -it $(kcgp) $@
+}
+
+function kclogs() {
+  kc logs $(kcgp) $@
 }
 
 function decorate(){
