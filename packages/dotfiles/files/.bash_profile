@@ -5,12 +5,13 @@ set -o vi
 
 ## env variables
 export LANG=ja_JP.utf8
-export PATH="$PATH:/usr/local/bin:~/bin"
+export PATH="~/bin:/usr/local/bin:$PATH"
 export PAGER="less"
 export EDITOR="vim"
 export LESS="-iMRSX --shift 5"
 export LESSCHARSET=utf-8
 export PLATFORM=$(uname)
+export N_PREFIX=$(cd ~/ && pwd)
 
 ## alias
 alias tmux="TERM=xterm-256color tmux"
@@ -115,7 +116,7 @@ fi
 
 ## direnv
 if has direnv ; then
-  eval $(direnv hook bash)
+  eval "$(direnv hook bash)"
 fi
 
 if has git ; then

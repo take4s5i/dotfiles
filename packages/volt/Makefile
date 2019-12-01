@@ -15,7 +15,7 @@ install:
 	curl -L -o $(WORK)/volt "https://github.com/vim-volt/volt/releases/download/$(VERSION)/volt-$(VERSION)-$(SYS)-$(ARCH)"
 	install -d $(PREFIX)/bin
 	install -m 755 $(WORK)/volt $(PREFIX)/bin/volt
-	ln -sf $$PWD/files $(PREFIX)/volt
+	ln -sf $$PWD/volt $(PREFIX)
 
 uninstall:
 	rm -f $(PREFIX)/bin/volt
