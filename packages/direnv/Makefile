@@ -11,7 +11,7 @@ clean:
 
 install:
 	mkdir -p $(WORK)
-	curl -L -o $(WORK)/dirnev "https://github.com/direnv/direnv/releases/download/$(VERSION)/direnv.$(SYS)-$(ARCH)"
+	curl -L -o $(WORK)/direnv "https://github.com/direnv/direnv/releases/download/$(VERSION)/direnv.$(SYS)-$(ARCH)"
 	install -d $(PREFIX)/bin
 	install -m 755 $(WORK)/direnv $(PREFIX)/bin/direnv
 

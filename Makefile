@@ -2,13 +2,13 @@ PREFIX ?= ~
 
 .PHONY:install uninstall clean test
 clean:
-	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$(PREFIX) clean
+	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$$(cd $(PREFIX)/ && pwd) clean
 
 install:
-	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$(PREFIX) install
+	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$$(cd $(PREFIX)/ && pwd) install
 
 uninstall:
-	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$(PREFIX) uninstall
+	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$$(cd $(PREFIX)/ && pwd) uninstall
 
 test:
 	rm -rf tmp

@@ -5,12 +5,12 @@
     {
       "type": "git",
       "path": "github.com/sheerun/vim-polyglot",
-      "version": "3ddca5da461ebfaa82104f82e3cbf19d1c326ade"
+      "version": "15aeea662e0b08088ac7b6e3ee661c834e69106a"
     },
     {
       "type": "git",
       "path": "github.com/thinca/vim-quickrun",
-      "version": "008dd08aad2a544938acbbcf7cee6d3735ebd2fb"
+      "version": "4967eafcaf5bd09e4e008d4ce46f75d38fdfb8e4"
     },
     {
       "type": "git",
@@ -20,17 +20,17 @@
     {
       "type": "git",
       "path": "github.com/mattn/emmet-vim",
-      "version": "461700696ea317722c4a8d92a31a7267cdcc0bfb"
+      "version": "5f559fae12a8babf414376906197dbd751e11380"
     },
     {
       "type": "git",
       "path": "github.com/itchyny/lightline.vim",
-      "version": "1afe1e9bd5726550014d78ee244499d65beeb686"
+      "version": "e6f282f5e9ae931f0b404dd15aab2e5e249ae092"
     },
     {
       "type": "git",
       "path": "github.com/vim-jp/vimdoc-ja",
-      "version": "36b2578f384889dfc91e3a85d08e49641f826dd8"
+      "version": "5d4fd0c8b986658f0f77dc3e5b4524bc6502418f"
     },
     {
       "type": "git",
@@ -45,7 +45,7 @@
     {
       "type": "git",
       "path": "github.com/neoclide/coc.nvim",
-      "version": "d9f01a6023da4f2186291d32f6a1bf71b47309e6"
+      "version": "6021ab9276782d6080be0e89b0655b1e17082c9f"
     }
   ],
   "profiles": [
