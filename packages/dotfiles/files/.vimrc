@@ -12,6 +12,11 @@ set fileformat=unix
 set fileformats=unix,dos
 set ambiwidth=double
 
+" files
+set wildmenu
+set wildignore=node_modules,node_modules/*
+set wildignorecase
+
 
 " display
 set list

@@ -7,6 +7,7 @@ set -o vi
 export LANG=ja_JP.utf8
 export PATH="~/bin:/usr/local/bin:$PATH"
 export PAGER="less"
+export AWS_PAGER=
 export EDITOR="vim"
 export LESS="-iMRSX --shift 5"
 export LESSCHARSET=utf-8
@@ -93,7 +94,14 @@ function show_indicator(){
 
 ## kubectl
   if has kubectl ; then
-    printf "[k8s@$(kubectl config current-context)]" | decorate cyan
+    printf "[k8s@$(kubectl config current-context)] " | decorate cyan
+  fi
+
+## aws
+  if has aws ; then
+    if [ "$AWS_PROFILE" != "" ] ; then
+      printf "[aws@${AWS_PROFILE}] " | decorate cyan
+    fi
   fi
 }
 

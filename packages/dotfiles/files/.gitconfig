@@ -13,7 +13,9 @@
     prune-branch= "!pb(){ set -u; git branch --merged $1 | cut -c3- | grep -v $1 | xargs git branch -D ;}; pb"
     diff-file= "!df(){ local a=$1; shift; local b=$1; shift ; git diff $@ HEAD:${GIT_PREFIX}{$a,$b} ;}; df"
     ls-ref="!lsr(){ git for-each-ref --format='%(HEAD),%(objectname:short),%(refname:short),%(upstream:short)' | column -t -s, ;}; lsr"
-    switch-branch="!sw(){ git ls-ref | peco | cut -c2- | awk '{ print $2} '| xargs git checkout $@ ;}; sw"
+    select-ref="!git ls-ref | peco | cut -c2- | awk '{ print $2}'"
+    select-commit="!sl(){ git graph $@ | peco | grep -oE '\\*\\s+[0-9a-f]+' | awk '{ print $2 }' ;}; sl $@"
+    switch-branch="!sw(){ git select-ref| xargs git checkout $@ ;}; sw"
     push-upstream="!pu(){ git push $@ -u $(git current-branch);}; pu"
     edit="!edt(){ $EDITOR -p $@ $(echo $(git status -s | cut -c4- )); }; edt $@"
     update="!_upd(){ git remote | xargs -I{} git fetch {} ;}; _upd $@"
@@ -37,6 +39,8 @@
     sb = show-branch master develop @
     sh = show
     sw = !git switch-branch
+    sr = !git select-ref
+    sc = !git select-commit
 [push]
 	default=simple
 [pager]
