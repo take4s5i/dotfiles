@@ -1,6 +1,4 @@
 # install
 ```
-git clone https://github.com/take4s5i/dotfiles
-cd dotfiles
-make
+curl -L https://raw.githubusercontent.com/take4s5i/dotfiles/master/install.sh | bash
 ```
