@@ -1,0 +1,62 @@
+[include]
+	path = ~/.gitconfig.local
+[core]
+	autocrlf = false
+	safecrlf = true
+	editor = vim
+	quotepath = false
+	excludesfile = ~/.gitignore
+[alias]
+	graph = log --graph --date=short --pretty=\"format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset\"
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+    current-branch= "!cb(){ git ls-ref | grep '*' | awk '{print $3}';}; cb"
+    prune-branch= "!pb(){ set -u; git branch --merged $1 | cut -c3- | grep -v $1 | xargs git branch -D ;}; pb"
+    diff-file= "!df(){ local a=$1; shift; local b=$1; shift ; git diff $@ HEAD:${GIT_PREFIX}{$a,$b} ;}; df"
+    ls-ref="!lsr(){ git for-each-ref --format='%(HEAD),%(objectname:short),%(refname:short),%(upstream:short)' | column -t -s, ;}; lsr"
+    select-ref="!git ls-ref | peco | cut -c2- | awk '{ print $2}'"
+    select-commit="!sl(){ git graph $@ | peco | grep -oE '\\*\\s+[0-9a-f]+' | awk '{ print $2 }' ;}; sl $@"
+    switch-branch="!sw(){ git select-ref| xargs git checkout $@ ;}; sw"
+    push-upstream="!pu(){ git push $@ -u $(git current-branch);}; pu"
+    edit="!edt(){ $EDITOR -p $@ $(echo $(git status -s | cut -c4- )); }; edt $@"
+    update="!_upd(){ git remote | xargs -I{} git fetch {} ;}; _upd $@"
+    mff="!_mff(){ git merge --ff $1/$(git current-branch) ;}; _mff $@"
+    g = !git graph
+	l = !git graph -15
+	co = checkout
+    cb = !git current-branch
+	rb = rebase
+	rs = reset
+	cm = commit
+	f = fetch
+	m = merge --no-ff
+	a = add
+	p = push
+    pu = !git push-upstream
+	pl = pull --ff-only
+	d = diff
+	dl = diff --name-status
+	s = status -s
+    sb = show-branch master develop @
+    sh = show
+    sw = !git switch-branch
+    sr = !git select-ref
+    sc = !git select-commit
+[push]
+	default=simple
+[pager]
+	log  = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
+	show = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
+	diff = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
+[interactive]
+	diffFilter = (diff-highlight 2>/dev/null || cat)
+[diff]
+	guitool = gvimdiff
+	tool = vimdiff
+	noprefix = true
+	compactionHeuristic = true
+[merge]
+	tool = vimdiff
+[url "https://"]
+	insteadOf = git://
+[credential]
+	helper = cache

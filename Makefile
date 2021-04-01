@@ -1,15 +1,48 @@
-PREFIX ?= ~
+export PATH = $(shell pwd)/bin:$(shell printenv PATH)
 
-.PHONY:install uninstall clean test
-clean:
-	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$$(cd $(PREFIX)/ && pwd) clean
+BASE_DIR := $(shell pwd)
+SRC := $(BASE_DIR)/src
+TMP := $(BASE_DIR)/.tmp
+CACHE := $(BASE_DIR)/.cache
 
-install:
-	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$$(cd $(PREFIX)/ && pwd) install
+PREFIX := $(HOME)
+BIN := $(PREFIX)/bin
+CONF := $(PREFIX)/.config/dotfiles
 
-uninstall:
-	ls -1 packages | xargs -I {} make -C packages/{} PREFIX=$$(cd $(PREFIX)/ && pwd) uninstall
+CONFIGURE_TARGETS :=
+INSTALL_TARGETS :=
+UNINSTALL_TARGETS :=
+TEST_TARGETS :=
+CLEAN_TARGETS :=
 
-test:
-	rm -rf tmp
-	make PREFIX=$$PWD/tmp install
+.PHONY: all
+all: install configure test
+
+-include src/*/*.mk
+
+
+.PHONY: before
+before:
+	mkdir -p $(TMP)
+	mkdir -p $(CACHE)
+	mkdir -p $(BIN)
+	mkdir -p $(CONF)
+
+.PHONY: configure
+configure: before $(CONFIGURE_TARGETS)
+
+.PHONY: install
+install: before $(INSTALL_TARGETS)
+
+.PHONY: uninstall
+uninstall: $(UNINSTALL_TARGETS)
+
+.PHONY: clean
+clean: $(CLEAN_TARGETS)
+
+.PHONY: test
+test: $(TEST_TARGETS)
+
+.PHONY: list
+list:
+	@echo $(CONFIGURE_TARGETS) $(INSTALL_TARGETS) $(UNINSTALL_TARGETS) $(CLEAN_TARGETS) $(TEST_TARGETS) | tr ' ' '\n' | sort
