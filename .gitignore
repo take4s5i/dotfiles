@@ -2,3 +2,7 @@
 .DS_Store
 **/work
 **/tmp
+
+.tmp
+.cache
+.test
