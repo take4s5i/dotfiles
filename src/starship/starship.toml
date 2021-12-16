@@ -1,0 +1,4 @@
+add_newline = true
+
+[directory]
+truncate_to_repo = false
