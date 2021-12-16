@@ -49,6 +49,10 @@ if has('persistent_undo')
     set noundofile
 endif
 
+if executable('fish')
+  set shell=fish\ -C\ \"cd\ \$PWD\"
+endif
+
 " search options
 set ignorecase
 set smartcase

@@ -6,7 +6,7 @@ CLEAN_TARGETS += brew-clean
 
 brew-install:
 	type brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	sh $(SRC)/brew/brew.sh
+	brew bundle --file $(SRC)/brew/Brewfile
 
 brew-test:
 	brew --version

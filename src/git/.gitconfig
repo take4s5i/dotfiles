@@ -60,3 +60,5 @@
 	insteadOf = git://
 [credential]
 	helper = cache
+[init]
+	defaultBranch = main

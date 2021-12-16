@@ -135,7 +135,18 @@ if has git ; then
 fi
 
 ## prompt
-export PS1='\n\[\033[32m\]\u@\h \[\033[33m\w\033[0m\] $(show_indicator)\n\$ '
+if has starship ; then
+  eval "$(starship init bash)"
+else
+  export PS1='\n\[\033[32m\]\u@\h \[\033[33m\w\033[0m\] $(show_indicator)\n\$ '
+fi
+
+## serverless
+if [ -d "$HOME/.serverless/bin" ] ; then
+  # Added by serverless binary installer
+  export PATH="$HOME/.serverless/bin:$PATH"
+fi
+
 
 ## function
 test -r ~/.bash_profile.local && source ~/.bash_profile.local
