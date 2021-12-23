@@ -3,6 +3,11 @@ function has
   return $status
 end
 
+function here_is
+  test "(uname)" = $argv[1]
+  return $status
+end
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
@@ -32,6 +37,10 @@ if status is-interactive
     set ls_color_opt "(test "$PLATFORM" = "Linux" && echo '--color' || echo '-G')"
     alias ls="ls $ls_color_opt"
     alias ll="ls $ls_color_opt -la"
+
+    if here_is Linux
+        set PATH /home/linuxbrew/.linuxbrew/bin $PATH
+    end
 
     if has npm
       set NODE_PATH (npm root -g)

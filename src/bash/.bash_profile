@@ -34,6 +34,11 @@ function has(){
   return $?
 }
 
+function here_is(){
+  test "$(uname)" == "$1"
+  return $?
+}
+
 function kcsw() {
   kc config use-context $(kc config get-contexts -o name | peco)
 }
@@ -114,6 +119,10 @@ if has ssh-agent ; then
     echo "export SSH_AGENT_PID=${SSH_AGENT_PID}" > ${ssh_agent_env}
     echo "export SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> ${ssh_agent_env}
   fi
+fi
+
+if here_is Linux ; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 fi
 
 ## npm
