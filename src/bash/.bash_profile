@@ -165,3 +165,4 @@ if [ -d "${XDG_CONFIG_HOME:-~/.config}/dotfiles/bash" ] ; then
     source $profile
   done
 fi
+. "$HOME/.cargo/env"

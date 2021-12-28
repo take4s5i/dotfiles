@@ -8,6 +8,19 @@ function here_is
   return $status
 end
 
+function dotfiles
+    switch $argv[1]
+        case "edit"
+            $EDITOR ~/.dotfiles/src/$argv[2]/
+        case "run"
+            cd ~/.dotfiles
+            make $argv[2]
+        case '*'
+        echo unknown sub-command $argv[1]
+    end
+    return $status
+end
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
@@ -57,6 +70,11 @@ if status is-interactive
     # direnv
     if has direnv
         direnv hook fish | source
+    end
+
+    # cargo
+    if test -r ~/.cargo/env
+        bass source ~/.cargo/env
     end
 
     # starship
