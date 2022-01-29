@@ -82,6 +82,11 @@ if status is-interactive
         starship init fish | source
     end
 
+    # go
+    if test -r ~/go/bin
+        set PATH ~/go/bin $PATH
+    end
+
     # gvm
     if test -r ~/.gvm/scripts/gvm
         function gvm

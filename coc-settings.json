@@ -1,0 +1,23 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["go", "rust", "typescript", "json", "javascript"],
+  "typescript.format.enabled": false,
+  "javascript.format.enabled": false,
+  "rust-client.enable": false,
+  "rust-analyzer.checkOnSave.command": "cargo clippy",
+  "languageserver": {
+     "bash": {
+       "command": "bash-language-server",
+       "args": ["start"],
+       "filetypes": ["sh"],
+       "ignoredRootPaths": ["~"]
+     },
+     "golang": {
+       "command": "gopls",
+       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+       "filetypes": ["go"],
+       "initializationOptions": {
+         "usePlaceholders": true
+       }
+     }
+  }
+}
