@@ -1,12 +1,14 @@
 INSTALL_TARGETS += brew-install
+CONFIGURE_TARGETS += brew
 TEST_TARGETS += brew-test
-CLEAN_TARGETS += brew-clean
 
-.PHONY: brew-install brew-test brew-clean
+.PHONY: brew-install brew-test brew
 
 brew-install:
 	type brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	brew bundle --file $(SRC)/brew/Brewfile
+
+brew:
+	brew bundle --file $(SRC)/brew/Brewfile -v
 
 brew-test:
 	brew --version

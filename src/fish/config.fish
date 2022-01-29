@@ -13,8 +13,9 @@ function dotfiles
         case "edit"
             $EDITOR ~/.dotfiles/src/$argv[2]/
         case "run"
-            cd ~/.dotfiles
+            pushd ~/.dotfiles
             make $argv[2]
+            popd
         case '*'
         echo unknown sub-command $argv[1]
     end
@@ -83,7 +84,7 @@ if status is-interactive
     end
 
     # go
-    if test -r ~/go/bin
+    if test -r ~/go
         set PATH ~/go/bin $PATH
     end
 
