@@ -21,7 +21,6 @@ alias tnw="TERM=xterm-256color tmux new-window"
 alias g='git'
 alias d='docker'
 alias dcom='docker-compose'
-alias vim='vim -p'
 alias kc='kubectl'
 
 ls_color_opt="$(test "$PLATFORM" == "Linux" && echo '--color' || echo '-G')"

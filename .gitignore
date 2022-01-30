@@ -1,8 +1,4 @@
-*.swp
+.vimprojects
+.local/
 .DS_Store
-**/work
-**/tmp
-
-.tmp
-.cache
-.test
+.envrc

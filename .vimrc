@@ -129,3 +129,5 @@ augroup ext-ft-map
   autocmd BufNewFile,BufRead *.vue set ft=html
   autocmd BufNewFile,BufRead *.vtc set ft=vcl
 augroup END
+
+let g:coc_global_extensions = ['coc-eslint', 'coc-go', 'coc-prettier', 'coc-rust-analyzer', 'coc-tsserver']

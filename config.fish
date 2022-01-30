@@ -8,20 +8,6 @@ function here_is
   return $status
 end
 
-function dotfiles
-    switch $argv[1]
-        case "edit"
-            $EDITOR ~/.dotfiles/src/$argv[2]/
-        case "run"
-            pushd ~/.dotfiles
-            make $argv[2]
-            popd
-        case '*'
-        echo unknown sub-command $argv[1]
-    end
-    return $status
-end
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
@@ -46,7 +32,6 @@ if status is-interactive
     alias g='git'
     alias d='docker'
     alias dcom='docker-compose'
-    alias vim='vim -p'
     alias kc='kubectl'
     set ls_color_opt "(test "$PLATFORM" = "Linux" && echo '--color' || echo '-G')"
     alias ls="ls $ls_color_opt"
