@@ -18,7 +18,8 @@ DOTFILES_HOME=~/.dotfiles
 
 # dotfiles
 if [ ! -d "$DOTFILES_HOME" ]; then
-  git clone https://github.com/take4s5i/dotfiles.git ~/.dotfiles
+  git clone https://github.com/take4s5i/dotfiles.git $DOTFILES_HOME
+  (cd $DOTFILES_HOME && git remote set-url origin git@github.com:take4s5i/dotfiles.git)
 fi
 mkdir -p ~/bin
 ln -sf $DOTFILES_HOME/dotfiles.sh ~/bin/dotfiles
