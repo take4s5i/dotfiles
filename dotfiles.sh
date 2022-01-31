@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function not(){
+function not() {
   if $@; then
     return 1
   else
@@ -8,8 +8,8 @@ function not(){
   fi
 }
 
-function has(){
-  type $1 > /dev/null 2>&1
+function has() {
+  type $1 >/dev/null 2>&1
   return $?
 }
 
@@ -25,12 +25,12 @@ mkdir -p ~/bin
 ln -sf $DOTFILES_HOME/dotfiles.sh ~/bin/dotfiles
 
 # homebrew
-if not has brew ; then
+if not has brew; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-if [ "$(uname)" == "Linux" ] ;then
+if [ "$(uname)" == "Linux" ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [ "$(uname)" == "Darwin"] ;then
+elif [ "$(uname)" == "Darwin" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -54,7 +54,7 @@ ln -sf $DOTFILES_HOME/.bash_profile ~/.bash_profile
 ln -sf $DOTFILES_HOME/.inputrc ~/.inputrc
 
 # rustup
-if not has rustup ; then
+if not has rustup; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
 else
   rustup update
@@ -66,7 +66,7 @@ cargo install cargo-watch cargo-expand
 rustup component add clippy rustfmt
 
 # gvm
-if [ ! -d ~/.gvm ] ; then
+if [ ! -d ~/.gvm ]; then
   curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
 fi
 
@@ -78,6 +78,7 @@ go install github.com/mitranim/gow@latest
 ln -sf $DOTFILES_HOME/.hyper.js ~/.hyper.js
 
 # n
+# https://github.com/tj/n
 if not has n; then
   curl -Lo ~/bin/n https://raw.githubusercontent.com/tj/n/master/bin/n
   chmod 755 ~/bin/n
@@ -101,13 +102,13 @@ function vimpack() {
   local vpdir="$VIM_PACK/$(basename $1)"
   mkdir -p $VIM_PACK/start
 
-  if [ -d $vpdir ] ; then
+  if [ -d $vpdir ]; then
     (cd $vpdir && git pull origin)
   else
     git clone "https://$1.git" $vpdir
   fi
 
-  if [ "$2" != "" ] ; then
+  if [ "$2" != "" ]; then
     (cd $vpdir && eval "$2")
   fi
 }
