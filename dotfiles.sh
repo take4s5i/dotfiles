@@ -28,7 +28,11 @@ ln -sf $DOTFILES_HOME/dotfiles.sh ~/bin/dotfiles
 if not has brew ; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ "$(uname)" == "Linux" ] ;then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [ "$(uname)" == "Darwin"] ;then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # brew
 brew update
@@ -39,6 +43,7 @@ brew bundle --file "$DOTFILES_HOME/Brewfile"
 rm -f ~/.config/fish/config.fish
 ln -sf $DOTFILES_HOME/config.fish ~/.config/fish/config.fish
 fish -l $DOTFILES_HOME/init.fish
+ln -sf $(type -p fish) ~/bin/fish # for tmux.conf
 
 # git
 ln -sf $DOTFILES_HOME/.gitconfig ~/.gitconfig
