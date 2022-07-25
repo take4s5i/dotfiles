@@ -11,6 +11,7 @@ endif
 set fileformat=unix
 set fileformats=unix,dos
 set ambiwidth=double
+set re=0
 
 " files
 set wildmenu

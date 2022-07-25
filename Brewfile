@@ -31,5 +31,6 @@ brew "tmux"
 brew "vim"
 brew "watch"
 brew "yarn"
+brew "bazelisk"
 
 cask "font-hack-nerd-font"

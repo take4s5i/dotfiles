@@ -15,15 +15,15 @@ if status is-interactive
     fish_vi_key_bindings
 
     # env variables
-    set LANG "ja_JP.utf8"
-    set PATH ~/bin /usr/local/bin $PATH
-    set PAGER "less"
-    set AWS_PAGER ""
-    set EDITOR "vim"
-    set LESS "-iMRSX --shift 5"
-    set LESSCHARSET utf-8
-    set PLATFORM (uname)
-    set N_PREFIX (cd ~/ && pwd)
+    set -x LANG "ja_JP.utf8"
+    set -x PATH ~/bin /usr/local/bin $PATH
+    set -x PAGER "less"
+    set -x AWS_PAGER ""
+    set -x EDITOR "vim"
+    set -x LESS "-iMRSX --shift 5"
+    set -x LESSCHARSET utf-8
+    set -x PLATFORM (uname)
+    set -x N_PREFIX (cd ~/ && pwd)
 
     # alias
     alias tmux="TERM=xterm-256color tmux"
