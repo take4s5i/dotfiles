@@ -137,5 +137,7 @@ let g:coc_global_extensions = [
       \ 'coc-prettier',
       \ 'coc-rust-analyzer',
       \ 'coc-tsserver',
-      \ 'coc-diagnostic'
+      \ 'coc-diagnostic',
+      \ 'coc-yaml',
+      \ 'coc-cfn-lint'
       \ ]

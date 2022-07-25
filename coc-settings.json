@@ -3,6 +3,26 @@
   "typescript.format.enabled": false,
   "javascript.format.enabled": false,
   "rust-client.enable": false,
+  "yaml.customTags": [
+          "!Ref",
+          "!GetAtt",
+          "!FindInMap sequence",
+          "!FindInMap scalar",
+          "!GetAtt",
+          "!GetAZs",
+          "!Cidr",
+          "!ImportValue",
+          "!Join sequence",
+          "!Select",
+          "!Split",
+          "!Sub sequence",
+          "!Sub scalar",
+          "!And",
+          "!Equals",
+          "!If",
+          "!Not",
+          "!Or"
+      ],
   "rust-analyzer.checkOnSave.command": "cargo clippy",
   "languageserver": {
      "golang": {

@@ -165,3 +165,5 @@ if [ -d "${XDG_CONFIG_HOME:-~/.config}/dotfiles/bash" ] ; then
   done
 fi
 . "$HOME/.cargo/env"
+
+[[ -s "/Users/takehara-s/.gvm/scripts/gvm" ]] && source "/Users/takehara-s/.gvm/scripts/gvm"

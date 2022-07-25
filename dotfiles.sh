@@ -1,16 +1,16 @@
 #!/bin/bash
 
 function not() {
-  if $@; then
-    return 1
-  else
-    return 0
-  fi
+	if $@; then
+		return 1
+	else
+		return 0
+	fi
 }
 
 function has() {
-  type $1 >/dev/null 2>&1
-  return $?
+	type $1 >/dev/null 2>&1
+	return $?
 }
 
 export PATH=~/bin:$PATH
@@ -18,26 +18,30 @@ DOTFILES_HOME=~/.dotfiles
 
 # dotfiles
 if [ ! -d "$DOTFILES_HOME" ]; then
-  git clone https://github.com/take4s5i/dotfiles.git $DOTFILES_HOME
-  (cd $DOTFILES_HOME && git remote set-url origin git@github.com:take4s5i/dotfiles.git)
+	git clone https://github.com/take4s5i/dotfiles.git $DOTFILES_HOME
+	(cd $DOTFILES_HOME && git remote set-url origin git@github.com:take4s5i/dotfiles.git)
 fi
 mkdir -p ~/bin
 ln -sf $DOTFILES_HOME/dotfiles.sh ~/bin/dotfiles
 
 # homebrew
 if not has brew; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 if [ "$(uname)" == "Linux" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [ "$(uname)" == "Darwin" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+	if [ -x /opt/homebrew/bin/brew ]; then
+		eval "$(/opt/homebrew/bin/brew shellenv)"
+	elif [ -x /usr/local/bin/brew ]; then
+		eval "$(/usr/local/bin/brew shellenv)"
+	fi
 fi
 
 # brew
-brew update
-brew upgrade
-brew bundle --file "$DOTFILES_HOME/Brewfile"
+brew update -v
+brew upgrade -v
+brew bundle --file "$DOTFILES_HOME/Brewfile" -v
 
 # fish
 rm -f ~/.config/fish/config.fish
@@ -55,9 +59,9 @@ ln -sf $DOTFILES_HOME/.inputrc ~/.inputrc
 
 # rustup
 if not has rustup; then
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
 else
-  rustup update
+	rustup update
 fi
 source ~/.cargo/env
 
@@ -67,7 +71,7 @@ rustup component add clippy rustfmt
 
 # gvm
 if [ ! -d ~/.gvm ]; then
-  curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
+	curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
 fi
 
 # go
@@ -80,14 +84,8 @@ ln -sf $DOTFILES_HOME/.hyper.js ~/.hyper.js
 # n
 # https://github.com/tj/n
 if not has n; then
-  curl -Lo ~/bin/n https://raw.githubusercontent.com/tj/n/master/bin/n
-  chmod 755 ~/bin/n
-fi
-
-# kubectl
-if not has kubectl; then
-  curl -Lo ~/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/arm64/kubectl"
-  chmod 755 ~/bin/kubectl
+	curl -Lo ~/bin/n https://raw.githubusercontent.com/tj/n/master/bin/n
+	chmod 755 ~/bin/n
 fi
 
 # starship
@@ -99,18 +97,18 @@ ln -sf $DOTFILES_HOME/.tmux.conf ~/.tmux.conf
 # vim
 VIM_PACK=~/.vim/pack/dotfiles/start
 function vimpack() {
-  local vpdir="$VIM_PACK/$(basename $1)"
-  mkdir -p $VIM_PACK/start
+	local vpdir="$VIM_PACK/$(basename $1)"
+	mkdir -p $VIM_PACK/start
 
-  if [ -d $vpdir ]; then
-    (cd $vpdir && git pull origin)
-  else
-    git clone "https://$1.git" $vpdir
-  fi
+	if [ -d $vpdir ]; then
+		(cd $vpdir && git pull origin)
+	else
+		git clone "https://$1.git" $vpdir
+	fi
 
-  if [ "$2" != "" ]; then
-    (cd $vpdir && eval "$2")
-  fi
+	if [ "$2" != "" ]; then
+		(cd $vpdir && eval "$2")
+	fi
 }
 ln -sf $DOTFILES_HOME/.vimrc ~/.vimrc
 vimpack github.com/sheerun/vim-polyglot
@@ -122,6 +120,7 @@ vimpack github.com/vim-jp/vimdoc-ja
 vimpack github.com/lambdalisue/vim-unified-diff
 vimpack github.com/w0rp/ale
 vimpack github.com/neoclide/coc.nvim "yarn"
+vimpack github.com/ruanyl/vim-gh-line
 
 # vim coc-settings
 mkdir -p ~/.vim
