@@ -59,11 +59,14 @@ ln -sf $DOTFILES_HOME/.inputrc ~/.inputrc
 
 # rustup
 if not has rustup; then
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh /dev/stdin -y
 else
 	rustup update
 fi
-source ~/.cargo/env
+
+if [ -r ~/.cargo/env ]; then
+	source ~/.cargo/env
+fi
 
 # rust
 cargo install cargo-watch cargo-expand
