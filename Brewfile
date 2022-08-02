@@ -36,5 +36,6 @@ brew "bazelisk"
 brew "cfn-lint"
 brew "ripgrep"
 brew "aws-sam-cli"
+brew "cmake"
 
 cask "font-hack-nerd-font"

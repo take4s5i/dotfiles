@@ -14,7 +14,7 @@ function has() {
 }
 
 export PATH=~/bin:$PATH
-DOTFILES_HOME=~/.dotfiles
+export DOTFILES_HOME=~/.dotfiles
 
 # dotfiles
 if [ ! -d "$DOTFILES_HOME" ]; then
@@ -39,11 +39,13 @@ elif [ "$(uname)" == "Darwin" ]; then
 fi
 
 # brew
+hash -r
 brew update -v
 brew upgrade -v
 brew bundle --file "$DOTFILES_HOME/Brewfile" -v
 
 # fish
+hash -r
 rm -f ~/.config/fish/config.fish
 ln -sf $DOTFILES_HOME/config.fish ~/.config/fish/config.fish
 fish -l $DOTFILES_HOME/init.fish
@@ -58,6 +60,7 @@ ln -sf $DOTFILES_HOME/.bash_profile ~/.bash_profile
 ln -sf $DOTFILES_HOME/.inputrc ~/.inputrc
 
 # rustup
+hash -r
 if not has rustup; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh /dev/stdin -y
 else
@@ -69,17 +72,22 @@ if [ -r ~/.cargo/env ]; then
 fi
 
 # rust
-cargo install cargo-watch cargo-expand
+hash -r
+cargo install cargo-expand cargo-binstall
+cargo binstall --no-confirm cargo-watch
 rustup component add clippy rustfmt
 
 # gvm
+hash -r
 if [ ! -d ~/.gvm ]; then
 	curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
 fi
 
 # go
+hash -r
 go install golang.org/x/tools/gopls@latest
 go install github.com/mitranim/gow@latest
+go install honnef.co/go/tools/cmd/staticcheck@latest
 
 # hyper
 ln -sf $DOTFILES_HOME/.hyper.js ~/.hyper.js
@@ -89,6 +97,16 @@ ln -sf $DOTFILES_HOME/.hyper.js ~/.hyper.js
 if not has n; then
 	curl -Lo ~/bin/n https://raw.githubusercontent.com/tj/n/master/bin/n
 	chmod 755 ~/bin/n
+fi
+
+if has corepack; then
+	corepack enable
+	hash -r
+fi
+
+if has yarn; then
+	yarn set version stable --only-if-needed
+	hash -r
 fi
 
 # starship

@@ -74,6 +74,8 @@ nnoremap <silent><leader>p :bp<CR>
 nnoremap <silent><leader>b :b #<CR>
 nnoremap <silent><leader>d :bd<CR>
 
+inoremap <silent><expr> <c-@> coc#refresh()
+
 filetype plugin on
 filetype on
 syntax enable

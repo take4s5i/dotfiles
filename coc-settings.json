@@ -1,5 +1,9 @@
 {
+  "suggest.autoTrigger": "always",
   "coc.preferences.formatOnSaveFiletypes": ["go", "rust", "typescript", "json", "javascript", "sh"],
+  "go.goplsOptions": {
+    "staticcheck": true
+  },
   "typescript.format.enabled": false,
   "javascript.format.enabled": false,
   "rust-client.enable": false,
