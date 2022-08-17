@@ -75,6 +75,8 @@ nnoremap <silent><leader>b :b #<CR>
 nnoremap <silent><leader>d :bd<CR>
 
 inoremap <silent><expr> <c-@> coc#refresh()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 filetype plugin on
 filetype on

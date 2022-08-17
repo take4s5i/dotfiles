@@ -140,7 +140,7 @@ vimpack github.com/itchyny/lightline.vim
 vimpack github.com/vim-jp/vimdoc-ja
 vimpack github.com/lambdalisue/vim-unified-diff
 vimpack github.com/w0rp/ale
-vimpack github.com/neoclide/coc.nvim "yarn"
+vimpack github.com/neoclide/coc.nvim "yarn && yarn prepare"
 vimpack github.com/ruanyl/vim-gh-line
 
 # vim coc-settings

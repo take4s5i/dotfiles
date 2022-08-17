@@ -36,5 +36,6 @@ brew "cfn-lint"
 brew "ripgrep"
 brew "aws-sam-cli"
 brew "cmake"
+brew "golangci-lint"
 
 cask "font-hack-nerd-font"
