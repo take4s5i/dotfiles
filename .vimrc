@@ -74,9 +74,8 @@ nnoremap <silent><leader>p :bp<CR>
 nnoremap <silent><leader>b :b #<CR>
 nnoremap <silent><leader>d :bd<CR>
 
+" coc remap
 inoremap <silent><expr> <c-@> coc#refresh()
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 filetype plugin on
 filetype on
@@ -143,5 +142,6 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-diagnostic',
       \ 'coc-yaml',
-      \ 'coc-cfn-lint'
+      \ 'coc-cfn-lint',
+      \ 'coc-graphql'
       \ ]

@@ -73,8 +73,7 @@ fi
 
 # rust
 hash -r
-cargo install cargo-expand cargo-binstall
-cargo binstall --no-confirm cargo-watch
+cargo install cargo-expand cargo-binstall cargo-watch
 rustup component add clippy rustfmt
 
 # gvm
@@ -140,7 +139,7 @@ vimpack github.com/itchyny/lightline.vim
 vimpack github.com/vim-jp/vimdoc-ja
 vimpack github.com/lambdalisue/vim-unified-diff
 vimpack github.com/w0rp/ale
-vimpack github.com/neoclide/coc.nvim "yarn && yarn prepare"
+vimpack github.com/neoclide/coc.nvim "yarn set version classic && bash -c 'yarn && yarn prepare'"
 vimpack github.com/ruanyl/vim-gh-line
 
 # vim coc-settings
