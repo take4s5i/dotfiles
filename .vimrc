@@ -132,6 +132,7 @@ augroup ext-ft-map
   autocmd!
   autocmd BufNewFile,BufRead *.vue set ft=html
   autocmd BufNewFile,BufRead *.vtc set ft=vcl
+  autocmd BufNewFile,BufRead *.astro set ft=astro
 augroup END
 
 let g:coc_global_extensions = [
@@ -143,5 +144,8 @@ let g:coc_global_extensions = [
       \ 'coc-diagnostic',
       \ 'coc-yaml',
       \ 'coc-cfn-lint',
-      \ 'coc-graphql'
+      \ 'coc-graphql',
+      \ 'coc-phpls'
       \ ]
+
+let g:astro_typescript = 'enable'

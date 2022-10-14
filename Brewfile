@@ -37,5 +37,6 @@ brew "ripgrep"
 brew "aws-sam-cli"
 brew "cmake"
 brew "golangci-lint"
+brew "php"
 
 cask "font-hack-nerd-font"

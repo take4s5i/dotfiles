@@ -141,6 +141,7 @@ vimpack github.com/lambdalisue/vim-unified-diff
 vimpack github.com/w0rp/ale
 vimpack github.com/neoclide/coc.nvim "yarn set version classic && bash -c 'yarn && yarn prepare'"
 vimpack github.com/ruanyl/vim-gh-line
+vimpack github.com/wuelnerdotexe/vim-astro
 
 # vim coc-settings
 mkdir -p ~/.vim
