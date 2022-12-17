@@ -37,6 +37,16 @@
        "initializationOptions": {
          "usePlaceholders": true
        }
+     },
+     "terraform": {
+         "command": "terraform-ls",
+         "args": ["serve"],
+         "filetypes": [
+             "terraform",
+             "tf"
+         ],
+         "initializationOptions": {},
+         "settings": {}
      }
   },
   "diagnostic-languageserver.filetypes": {
@@ -44,5 +54,6 @@
   },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
-  }
+  },
+  "intelephense.environment.phpVersion": "8.1.0"
 }

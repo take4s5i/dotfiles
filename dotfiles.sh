@@ -103,10 +103,13 @@ if has corepack; then
 	hash -r
 fi
 
-if has yarn; then
-	yarn set version stable --only-if-needed
-	hash -r
+if [ -x /usr/local/bin/yarn ]; then
+	ln -s /usr/local/bin/yarn ~/bin/yarnv1
 fi
+
+# php
+## pecl
+pecl install xdebug
 
 # starship
 ln -sf $DOTFILES_HOME/starship.toml ~/.config/starship.toml
