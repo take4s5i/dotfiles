@@ -62,6 +62,3 @@
 	helper = cache
 [init]
 	defaultBranch = main
-[user]
-	name = Takehara Shunpei
-	email = takehara-s@gnavi.co.jp

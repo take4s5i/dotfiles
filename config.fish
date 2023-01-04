@@ -79,4 +79,10 @@ if status is-interactive
           bass source ~/.gvm/scripts/gvm ';' gvm $argv
         end
     end
+
+    # asdf
+    if test -r /usr/local/opt/asdf/libexec/asdf.fish
+        source /usr/local/opt/asdf/libexec/asdf.fish
+    end
 end
+

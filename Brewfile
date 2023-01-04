@@ -45,5 +45,6 @@ brew "yarn"
 brew "tfenv"
 brew "hashicorp/tap/terraform-ls"
 brew "watchexec"
+brew "asdf"
 
 cask "font-hack-nerd-font"

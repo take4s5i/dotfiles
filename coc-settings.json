@@ -55,5 +55,6 @@
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
+  "graphql.filetypes": ["graphql"],
   "intelephense.environment.phpVersion": "8.1.0"
 }

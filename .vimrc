@@ -145,7 +145,8 @@ let g:coc_global_extensions = [
       \ 'coc-yaml',
       \ 'coc-cfn-lint',
       \ 'coc-graphql',
-      \ 'coc-phpls'
+      \ 'coc-phpls',
+      \ 'coc-deno'
       \ ]
 
 let g:astro_typescript = 'enable'
