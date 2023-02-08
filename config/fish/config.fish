@@ -10,6 +10,8 @@ end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    # completions
+    complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); /usr/local/bin/aws_completer | sed \'s/ $//\'; end)'
 
     # vi key bindings
     fish_vi_key_bindings
@@ -84,5 +86,9 @@ if status is-interactive
     if test -r /usr/local/opt/asdf/libexec/asdf.fish
         source /usr/local/opt/asdf/libexec/asdf.fish
     end
-end
 
+    # pipx
+    if has pipx
+        set PATH $PATH ~/.local/bin
+    end
+end

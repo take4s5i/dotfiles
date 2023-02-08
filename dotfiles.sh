@@ -46,8 +46,8 @@ brew bundle --file "$DOTFILES_HOME/Brewfile" -v
 
 # fish
 hash -r
-rm -f ~/.config/fish/config.fish
-ln -sf $DOTFILES_HOME/config.fish ~/.config/fish/config.fish
+mkdir -p ~/.config/fish
+ln -sf $DOTFILES_HOME/config/fish/config.fish ~/.config/fish/config.fish
 fish -l $DOTFILES_HOME/init.fish
 ln -sf $(type -p fish) ~/bin/fish # for tmux.conf
 
@@ -58,6 +58,15 @@ ln -sf $DOTFILES_HOME/.gitignore ~/.gitignore
 # bash
 ln -sf $DOTFILES_HOME/.bash_profile ~/.bash_profile
 ln -sf $DOTFILES_HOME/.inputrc ~/.inputrc
+
+# ox - one liner executor
+ln -sf $DOTFILES_HOME/ox ~/bin/ox
+
+# peco
+if [ ! -L ~/.config/peco ]; then
+	rm -rf ~/.config/peco
+	ln -sf $DOTFILES_HOME/config/peco ~/.config/peco
+fi
 
 # rustup
 hash -r
@@ -99,7 +108,7 @@ if not has n; then
 fi
 
 if has corepack; then
-	corepack enable
+	corepack disable
 	hash -r
 fi
 
@@ -107,12 +116,15 @@ if [ -x /usr/local/bin/yarn ]; then
 	ln -s /usr/local/bin/yarn ~/bin/yarnv1
 fi
 
+# pipx
+pipx install aws-sso-util
+
 # php
 ## pecl
 pecl install xdebug
 
 # starship
-ln -sf $DOTFILES_HOME/starship.toml ~/.config/starship.toml
+ln -sf $DOTFILES_HOME/config/starship.toml ~/.config/starship.toml
 
 # tmux
 ln -sf $DOTFILES_HOME/.tmux.conf ~/.tmux.conf
