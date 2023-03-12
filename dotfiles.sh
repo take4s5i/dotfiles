@@ -13,6 +13,18 @@ function has() {
 	return $?
 }
 
+function git_clone() {
+	if [ -d "$2" ]; then
+		(cd $2 && git pull origin)
+	else
+		git clone "$1" "$2"
+	fi
+
+	if [ "$3" != "" ]; then
+		(cd "$2" && eval "$3")
+	fi
+}
+
 export PATH=~/bin:$PATH
 export DOTFILES_HOME=~/.dotfiles
 
@@ -125,22 +137,14 @@ ln -sf $DOTFILES_HOME/config/starship.toml ~/.config/starship.toml
 
 # tmux
 ln -sf $DOTFILES_HOME/.tmux.conf ~/.tmux.conf
+git_clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # vim
 VIM_PACK=~/.vim/pack/dotfiles/start
 function vimpack() {
 	local vpdir="$VIM_PACK/$(basename $1)"
-	mkdir -p $VIM_PACK/start
+	git_clone "https://$1.git" "$vpdir" "$2"
 
-	if [ -d $vpdir ]; then
-		(cd $vpdir && git pull origin)
-	else
-		git clone "https://$1.git" $vpdir
-	fi
-
-	if [ "$2" != "" ]; then
-		(cd $vpdir && eval "$2")
-	fi
 }
 ln -sf $DOTFILES_HOME/.vimrc ~/.vimrc
 vimpack github.com/sheerun/vim-polyglot
