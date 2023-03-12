@@ -51,5 +51,6 @@ brew "coredns"
 brew "saml2aws"
 brew "tflint"
 brew "pnpm"
+brew "k6"
 
 cask "font-hack-nerd-font"

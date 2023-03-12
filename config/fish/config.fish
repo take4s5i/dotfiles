@@ -91,4 +91,25 @@ if status is-interactive
     if has pipx
         set PATH $PATH ~/.local/bin
     end
+
+    # util functions
+    function xxx-aws-use-profile
+        set -gx AWS_PROFILE "$(aws configure list-profiles | peco --select-1)"
+    end
+
+    function xxx-aws-list-instances
+	    aws ec2 describe-instances --filter 'Name=instance-state-name,Values=running' --output text --query 'Reservations[].Instances[].[InstanceId, State.Name, InstanceType, PrivateIpAddress, Platform || `Linux`, Tags[?Key == `Name`].Value | [0]]'
+    end
+
+    function xxx-aws-ssh-instance
+        aws ssm start-session --target "$(xxx-aws-list-instances | peco --select-1 | cut -f1)" $argv
+    end
+
+    function xxx-aws-port-forward
+        xxx-aws-ssh-instance --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters "host=$1,portNumber=$2,localPortNumber=$3"
+    end
+
+    function xxx-terraform-show-state
+        terraform state show "$(terraform state list | peco --select-1)"
+    end
 end

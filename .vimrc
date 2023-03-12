@@ -150,3 +150,4 @@ let g:coc_global_extensions = [
       \ ]
 
 let g:astro_typescript = 'enable'
+let g:gh_use_canonical = 0

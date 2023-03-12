@@ -59,9 +59,6 @@ ln -sf $DOTFILES_HOME/.gitignore ~/.gitignore
 ln -sf $DOTFILES_HOME/.bash_profile ~/.bash_profile
 ln -sf $DOTFILES_HOME/.inputrc ~/.inputrc
 
-# ox - one liner executor
-ln -sf $DOTFILES_HOME/ox ~/bin/ox
-
 # peco
 if [ ! -L ~/.config/peco ]; then
 	rm -rf ~/.config/peco
