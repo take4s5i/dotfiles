@@ -167,3 +167,6 @@ fi
 . "$HOME/.cargo/env"
 
 [[ -s "/Users/takehara-s/.gvm/scripts/gvm" ]] && source "/Users/takehara-s/.gvm/scripts/gvm"
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

@@ -15,7 +15,9 @@ function has() {
 
 function git_clone() {
 	if [ -d "$2" ]; then
-		(cd $2 && git pull origin)
+		(cd $2 &&
+			git reset --hard &&
+			git pull origin)
 	else
 		git clone "$1" "$2"
 	fi
@@ -91,7 +93,8 @@ fi
 
 # rust
 hash -r
-cargo install cargo-expand cargo-binstall cargo-watch
+cargo install cargo-binstall
+cargo binstall -y cargo-expand cargo-watch
 rustup component add clippy rustfmt
 
 # gvm
@@ -125,6 +128,13 @@ if [ -x /usr/local/bin/yarn ]; then
 	ln -s /usr/local/bin/yarn ~/bin/yarnv1
 fi
 
+# volta
+# https://volta.sh/
+if not has volta; then
+	curl https://get.volta.sh | bash -s -- --skip-setup
+	hash -r
+fi
+
 # pipx
 pipx install aws-sso-util
 
@@ -155,7 +165,7 @@ vimpack github.com/itchyny/lightline.vim
 vimpack github.com/vim-jp/vimdoc-ja
 vimpack github.com/lambdalisue/vim-unified-diff
 vimpack github.com/w0rp/ale
-vimpack github.com/neoclide/coc.nvim "yarn set version classic && bash -c 'yarn && yarn prepare'"
+vimpack github.com/neoclide/coc.nvim "$(brew --prefix)/bin/yarn && $(brew --prefix)/bin/yarn prepare"
 vimpack github.com/ruanyl/vim-gh-line
 vimpack github.com/wuelnerdotexe/vim-astro
 
