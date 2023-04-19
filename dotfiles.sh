@@ -172,3 +172,6 @@ vimpack github.com/wuelnerdotexe/vim-astro
 # vim coc-settings
 mkdir -p ~/.vim
 ln -sf $DOTFILES_HOME/coc-settings.json ~/.vim/coc-settings.json
+
+# aws-cli-cognito
+ln -sf $DOTFILES_HOME/aws-cli-cognito.sh ~/bin/aws-cli-cognito
