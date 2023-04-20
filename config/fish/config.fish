@@ -114,6 +114,12 @@ if status is-interactive
         aws ssm start-session --target "$(xxx-aws-list-ec2-instances | peco --prompt 'select ec2 instance >' | cut -f1)" $argv
     end
 
+    function xxx-aws-ecr-login
+        set region "$(aws configure get region)"
+        set registry_id "$(aws ecr describe-registry --query 'registryId' --output text)"
+        aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $registry_id.dkr.ecr.$region.amazonaws.com
+    end
+
     function xxx-aws-port-forward
         if test -z "$argv[1]" -o -z "$argv[2]" -o -z "$argv[3]"
             echo "xxx-aws-port-forward <remote host> <remote port> <local port>"
