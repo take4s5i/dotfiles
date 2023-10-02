@@ -143,4 +143,8 @@ if status is-interactive
     function xxx-terraform-show-state
         terraform state show "$(terraform state list | peco --prompt 'select terraform resource >')"
     end
+
+    function xxx-terraform-use-workspace
+        terraform workspace select "$(terraform workspace list | peco --prompt 'select terraform workspace >' | cut -c3-)"
+    end
 end
