@@ -15,15 +15,28 @@ function has() {
 
 function git_clone() {
 	if [ -d "$2" ]; then
-		(cd $2 &&
-			git reset --hard &&
-			git pull origin)
+		if [ "$3" != "" ]; then
+			(
+				cd $2 &&
+					git fetch origin
+				git switch $3
+				git reset --hard
+			)
+		else
+			(cd $2 &&
+				git reset --hard &&
+				git pull origin)
+		fi
 	else
-		git clone "$1" "$2"
+		if [ "$3" != "" ]; then
+			git clone -b "$3" "$1" "$2"
+		else
+			git clone "$1" "$2"
+		fi
 	fi
 
-	if [ "$3" != "" ]; then
-		(cd "$2" && eval "$3")
+	if [ "$4" != "" ]; then
+		(cd "$2" && eval "$4")
 	fi
 }
 
@@ -153,7 +166,7 @@ git_clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 VIM_PACK=~/.vim/pack/dotfiles/start
 function vimpack() {
 	local vpdir="$VIM_PACK/$(basename $1)"
-	git_clone "https://$1.git" "$vpdir" "$2"
+	git_clone "https://$1.git" "$vpdir" "$2" "$3"
 
 }
 ln -sf $DOTFILES_HOME/.vimrc ~/.vimrc
@@ -165,7 +178,7 @@ vimpack github.com/itchyny/lightline.vim
 vimpack github.com/vim-jp/vimdoc-ja
 vimpack github.com/lambdalisue/vim-unified-diff
 vimpack github.com/w0rp/ale
-vimpack github.com/neoclide/coc.nvim "$(brew --prefix)/bin/yarn && $(brew --prefix)/bin/yarn prepare"
+vimpack github.com/neoclide/coc.nvim release "pwd"
 vimpack github.com/ruanyl/vim-gh-line
 vimpack github.com/wuelnerdotexe/vim-astro
 
