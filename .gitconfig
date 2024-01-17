@@ -3,7 +3,7 @@
 [core]
 	autocrlf = false
 	safecrlf = true
-	editor = vim
+	editor = nvim
 	quotepath = false
 	excludesfile = ~/.gitignore
 [alias]

@@ -163,6 +163,8 @@ ln -sf $DOTFILES_HOME/.tmux.conf ~/.tmux.conf
 git_clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # vim
+mkdir -p ~/.vim
+ln -sf $DOTFILES_HOME/coc-settings.json ~/.vim/coc-settings.json
 VIM_PACK=~/.vim/pack/dotfiles/start
 function vimpack() {
 	local vpdir="$VIM_PACK/$(basename $1)"
@@ -177,14 +179,31 @@ vimpack github.com/mattn/emmet-vim
 vimpack github.com/itchyny/lightline.vim
 vimpack github.com/vim-jp/vimdoc-ja
 vimpack github.com/lambdalisue/vim-unified-diff
-vimpack github.com/w0rp/ale
 vimpack github.com/neoclide/coc.nvim release "pwd"
 vimpack github.com/ruanyl/vim-gh-line
 vimpack github.com/wuelnerdotexe/vim-astro
+rm -rf $VIM_PACK/ale
 
-# vim coc-settings
-mkdir -p ~/.vim
-ln -sf $DOTFILES_HOME/coc-settings.json ~/.vim/coc-settings.json
+# nvim
+mkdir -p ~/.config/nvim
+ln -sf $DOTFILES_HOME/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -sf $DOTFILES_HOME/config/nvim/init.vim ~/.config/nvim/init.vim
+NVIM_PACK=~/.config/nvim/after/pack/dotfiles/start
+function nvimpack() {
+	local vpdir="$NVIM_PACK/$(basename $1)"
+	git_clone "https://$1.git" "$vpdir" "$2" "$3"
+
+}
+nvimpack github.com/sheerun/vim-polyglot
+nvimpack github.com/thinca/vim-quickrun
+nvimpack github.com/nanotech/jellybeans.vim
+nvimpack github.com/mattn/emmet-vim
+nvimpack github.com/itchyny/lightline.vim
+nvimpack github.com/vim-jp/vimdoc-ja
+nvimpack github.com/lambdalisue/vim-unified-diff
+nvimpack github.com/neoclide/coc.nvim release "pwd"
+nvimpack github.com/ruanyl/vim-gh-line
+nvimpack github.com/wuelnerdotexe/vim-astro
 
 # aws-cli-cognito
 ln -sf $DOTFILES_HOME/aws-cli-cognito.sh ~/bin/aws-cli-cognito

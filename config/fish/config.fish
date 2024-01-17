@@ -21,7 +21,7 @@ if status is-interactive
     set -x PATH ~/bin /usr/local/bin $PATH
     set -x PAGER "less"
     set -x AWS_PAGER ""
-    set -x EDITOR "vim"
+    set -x EDITOR "nvim"
     set -x LESS "-iMRSX --shift 5"
     set -x LESSCHARSET utf-8
     set -x PLATFORM (uname)

@@ -18,7 +18,6 @@ set wildmenu
 set wildignore=node_modules,node_modules/*
 set wildignorecase
 
-
 " display
 set list
 set listchars=tab:»\ ,trail:.,eol:˅,nbsp:.,extends:»,precedes:«
@@ -146,7 +145,9 @@ let g:coc_global_extensions = [
       \ 'coc-cfn-lint',
       \ 'coc-graphql',
       \ 'coc-phpls',
-      \ 'coc-deno'
+      \ 'coc-deno',
+      \ 'coc-lua',
+      \ 'coc-vimlsp'
       \ ]
 
 let g:astro_typescript = 'enable'
