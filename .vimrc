@@ -38,6 +38,7 @@ set smartindent
 set autoindent
 
 " misc
+set splitright
 set completeopt+=noinsert
 set hidden
 set nowrap
@@ -72,9 +73,19 @@ nnoremap <silent><leader>n :bn<CR>
 nnoremap <silent><leader>p :bp<CR>
 nnoremap <silent><leader>b :b #<CR>
 nnoremap <silent><leader>d :bd<CR>
+nnoremap <silent><leader>d :bd<CR>
+nnoremap <C-t> :vsplit +term<CR>
+nnoremap <C-W>s :split %:h/<CR>
+nnoremap <C-W>v :split %:h/<CR>
+nnoremap <C-9> :wincmd -<CR>
+nnoremap <C-0> :wincmd +<CR>
 
 " coc remap
-inoremap <silent><expr> <c-@> coc#refresh()
+if has('nvim')
+  inoremap <silent><expr> <C-q> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 filetype plugin on
 filetype on

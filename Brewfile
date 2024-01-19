@@ -58,3 +58,4 @@ brew "act"
 brew "lua-language-server"
 
 cask "font-hack-nerd-font"
+cast "background-music"

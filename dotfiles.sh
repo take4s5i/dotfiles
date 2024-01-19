@@ -148,6 +148,12 @@ if not has volta; then
 	hash -r
 fi
 
+# sops
+# see: https://github.com/getsops/sops
+SOPS_VERIONS=v3.8.1
+curl -Lo ~/bin/sops https://github.com/getsops/sops/releases/download/$SOPS_VERIONS/sops-$SOPS_VERIONS.darwin.amd64
+chmod 755 ~/bin/sops
+
 # pipx
 pipx install aws-sso-util
 
