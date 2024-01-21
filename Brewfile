@@ -56,6 +56,7 @@ brew "pnpm"
 brew "k6"
 brew "act"
 brew "lua-language-server"
+brew "gh"
 
 cask "font-hack-nerd-font"
-cast "background-music"
+cask "background-music"

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ "$1" == "edit" ]; then
+	cd ~/.dotfiles
+	${EDITOR:-nvim} ./
+	exit $?
+fi
+
 function not() {
 	if $@; then
 		return 1
@@ -210,6 +216,7 @@ nvimpack github.com/lambdalisue/vim-unified-diff
 nvimpack github.com/neoclide/coc.nvim release "pwd"
 nvimpack github.com/ruanyl/vim-gh-line
 nvimpack github.com/wuelnerdotexe/vim-astro
+nvim -c 'CocUpdateSync | q' --headless
 
 # aws-cli-cognito
 ln -sf $DOTFILES_HOME/aws-cli-cognito.sh ~/bin/aws-cli-cognito

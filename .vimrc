@@ -69,23 +69,63 @@ let mapleader=' '
 
 nnoremap ` @q
 nnoremap <silent><leader>e :e %:h/<CR>
-nnoremap <silent><leader>n :bn<CR>
-nnoremap <silent><leader>p :bp<CR>
 nnoremap <silent><leader>b :b #<CR>
-nnoremap <silent><leader>d :bd<CR>
-nnoremap <silent><leader>d :bd<CR>
-nnoremap <C-t> :vsplit +term<CR>
-nnoremap <C-W>s :split %:h/<CR>
-nnoremap <C-W>v :split %:h/<CR>
-nnoremap <C-9> :wincmd -<CR>
-nnoremap <C-0> :wincmd +<CR>
+nnoremap <silent><leader>q :q<CR>
+nnoremap <silent><leader>t :vsplit +term<CR>
+nnoremap <silent><leader>s :split %:h/<CR>
+nnoremap <silent><leader>v :vsplit %:h/<CR>
+nnoremap <silent><leader>l :lopen<CR>
+nnoremap <silent><leader>c :copen<CR>
+noremap <silent><Right> :bn<CR>
+noremap <silent><Left> :bp<CR>
 
-" coc remap
-if has('nvim')
-  inoremap <silent><expr> <C-q> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
+" coc remap 
+inoremap <silent><expr> <C-q> coc#refresh()
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Coc maps
+nmap <silent> gdf <Plug>(coc-definition)
+nmap <silent> gtd <Plug>(coc-type-definition)
+nmap <silent> gim <Plug>(coc-implementation)
+nmap <silent> grf <Plug>(coc-references)
+nmap <silent> grn <Plug>(coc-rename)
+nmap <silent> gfa  <cmd>call CocAction('fixAll')<CR>
+nmap <silent> gfm  <cmd>call CocAction('format')<CR>
+nmap <silent> goi  <cmd>call CocAction('organizeImport')<CR>
+nmap <silent> gcm  <cmd>CocCommand<CR>
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+" Remap <Up> and <Down> to scroll float windows/popups
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <Down> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Down>"
+  nnoremap <silent><nowait><expr> <Up> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Up>"
+  inoremap <silent><nowait><expr> <Down> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <Up> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <Down> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Down>"
+  vnoremap <silent><nowait><expr> <Up> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Up>"
 endif
+
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 filetype plugin on
 filetype on
