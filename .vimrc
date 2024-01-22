@@ -69,7 +69,8 @@ let mapleader=' '
 
 nnoremap ` @q
 nnoremap <silent><leader>e :e %:h/<CR>
-nnoremap <silent><leader>b :b #<CR>
+nnoremap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <silent><leader>n :split<bar>enew<CR>
 nnoremap <silent><leader>q :q<CR>
 nnoremap <silent><leader>t :vsplit +term<CR>
 nnoremap <silent><leader>s :split %:h/<CR>
