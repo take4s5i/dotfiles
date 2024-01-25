@@ -26,11 +26,12 @@ if status is-interactive
     set -x LESSCHARSET utf-8
     set -x PLATFORM (uname)
     set -x N_PREFIX (cd ~/ && pwd)
+    set -x TERM screen-256color
 
     # alias
-    alias tmux="TERM=xterm-256color tmux"
-    alias tsw="TERM=xterm-256color tmux split-window"
-    alias tnw="TERM=xterm-256color tmux new-window"
+    alias tmux="TERM=screen-256color tmux"
+    alias tsw="TERM=screen-256color tmux split-window"
+    alias tnw="TERM=screen-256color tmux new-window"
     alias g='git'
     alias d='docker'
     alias dcom='docker-compose'

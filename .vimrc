@@ -66,7 +66,10 @@ if has('folding')
 endif
 
 let mapleader=' '
+" general
+vnoremap <silent> p "_s<C-R>+<esc>
 
+" file & buffer
 nnoremap ` @q
 nnoremap <silent><leader>e :e %:h/<CR>
 nnoremap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
@@ -79,6 +82,12 @@ nnoremap <silent><leader>l :lopen<CR>
 nnoremap <silent><leader>c :copen<CR>
 noremap <silent><Right> :bn<CR>
 noremap <silent><Left> :bp<CR>
+
+" win resize
+nnoremap <Home> <cmd>vertical res +1<CR>
+nnoremap <End> <cmd>vertical res -1<CR>
+nnoremap <PageUp> <cmd>res +1<CR>
+nnoremap <PageDown> <cmd>res -1<CR>
 
 " coc remap 
 inoremap <silent><expr> <C-q> coc#refresh()
