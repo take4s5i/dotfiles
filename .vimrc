@@ -1,3 +1,4 @@
+lang en_US.UTF-8
 set encoding=utf-8
 scriptencoding=utf-8
 
@@ -48,6 +49,10 @@ set nobackup
 set grepprg=git\ grep\ --no-index\ -I\ --line-number
 if has('persistent_undo')
     set noundofile
+endif
+
+if has('nvim')
+  set clipboard=unnamedplus
 endif
 
 if executable('fish')
