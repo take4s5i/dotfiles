@@ -47,6 +47,16 @@
          ],
          "initializationOptions": {},
          "settings": {}
+     },
+     "tflint": {
+         "command": "tflint",
+         "args": ["--langserver"],
+         "filetypes": [
+             "terraform",
+             "tf"
+         ],
+         "initializationOptions": {},
+         "settings": {}
      }
   },
   "diagnostic-languageserver.linters": {
