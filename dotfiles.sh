@@ -220,3 +220,6 @@ nvim -c 'CocUpdateSync | q' --headless
 
 # aws-cli-cognito
 ln -sf $DOTFILES_HOME/aws-cli-cognito.sh ~/bin/aws-cli-cognito
+
+# tflint-language-server
+ln -sf $DOTFILES_HOME/tflint-language-server ~/bin/tflint-language-server

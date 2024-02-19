@@ -49,12 +49,14 @@
          "settings": {}
      },
      "tflint": {
-         "command": "tflint",
-         "args": ["--langserver"],
+         "command": "tflint-language-server",
+         "args": [],
          "filetypes": [
              "terraform",
              "tf"
          ],
+         "trace.server": "verbose",
+         "rootPatterns": [".git", ".tflint.hcl"],
          "initializationOptions": {},
          "settings": {}
      }
@@ -74,9 +76,24 @@
         "column": "Pos.Column",
         "message": "${Text} [${FromLinter}]",
       }
+    },
+    "actionlint": {
+      "command": "actionlint",
+      "rootPatterns": [ ".git"],
+      "debounce": 100,
+      "args": [ "-format", "{{json .}}"],
+      "sourceName": "actionlint",
+      "parseJson": {
+        "sourceName": "filepath",
+        "sourceNameFilter": true,
+        "line": "line",
+        "column": "column",
+        "message": "${message}",
+      }
     }
   },
   "diagnostic-languageserver.filetypes": {
+    "yaml": "actionlint",
     "sh": "shellcheck",
     "php": ["phpcs", "phpstan"],
     "go": ["golangci-lint"]

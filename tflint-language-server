@@ -1,0 +1,26 @@
+#!/bin/sh
+
+get_tflint_hcl() {
+	(
+		while true; do
+			if [ -r "$(pwd)/.tflint.hcl" ]; then
+				echo "$(pwd)/.tflint.hcl"
+				return
+			fi
+
+			if [ "$PWD" = "/" ]; then
+				return
+			fi
+
+			cd ../
+		done
+	)
+}
+
+TFLINT_HCL="$(get_tflint_hcl)"
+
+if [ "$TFLINT_HCL" = "" ]; then
+	exec tflint --langserver
+else
+	exec tflint --langserver --config "$TFLINT_HCL"
+fi

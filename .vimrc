@@ -114,6 +114,7 @@ nmap <silent> gfa  <cmd>call CocAction('fixAll')<CR>
 nmap <silent> gfm  <cmd>call CocAction('format')<CR>
 nmap <silent> goi  <cmd>call CocAction('organizeImport')<CR>
 nmap <silent> gcm  <cmd>CocCommand<CR>
+nmap <silent> gbf  <cmd>CocList buffers<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
