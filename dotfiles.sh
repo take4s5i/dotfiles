@@ -84,6 +84,12 @@ ln -sf $DOTFILES_HOME/config/fish/config.fish ~/.config/fish/config.fish
 fish -l $DOTFILES_HOME/init.fish
 ln -sf $(type -p fish) ~/bin/fish # for tmux.conf
 
+# for alias 't'
+mkdir -p ~/.config/fish/completions
+ln -sf $DOTFILES_HOME/config/taskfile.yaml ~/.config/taskfile.yaml
+ln -sf $DOTFILES_HOME/config/fish/t.fish ~/.config/fish/completions/t.fish
+ln -sf $DOTFILES_HOME/config/fish/nr.fish ~/.config/fish/completions/nr.fish
+
 # git
 ln -sf $DOTFILES_HOME/.gitconfig ~/.gitconfig
 ln -sf $DOTFILES_HOME/.gitignore ~/.gitignore
@@ -127,6 +133,7 @@ hash -r
 go install golang.org/x/tools/gopls@latest
 go install github.com/mitranim/gow@latest
 go install honnef.co/go/tools/cmd/staticcheck@latest
+go install github.com/hashicorp/terraform-config-inspect@latest
 
 # hyper
 ln -sf $DOTFILES_HOME/.hyper.js ~/.hyper.js
@@ -216,6 +223,7 @@ nvimpack github.com/lambdalisue/vim-unified-diff
 nvimpack github.com/neoclide/coc.nvim release "pwd"
 nvimpack github.com/ruanyl/vim-gh-line
 nvimpack github.com/wuelnerdotexe/vim-astro
+nvimpack github.com/github/copilot.vim
 nvim -c 'CocUpdateSync | q' --headless
 
 # aws-cli-cognito

@@ -18,6 +18,7 @@ set re=0
 set wildmenu
 set wildignore=node_modules,node_modules/*
 set wildignorecase
+set wildmode=list:longest,full
 
 " display
 set list
@@ -26,7 +27,7 @@ set number
 set backspace=start,eol,indent
 set statusline=%m\ %n\ %F\ %r%<%=[%l/%L\ ,\ %c]\ [%{&fileencoding}]\ [%{&fileformat}]\ %y
 set laststatus=2
-set showtabline=0
+set showtabline=2
 set guioptions-=e
 set signcolumn=yes
 
@@ -39,6 +40,8 @@ set smartindent
 set autoindent
 
 " misc
+set noequalalways
+set splitbelow
 set splitright
 set completeopt+=noinsert
 set hidden
@@ -46,7 +49,7 @@ set nowrap
 set clipboard=unnamed
 set noswapfile
 set nobackup
-set grepprg=git\ grep\ --no-index\ -I\ --line-number
+set grepprg=rg\ --vimgrep\ 
 if has('persistent_undo')
     set noundofile
 endif
@@ -67,7 +70,8 @@ set wrapscan
 set hlsearch
 
 if has('folding')
-    set nofoldenable
+  set foldmethod=indent
+  set foldlevel=5
 endif
 
 let mapleader=' '
@@ -77,16 +81,31 @@ vnoremap <silent> p "_s<C-R>+<esc>
 " file & buffer
 nnoremap ` @q
 nnoremap <silent><leader>e :e %:h/<CR>
-nnoremap <silent><leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
-nnoremap <silent><leader>n :split<bar>enew<CR>
+nnoremap <silent><leader>d :bp<bar>:bd#<CR>
+nnoremap <silent><leader>n :tabnew ./<CR>
 nnoremap <silent><leader>q :q<CR>
-nnoremap <silent><leader>t :vsplit +term<CR>
+nnoremap <silent><leader>t :term<CR>
 nnoremap <silent><leader>s :split %:h/<CR>
 nnoremap <silent><leader>v :vsplit %:h/<CR>
 nnoremap <silent><leader>l :lopen<CR>
 nnoremap <silent><leader>c :copen<CR>
-noremap <silent><Right> :bn<CR>
-noremap <silent><Left> :bp<CR>
+noremap <silent><Right> :cnext<CR>
+noremap <silent><Left> :cprevious<CR>
+noremap <tab> <C-^>
+noremap <C-j> :bn<CR>
+noremap <C-k> :bp<CR>
+noremap <C-l> :tabnext<CR>
+noremap <C-h> :tabprev<CR>
+
+" term
+tnoremap <C-l> <cmd>tabnext<CR>
+tnoremap <C-h> <cmd>tabprev<CR>
+
+" fold
+nnoremap + zr
+nnoremap - zm
+nnoremap ( zX
+nnoremap ) zO
 
 " win resize
 nnoremap <Home> <cmd>vertical res +1<CR>

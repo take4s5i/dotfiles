@@ -1,0 +1,115 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+tasks:
+  default:
+    interactive: true
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - cmd: |
+          task=$(task -t '{{.TASKFILE}}' -a -j | jq -r '.tasks[] | [.name, .desc] | @tsv' | grep -v default | peco | awk '{print $1}')
+          if [ "$task" != "" ] ; then
+            task -t '{{.TASKFILE}}' $task
+          fi
+
+  cd:
+    desc: cd to projects dir
+    interactive: true
+    vars:
+      PRJ_ROOT:
+        sh: echo ~/projects
+    cmds:
+      - cmd: |
+          _list(){
+            if [ -d "$1/.git" ] ; then
+              echo $1
+            else
+              for p in $(find $1 -type d -mindepth 1 -maxdepth 1) ; do
+                _list $p
+              done
+            fi
+          }
+          dir="$(cd {{.PRJ_ROOT}} && _list . | cut -c3- | peco)"
+          if [ "$dir" == "" ] ; then
+            exit 0
+          fi
+          echo "cd {{.PRJ_ROOT}}/$dir" > '{{.TASK_OUTPUT_EVAL}}'
+
+  cd:aws:
+    desc: cd to aws work dir
+    aliases:
+      - opaws
+    interactive: true
+    vars:
+      PRJ_ROOT:
+        sh: echo ~/work/aws
+    cmds:
+      - cmd: |
+          _list(){
+            if [ -f "$1/.envrc" ] ; then
+              echo $1
+            else
+              for p in $(find $1 -type d -mindepth 1 -maxdepth 1) ; do
+                _list $p
+              done
+            fi
+          }
+          dir="$(cd {{.PRJ_ROOT}} && _list . | cut -c3- | peco)"
+          if [ "$dir" == "" ] ; then
+            exit 0
+          fi
+          echo "cd {{.PRJ_ROOT}}/$dir" > '{{.TASK_OUTPUT_EVAL}}'
+          echo "aws sso login" >> '{{.TASK_OUTPUT_EVAL}}'
+
+
+  docker-kill:
+    desc: kill container
+    interactive: true
+    cmds:
+      - cmd: docker ps | peco | cut -d\  -f1 | xargs docker kill
+
+  kill:
+    desc: kill process
+    interactive: true
+    cmds:
+      - cmd: ps aux | peco | awk '{ print $2 }' | xargs kill -9
+
+  aws:profile:
+    desc: select aws profile
+    interactive: true
+    cmds:
+      - cmd: echo "set -gx AWS_PROFILE $(aws configure list-profiles | peco --prompt 'select aws profile > ')" > '{{.TASK_OUTPUT_EVAL}}'
+      - cmd: echo "aws sso login" >> '{{.TASK_OUTPUT_EVAL}}'
+
+  aws:ssh:
+    desc: ssh ec2 instance
+    interactive: true
+    cmds:
+      - cmd: |
+          instance_id=$(aws ec2 describe-instances \
+              --filter 'Name=instance-state-name,Values=running' \
+              --output text \
+              --query 'Reservations[].Instances[].[InstanceId, State.Name, InstanceType, PrivateIpAddress, Platform || `Linux`, Tags[?Key == `Name`].Value | [0]]' | \
+            peco --prompt 'select ec2 instance >' | \
+            cut -f1)
+          echo "aws ssm start-session --target '$instance_id' '{{.CLI_ARGS}}'" > '{{.TASK_OUTPUT_EVAL}}'
+
+  aws:ecr-login:
+    desc: docker login with ECR
+    interactive: true
+    cmds:
+      - cmd: |
+          region="$(aws configure get region)"
+          registry_id="$(aws ecr describe-registry --query 'registryId' --output text)"
+          aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $registry_id.dkr.ecr.$region.amazonaws.com
+
+  tf:state:
+    desc: show terraform state
+    interactive: true
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - cmd: |
+          addr="$(terraform state list | peco --prompt 'select terraform resource >')"
+          if [ "$addr" != "" ] ; then
+            terraform state show "$addr"
+          fi

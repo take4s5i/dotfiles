@@ -25,16 +25,12 @@ if status is-interactive
     set -x LESS "-iMRSX --shift 5"
     set -x LESSCHARSET utf-8
     set -x PLATFORM (uname)
-    set -x N_PREFIX (cd ~/ && pwd)
+    set -x N_PREFIX (echo ~/)
     set -x TERM screen-256color
 
     # alias
-    alias tmux="TERM=screen-256color tmux"
-    alias tsw="TERM=screen-256color tmux split-window"
-    alias tnw="TERM=screen-256color tmux new-window"
     alias g='git'
     alias d='docker'
-    alias dcom='docker-compose'
     alias kc='kubectl'
     set ls_color_opt "(test "$PLATFORM" = "Linux" && echo '--color' || echo '-G')"
     alias ls="ls $ls_color_opt"
@@ -98,54 +94,29 @@ if status is-interactive
     set -gx VOLTA_HOME "$HOME/.volta"
     set -gx PATH "$VOLTA_HOME/bin" $PATH
 
-    # util functions
-    function xxx-aws-use-profile
-        set -gx AWS_PROFILE "$(aws configure list-profiles | peco --prompt 'select aws profile >')"
+    # npm global install
+    function ngi
+        /usr/local/bin/npm install --location=global $argv
     end
 
-    function xxx-aws-list-ec2-instances
-	    aws ec2 describe-instances --filter 'Name=instance-state-name,Values=running' --output text --query 'Reservations[].Instances[].[InstanceId, State.Name, InstanceType, PrivateIpAddress, Platform || `Linux`, Tags[?Key == `Name`].Value | [0]]'
+    # npm global uninstall
+    function ngu
+        /usr/local/bin/npm uninstall --location=global $argv
     end
 
-    function xxx-aws-list-rds-clusters
-	    aws rds describe-db-clusters --output text --query 'DBClusters[].[DBClusterIdentifier, Status, Engine, Port, Endpoint]'
+    # pnpm run
+    function nr
+        pnpm run $argv
     end
 
-    function xxx-aws-ssh-ec2-instance
-        aws ssm start-session --target "$(xxx-aws-list-ec2-instances | peco --prompt 'select ec2 instance >' | cut -f1)" $argv
-    end
+    function t
+        set -x TASK_OUTPUT_EVAL "$HOME/.config/taskfile.output.fish"
+        rm -f $TASK_OUTPUT_EVAL
+        task -t ~/.config/taskfile.yaml $argv
 
-    function xxx-aws-ecr-login
-        set region "$(aws configure get region)"
-        set registry_id "$(aws ecr describe-registry --query 'registryId' --output text)"
-        aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $registry_id.dkr.ecr.$region.amazonaws.com
-    end
-
-    function xxx-aws-port-forward
-        if test -z "$argv[1]" -o -z "$argv[2]" -o -z "$argv[3]"
-            echo "xxx-aws-port-forward <remote host> <remote port> <local port>"
-            return 1
+        if test -f $TASK_OUTPUT_EVAL
+            source $TASK_OUTPUT_EVAL
         end
-        xxx-aws-ssh-ec2-instance --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters "host=$argv[1],portNumber=$argv[2],localPortNumber=$argv[3]"
-    end
-
-    function xxx-aws-port-forward-to-rds-cluster
-        if test -z "$argv[1]"
-            echo "xxx-aws-port-forward-to-rds-cluster <local port>"
-            return 1
-        end
-
-        set db_cluster "$(xxx-aws-list-rds-clusters | peco --prompt 'select rds cluster >')"
-        set remote_host "$(string split -f5 \t "$db_cluster")"
-        set remote_port "$(string split -f4 \t "$db_cluster")"
-        xxx-aws-port-forward $remote_host $remote_port $argv[1]
-    end
-
-    function xxx-terraform-show-state
-        terraform state show "$(terraform state list | peco --prompt 'select terraform resource >')"
-    end
-
-    function xxx-terraform-use-workspace
-        terraform workspace select "$(terraform workspace list | peco --prompt 'select terraform workspace >' | cut -c3-)"
     end
 end
+

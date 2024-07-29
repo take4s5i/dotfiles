@@ -2,6 +2,7 @@
   "suggest.autoTrigger": "always",
   "suggest.triggerAfterInsertEnter": true,
   "coc.preferences.formatOnSaveFiletypes": ["go", "rust", "typescript", "json", "javascript", "sh", "terraform"],
+  "coc.preferences.jumpCommand": "split",
   "go.goplsOptions": {
     "staticcheck": true
   },
