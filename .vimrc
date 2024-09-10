@@ -83,6 +83,7 @@ nnoremap ` @q
 nnoremap <silent><leader>e :e %:h/<CR>
 nnoremap <silent><leader>d :bp<bar>:bd#<CR>
 nnoremap <silent><leader>n :tabnew ./<CR>
+nnoremap <silent><leader>N :tabnew %:p<CR>
 nnoremap <silent><leader>q :q<CR>
 nnoremap <silent><leader>t :term<CR>
 nnoremap <silent><leader>s :split %:h/<CR>

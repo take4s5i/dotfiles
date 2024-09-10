@@ -1,4 +1,5 @@
 .vimprojects
+.vim/
 .local/
 .DS_Store
 .envrc
