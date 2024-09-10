@@ -256,7 +256,7 @@ if enabled nvim; then
 		git_clone "https://$1.git" "$vpdir" "$2" "$3"
 	}
 	function nvimpack_del_after() {
-		local vpdir="$NVIM_PACK/$(basename $1)"
+		local vpdir="$NVIM_PACK_AFTER/$(basename $1)"
 		rm -rf $vpdir
 	}
 	nvimpack github.com/neovim/nvim-lspconfig
@@ -277,9 +277,9 @@ if enabled nvim; then
 	nvimpack_after github.com/github/copilot.vim
 	nvimpack_after github.com/fatih/gomodifytags
 	nvimpack_after github.com/rhysd/vim-go-impl
+	nvimpack_after github.com/nvim-telescope/telescope.nvim
+	nvimpack_after github.com/nvim-lua/plenary.nvim
 
 	nvimpack_del_after github.com/neoclide/coc.nvim release "pwd"
 	#nvim -c 'CocUpdateSync | q' --headless
 fi
-
-

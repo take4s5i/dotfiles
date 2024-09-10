@@ -1,18 +1,3 @@
-function DumpTable(table, depth)
-  if (depth > 200) then
-    print("Error: Depth > 200 in dumpTable()")
-    return
-  end
-  for k, v in pairs(table) do
-    if (type(v) == "table") then
-      print(string.rep("  ", depth) .. k .. ":")
-      DumpTable(v, depth + 1)
-    else
-      print(string.rep("  ", depth) .. k .. ": ", v)
-    end
-  end
-end
-
 -- Encoding settings
 vim.cmd.lang('ja_JP.UTF-8')
 vim.o.encoding = 'utf-8'
@@ -106,6 +91,9 @@ vim.keymap.set('n', '<leader>s', ':split %:h/<CR>', { noremap = true, silent = t
 vim.keymap.set('n', '<leader>v', ':vsplit %:h/<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>l', ':lopen<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>c', ':copen<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>b', ':Telescope buffers<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>r', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Right>', ':cnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Left>', ':cprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Tab>', '<C-^>', { noremap = true })
@@ -226,7 +214,7 @@ lspconfig.tflint.setup {
   capabilities = capabilities,
 }
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   capabilities = capabilities,
 }
 
@@ -240,10 +228,10 @@ lspconfig.intelephense.setup {
 
 require('mason').setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "gopls", "yamlls", "terraformls", "tflint", "tsserver", "eslint", "intelephense" }
+  ensure_installed = { "lua_ls", "gopls", "yamlls", "terraformls", "tflint", "ts_ls", "eslint", "intelephense" }
 }
 
-function invoke_code_action(kind)
+function InvokeCodeAction(kind)
   vim.lsp.buf.code_action({
     apply = true,
     filter = function(item)
@@ -252,14 +240,28 @@ function invoke_code_action(kind)
   })
 end
 
+function ListCodeActions(kind)
+  local bufnr = vim.api.nvim_get_current_buf()
+  local params = vim.lsp.util.make_range_params()
+
+  params.context = {
+    triggerKind = vim.lsp.protocol.CodeActionTriggerKind.Invoked,
+    diagnostics = vim.lsp.diagnostic.get_line_diagnostics(bufnr),
+  }
+
+  vim.lsp.buf_request(bufnr, "textDocument/codeAction", params, function(error, results, context, config)
+    print(vim.inspect(results))
+  end)
+end
+
 vim.keymap.set('n', 'gdf', function() vim.lsp.buf.definition({ loclist = true }) end, { silent = true })
 vim.keymap.set('n', 'gtd', function() vim.lsp.buf.hover() end, { silent = true })
 vim.keymap.set('n', 'gim', function() vim.lsp.buf.implementation() end, { silent = true })
 vim.keymap.set('n', 'grf', function() vim.lsp.buf.references({ loclist = true }) end, { silent = true })
 vim.keymap.set('n', 'grn', function() vim.lsp.buf.rename() end, { silent = true })
-vim.keymap.set('n', 'gfa', function() invoke_code_action('source.fixAll') end, { silent = true })
+vim.keymap.set('n', 'gfa', function() InvokeCodeAction('source.fixAll') end, { silent = true })
 vim.keymap.set('n', 'gfm', function() vim.lsp.buf.format { async = false } end, { silent = true })
-vim.keymap.set('n', 'goi', function() invoke_code_action('source.organizeImports') end, { silent = true })
+vim.keymap.set('n', 'goi', function() InvokeCodeAction('source.organizeImports') end, { silent = true })
 vim.keymap.set('n', 'gcm', function() vim.lsp.buf.code_action { context = { only = 'refactor' } } end, { silent = true })
 --  vim.keymap.set('n', 'gbf', '<cmd>CocList buffers<CR>', { silent = true })
 
