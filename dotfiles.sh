@@ -279,6 +279,8 @@ if enabled nvim; then
 	nvimpack_after github.com/rhysd/vim-go-impl
 	nvimpack_after github.com/nvim-telescope/telescope.nvim
 	nvimpack_after github.com/nvim-lua/plenary.nvim
+	nvimpack_after github.com/dcampos/nvim-snippy
+	nvimpack_after github.com/dcampos/cmp-snippy
 
 	nvimpack_del_after github.com/neoclide/coc.nvim release "pwd"
 	#nvim -c 'CocUpdateSync | q' --headless

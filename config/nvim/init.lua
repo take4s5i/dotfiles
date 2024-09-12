@@ -277,8 +277,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
+local snippy = require('snippy')
 local cmp = require('cmp')
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      snippy.expand_snippet(args.body)
+    end,
+  },
   mapping = cmp.mapping.preset.insert({
     ['<Up>'] = cmp.mapping.scroll_docs(-4),  -- Up
     ['<Down>'] = cmp.mapping.scroll_docs(4), -- Down
@@ -305,6 +311,7 @@ cmp.setup {
   }),
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'snippy' },
     { name = 'buffer' },
   },
 }

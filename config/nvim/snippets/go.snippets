@@ -1,0 +1,10 @@
+snippet ife
+        if err != nil {
+        	${0}
+        }
+snippet ew
+        fmt.Errorf("${1: failed to something}: %w", err)
+snippet ef
+        fmt.Errorf("${1: failed to something}")
+snippet parseint
+        fmt.Errorf("${1: failed to something}")
