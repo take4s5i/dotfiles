@@ -2,9 +2,38 @@ snippet ife
         if err != nil {
         	${0}
         }
+
 snippet ew
-        fmt.Errorf("${1: failed to something}: %w", err)
+        fmt.Errorf("${1}: %w", err)
+
 snippet ef
-        fmt.Errorf("${1: failed to something}")
+        fmt.Errorf("${1}")
+
 snippet parseint
-        fmt.Errorf("${1: failed to something}")
+        ${1:i}, ${2:err} := strconv.Atoi(${3:s}, 10, 64)
+
+snippet test
+        func Test${1}(t *testing.T) {
+        	${0}
+        }
+
+snippet testrun
+        t.Run("${1}", func(t *testing.T){
+        	${0}
+        })
+
+snippet testmain
+        func TestMain(m *testing.M) {
+        	code := m.Run()
+            ${0}
+        	os.Exit(code)
+        }
+
+snippet ctx
+        ctx context.Context
+
+snippet ctxb
+        ctx := context.Background()
+
+snippet sprintf
+        fmt.Sprintf("${1}")
