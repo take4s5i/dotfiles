@@ -1,0 +1,71 @@
+snippet class
+		local ${1:MyClass} = {}
+		function ${1}:new()
+		  local obj = {}
+		  self.__index = self
+		  return setmetatable(obj, self)
+		end
+
+		function ${1}:${2:method}(args)
+		  ${0}
+		end
+
+snippet method
+		function ${1:MyClass}:${2:method_name}(${3:args})
+		  ${0}
+		end
+
+snippet fn
+		function ${1:fname}(${2:args})
+		  ${0}
+		end
+
+snippet filereadlines
+		local f = io.open("${1:file}", "r")
+		if f == nil then
+		  return nil
+		end
+
+		local line = f:read()
+		while line do
+		  -- do something
+		  line = f:read()
+		end
+		f:close()
+
+snippet filewrite
+		local f = io.open("${1:file}", "w")
+		if f == nil then
+		  return nil
+		end
+
+		f:write("${2:content}")
+		f:close()
+
+snippet append
+		table.insert(${1:tbl}, ${2:item})
+
+snippet prepend
+		table.insert(${1:tbl}, 1, ${2:item})
+
+snippet join
+		table.concat(${1:tbl}, "${2: }")
+
+snippet foreach
+		for ${1:k}, ${2:v} in pairs(${3:tbl}) do
+		  ${0}
+		end
+
+snippet for
+		for ${1:i} = ${2:1}, ${3:10} do
+		  ${0}
+		end
+
+snippet err
+		if ${1} == nil then
+			error("${2:msg}")
+			return
+		end
+
+snippet substr
+		string.sub(${1:str}, ${2:start}, ${3:end})

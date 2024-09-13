@@ -1,0 +1,63 @@
+[submodule "config/nvim/pack/dotfiles/start/nvim-lspconfig"]
+	path = config/nvim/pack/dotfiles/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "config/nvim/pack/dotfiles/start/nvim-cmp"]
+	path = config/nvim/pack/dotfiles/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
+[submodule "config/nvim/pack/dotfiles/start/cmp-nvim-lsp"]
+	path = config/nvim/pack/dotfiles/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule "config/nvim/pack/dotfiles/start/mason.nvim"]
+	path = config/nvim/pack/dotfiles/start/mason.nvim
+	url = https://github.com/williamboman/mason.nvim
+[submodule "config/nvim/pack/dotfiles/start/mason-lspconfig.nvim"]
+	path = config/nvim/pack/dotfiles/start/mason-lspconfig.nvim
+	url = https://github.com/williamboman/mason-lspconfig.nvim
+[submodule "config/nvim/pack/dotfiles/start/vim-polyglot"]
+	path = config/nvim/pack/dotfiles/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "config/nvim/pack/dotfiles/start/vim-quickrun"]
+	path = config/nvim/pack/dotfiles/start/vim-quickrun
+	url = https://github.com/thinca/vim-quickrun
+[submodule "config/nvim/pack/dotfiles/start/jellybeans.vim"]
+	path = config/nvim/pack/dotfiles/start/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim
+[submodule "config/nvim/pack/dotfiles/start/emmet-vim"]
+	path = config/nvim/pack/dotfiles/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim
+[submodule "config/nvim/pack/dotfiles/start/lightline.vim"]
+	path = config/nvim/pack/dotfiles/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "config/nvim/pack/dotfiles/start/vimdoc-ja"]
+	path = config/nvim/pack/dotfiles/start/vimdoc-ja
+	url = https://github.com/vim-jp/vimdoc-ja
+[submodule "config/nvim/pack/dotfiles/start/vim-unified-diff"]
+	path = config/nvim/pack/dotfiles/start/vim-unified-diff
+	url = https://github.com/lambdalisue/vim-unified-diff
+[submodule "config/nvim/pack/dotfiles/start/vim-gh-line"]
+	path = config/nvim/pack/dotfiles/start/vim-gh-line
+	url = https://github.com/ruanyl/vim-gh-line
+[submodule "config/nvim/pack/dotfiles/start/vim-astro"]
+	path = config/nvim/pack/dotfiles/start/vim-astro
+	url = https://github.com/wuelnerdotexe/vim-astro
+[submodule "config/nvim/pack/dotfiles/start/copilot.vim"]
+	path = config/nvim/pack/dotfiles/start/copilot.vim
+	url = https://github.com/github/copilot.vim
+[submodule "config/nvim/pack/dotfiles/start/gomodifytags"]
+	path = config/nvim/pack/dotfiles/start/gomodifytags
+	url = https://github.com/fatih/gomodifytags
+[submodule "config/nvim/pack/dotfiles/start/vim-go-impl"]
+	path = config/nvim/pack/dotfiles/start/vim-go-impl
+	url = https://github.com/rhysd/vim-go-impl
+[submodule "config/nvim/pack/dotfiles/start/telescope.nvim"]
+	path = config/nvim/pack/dotfiles/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim
+[submodule "config/nvim/pack/dotfiles/start/plenary.nvim"]
+	path = config/nvim/pack/dotfiles/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "config/nvim/pack/dotfiles/start/nvim-snippy"]
+	path = config/nvim/pack/dotfiles/start/nvim-snippy
+	url = https://github.com/dcampos/nvim-snippy
+[submodule "config/nvim/pack/dotfiles/start/cmp-snippy"]
+	path = config/nvim/pack/dotfiles/start/cmp-snippy
+	url = https://github.com/dcampos/cmp-snippy

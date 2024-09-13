@@ -240,48 +240,52 @@ fi
 
 # nvim
 if enabled nvim; then
-	mkdir -p ~/.config/nvim
-	ln -sf $DOTFILES_HOME/coc-settings.json ~/.config/nvim/coc-settings.json
-	unlink ~/.config/nvim/init.vim
-	ln -sf $DOTFILES_HOME/config/nvim/init.vim ~/.config/nvim/_init.vim
-	ln -sf $DOTFILES_HOME/config/nvim/init.lua ~/.config/nvim/init.lua
-	NVIM_PACK_AFTER=~/.config/nvim/after/pack/dotfiles/start
-	NVIM_PACK=~/.config/nvim/pack/dotfiles/start
-	function nvimpack_after() {
-		local vpdir="$NVIM_PACK_AFTER/$(basename $1)"
-		git_clone "https://$1.git" "$vpdir" "$2" "$3"
-	}
-	function nvimpack() {
-		local vpdir="$NVIM_PACK/$(basename $1)"
-		git_clone "https://$1.git" "$vpdir" "$2" "$3"
-	}
-	function nvimpack_del_after() {
-		local vpdir="$NVIM_PACK_AFTER/$(basename $1)"
-		rm -rf $vpdir
-	}
-	nvimpack github.com/neovim/nvim-lspconfig
-	nvimpack github.com/hrsh7th/nvim-cmp
-	nvimpack github.com/hrsh7th/cmp-nvim-lsp
-	nvimpack github.com/williamboman/mason.nvim
-	nvimpack github.com/williamboman/mason-lspconfig.nvim
+	ln -sf $DOTFILES_HOME/config/nvim ~/.config/nvim
+	git submodule update
 
-	nvimpack_after github.com/sheerun/vim-polyglot
-	nvimpack_after github.com/thinca/vim-quickrun
-	nvimpack_after github.com/nanotech/jellybeans.vim
-	nvimpack_after github.com/mattn/emmet-vim
-	nvimpack_after github.com/itchyny/lightline.vim
-	nvimpack_after github.com/vim-jp/vimdoc-ja
-	nvimpack_after github.com/lambdalisue/vim-unified-diff
-	nvimpack_after github.com/ruanyl/vim-gh-line
-	nvimpack_after github.com/wuelnerdotexe/vim-astro
-	nvimpack_after github.com/github/copilot.vim
-	nvimpack_after github.com/fatih/gomodifytags
-	nvimpack_after github.com/rhysd/vim-go-impl
-	nvimpack_after github.com/nvim-telescope/telescope.nvim
-	nvimpack_after github.com/nvim-lua/plenary.nvim
-	nvimpack_after github.com/dcampos/nvim-snippy
-	nvimpack_after github.com/dcampos/cmp-snippy
+	# mkdir -p ~/.config/nvim
+	# ln -sf $DOTFILES_HOME/coc-settings.json ~/.config/nvim/coc-settings.json
+	# unlink ~/.config/nvim/init.vim
+	# ln -sf $DOTFILES_HOME/config/nvim/init.vim ~/.config/nvim/_init.vim
+	# ln -sf $DOTFILES_HOME/config/nvim/init.lua ~/.config/nvim/init.lua
+	# NVIM_PACK_AFTER=~/.config/nvim/after/pack/dotfiles/start
+	# NVIM_PACK=~/.config/nvim/pack/dotfiles/start
+	# function nvimpack_after() {
+	# 	local vpdir="$NVIM_PACK_AFTER/$(basename $1)"
+	# 	git_clone "https://$1.git" "$vpdir" "$2" "$3"
+	# }
+	# function nvimpack() {
+	# 	local vpdir="$NVIM_PACK/$(basename $1)"
+	# 	git_clone "https://$1.git" "$vpdir" "$2" "$3"
+	# }
+	# function nvimpack_del_after() {
+	# 	local vpdir="$NVIM_PACK_AFTER/$(basename $1)"
+	# 	rm -rf $vpdir
+	# }
 
-	nvimpack_del_after github.com/neoclide/coc.nvim release "pwd"
+	# nvimpack github.com/neovim/nvim-lspconfig
+	# nvimpack github.com/hrsh7th/nvim-cmp
+	# nvimpack github.com/hrsh7th/cmp-nvim-lsp
+	# nvimpack github.com/williamboman/mason.nvim
+	# nvimpack github.com/williamboman/mason-lspconfig.nvim
+
+	# nvimpack_after github.com/sheerun/vim-polyglot
+	# nvimpack_after github.com/thinca/vim-quickrun
+	# nvimpack_after github.com/nanotech/jellybeans.vim
+	# nvimpack_after github.com/mattn/emmet-vim
+	# nvimpack_after github.com/itchyny/lightline.vim
+	# nvimpack_after github.com/vim-jp/vimdoc-ja
+	# nvimpack_after github.com/lambdalisue/vim-unified-diff
+	# nvimpack_after github.com/ruanyl/vim-gh-line
+	# nvimpack_after github.com/wuelnerdotexe/vim-astro
+	# nvimpack_after github.com/github/copilot.vim
+	# nvimpack_after github.com/fatih/gomodifytags
+	# nvimpack_after github.com/rhysd/vim-go-impl
+	# nvimpack_after github.com/nvim-telescope/telescope.nvim
+	# nvimpack_after github.com/nvim-lua/plenary.nvim
+	# nvimpack_after github.com/dcampos/nvim-snippy
+	# nvimpack_after github.com/dcampos/cmp-snippy
+
+	# nvimpack_del_after github.com/neoclide/coc.nvim release "pwd"
 	#nvim -c 'CocUpdateSync | q' --headless
 fi
