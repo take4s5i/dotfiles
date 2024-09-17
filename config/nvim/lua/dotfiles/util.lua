@@ -23,21 +23,4 @@ function M.ListCodeActions()
   end)
 end
 
--- Open terminal in a floating window
-function M.MiniTerm()
-  local dir = vim.fn.expand('%:p:h')
-  local buf = vim.api.nvim_create_buf(true, false)
-  local win = vim.api.nvim_open_win(buf, true, {
-    relative = 'cursor',
-    row = 1,
-    col = 0,
-    width = 100,
-    height = 50,
-    border = 'single',
-  })
-  vim.fn.termopen(vim.env.SHELL, {
-    cwd = dir,
-  })
-end
-
 return M

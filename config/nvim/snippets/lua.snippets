@@ -69,3 +69,10 @@ snippet err
 
 snippet substr
 		string.sub(${1:str}, ${2:start}, ${3:end})
+
+snippet module
+		local M = {}
+		function M.setup()
+		  ${0}
+		end
+		return M

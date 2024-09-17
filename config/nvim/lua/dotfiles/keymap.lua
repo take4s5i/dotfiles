@@ -1,4 +1,6 @@
 local util = require('dotfiles/util')
+local term = require('dotfiles/term')
+
 vim.g.mapleader = ' '
 
 -- General key mappings
@@ -26,7 +28,7 @@ vim.keymap.set('n', '<C-j>', ':bn<CR>', { noremap = true })
 vim.keymap.set('n', '<C-k>', ':bp<CR>', { noremap = true })
 vim.keymap.set('n', '<C-l>', ':tabnext<CR>', { noremap = true })
 vim.keymap.set('n', '<C-h>', ':tabprev<CR>', { noremap = true })
-vim.keymap.set('n', '1', function() util.MiniTerm() end, { noremap = true })
+vim.keymap.set('n', '1', function() term.t1:open() end, { noremap = true })
 
 -- Terminal key mappings
 vim.keymap.set('t', '<C-l>', '<cmd>tabnext<CR>', { noremap = true })
