@@ -28,8 +28,8 @@ cmp.setup {
     end, { 'i', 's' }),
   }),
   sources = {
+    { name = 'snippy' },
     { name = 'nvim_lsp' },
     { name = 'buffer' },
-    { name = 'snippy' },
   },
 }

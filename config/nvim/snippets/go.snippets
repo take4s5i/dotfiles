@@ -37,3 +37,13 @@ snippet ctxb
 
 snippet sprintf
         fmt.Sprintf("${1}")
+
+snippet st
+        type ${1:Name} struct {
+        	${0}
+        }
+
+snippet method
+        func (${1:x} ${2:*Type}) ${3:Method}() {
+        	${0}
+        }

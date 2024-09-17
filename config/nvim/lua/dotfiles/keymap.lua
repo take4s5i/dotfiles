@@ -28,7 +28,21 @@ vim.keymap.set('n', '<C-j>', ':bn<CR>', { noremap = true })
 vim.keymap.set('n', '<C-k>', ':bp<CR>', { noremap = true })
 vim.keymap.set('n', '<C-l>', ':tabnext<CR>', { noremap = true })
 vim.keymap.set('n', '<C-h>', ':tabprev<CR>', { noremap = true })
-vim.keymap.set('n', '1', function() term.t1:open() end, { noremap = true })
+
+-- floating terminal
+local modes = { 'n', 't' }
+for _, mode in ipairs(modes) do
+  for i = 1, 4, 1 do
+    vim.keymap.set(mode, '<C-y>' .. i, function() term.open('buffer_' .. i, { dirmode = 'buffer' }) end,
+      { noremap = true })
+  end
+  for i = 5, 9, 1 do
+    vim.keymap.set(mode, '<C-y>' .. i, function() term.open('editor_' .. i, { dirmode = 'editor' }) end,
+      { noremap = true })
+  end
+  vim.keymap.set(mode, '<C-y>0', function() term.closeAll() end, { noremap = true })
+  vim.keymap.set(mode, '<C-y><C-y>', function() term.forcus_opened_win() end, { noremap = true })
+end
 
 -- Terminal key mappings
 vim.keymap.set('t', '<C-l>', '<cmd>tabnext<CR>', { noremap = true })
@@ -58,10 +72,14 @@ vim.keymap.set('t', '<C-W>H', '<cmd>wincmd H<cr>', { noremap = true })
 vim.keymap.set('t', '<C-W>L', '<cmd>wincmd L<cr>', { noremap = true })
 vim.keymap.set('t', '<C-W>T', '<cmd>wincmd T<cr>', { noremap = true })
 vim.keymap.set('t', '<C-W>=', '<cmd>wincmd =<cr>', { noremap = true })
-vim.keymap.set('t', '<C-W>s', ':split %:h/<CR>', { noremap = true })
-vim.keymap.set('t', '<C-W>v', ':split %:h/<CR>', { noremap = true })
-vim.keymap.set('t', '<C-9>', ':wincmd -<CR>', { noremap = true })
-vim.keymap.set('t', '<C-0>', ':wincmd +<CR>', { noremap = true })
+vim.keymap.set('t', '<C-W>s', '<cmd>split %:h/<CR>', { noremap = true })
+vim.keymap.set('t', '<C-W>v', '<cmd>split %:h/<CR>', { noremap = true })
+vim.keymap.set('t', '<C-9>', '<cmd>wincmd -<CR>', { noremap = true })
+vim.keymap.set('t', '<C-0>', '<cmd>wincmd +<CR>', { noremap = true })
+vim.keymap.set('t', '<C-j>', '<cmd>bn<CR>', { noremap = true })
+vim.keymap.set('t', '<C-k>', '<cmd>bp<CR>', { noremap = true })
+vim.keymap.set('t', '<C-l>', '<cmd>tabnext<CR>', { noremap = true })
+vim.keymap.set('t', '<C-h>', '<cmd>tabprev<CR>', { noremap = true })
 
 -- Fold key mappings
 vim.keymap.set('n', '+', 'zr', { noremap = true })
