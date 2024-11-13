@@ -28,6 +28,13 @@ lspconfig.gopls.setup {
 }
 
 lspconfig.yamlls.setup {
+  settings = {
+    yaml = {
+      schemas = {
+        kubernetes = { "k8s/**/*.yaml", "*.k8s.yaml" },
+      }
+    }
+  },
   capabilities = capabilities,
 }
 
@@ -51,11 +58,19 @@ lspconfig.intelephense.setup {
   capabilities = capabilities,
 }
 
+lspconfig.taplo.setup {
+  capabilities = capabilities,
+}
+
+lspconfig.golangci_lint_ls.setup {
+  capabilities = capabilities,
+}
+
 -- mason
 -- masonはLSPに対応したlanguage serverを管理するためのプラグイン
 require('mason').setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "gopls", "yamlls", "terraformls", "tflint", "ts_ls", "eslint", "intelephense" }
+  ensure_installed = { "lua_ls", "gopls", "yamlls", "terraformls", "tflint", "ts_ls", "eslint", "intelephense", "taplo", "golangci-lint", "golangci-lint-langserver" }
 }
 
 -- Format on Save
