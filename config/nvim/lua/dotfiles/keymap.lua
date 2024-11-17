@@ -40,7 +40,7 @@ for _, mode in ipairs(modes) do
     vim.keymap.set(mode, '<C-y>' .. i, function() term.open('editor_' .. i, { dirmode = 'editor' }) end,
       { noremap = true })
   end
-  vim.keymap.set(mode, '<C-y>0', function() term.closeAll() end, { noremap = true })
+  vim.keymap.set(mode, '<C-y>c', function() term.closeAll() end, { noremap = true })
   vim.keymap.set(mode, '<C-y><C-y>', function() term.forcus_opened_win() end, { noremap = true })
 end
 

@@ -96,7 +96,21 @@ vim.cmd.augroup('ext-ft-map')
 vim.cmd.autocmd('BufNewFile,BufRead *.vue set ft=html')
 vim.cmd.autocmd('BufNewFile,BufRead *.vtc set ft=vcl')
 vim.cmd.autocmd('BufNewFile,BufRead *.astro set ft=astro')
+vim.cmd.autocmd('BufNewFile,BufRead .envrc set ft=sh')
 vim.cmd.augroup('END')
+
+-- update qflist and loclist on diagnostics change
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+  callback = function(args)
+    vim.diagnostic.setqflist {
+      open = false,
+    }
+
+    vim.diagnostic.setloclist {
+      open = false,
+    }
+  end,
+})
 
 vim.g.astro_typescript = 'enable'
 vim.g.gh_use_canonical = 0
