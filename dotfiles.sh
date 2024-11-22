@@ -67,6 +67,11 @@ fi
 mkdir -p ~/bin
 ln -sf $DOTFILES_HOME/dotfiles.sh ~/bin/dotfiles
 
+# tabby
+if [ -d ~/Library/Application\ Support/tabby ]; then
+	ln -sf $DOTFILES_HOME/tabby-config.yaml ~/Library/Application\ Support/tabby/config.yaml
+fi
+
 # homebrew
 if enabled brew; then
 	if not has brew; then
