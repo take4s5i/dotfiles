@@ -3,6 +3,11 @@
 -- nvim-cmp は補完を行うためのプラグイン
 local cmp = require('cmp')
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      require('snippy').expand_snippet(args.body)
+    end,
+  },
   mapping = cmp.mapping.preset.insert({
     ['<Up>'] = cmp.mapping.scroll_docs(-4),  -- Up
     ['<Down>'] = cmp.mapping.scroll_docs(4), -- Down
@@ -33,3 +38,12 @@ cmp.setup {
     { name = 'buffer' },
   },
 }
+
+require('snippy').setup({
+  mappings = {
+    is = {
+      ['<Right>'] = 'expand_or_advance',
+      ['<Left>'] = 'previous',
+    }
+  }
+})

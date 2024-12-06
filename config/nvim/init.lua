@@ -71,7 +71,7 @@ vim.o.hlsearch = true
 -- Folding settings
 if vim.fn.has('folding') == 1 then
   vim.o.foldmethod = 'indent'
-  vim.o.foldlevel = 5
+  vim.o.foldlevel = 7
 end
 
 vim.g.polyglot_disabled = { 'jsx' }
@@ -115,12 +115,12 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
 vim.g.astro_typescript = 'enable'
 vim.g.gh_use_canonical = 0
 
+-- load local config
+vim.opt.rtp:append(vim.fn.getcwd() .. '/.nvim')
+
 -- additional config
 require('dotfiles/keymap')
 require('dotfiles/lsp')
 require('dotfiles/cmp')
 
 vim.api.nvim_create_user_command("NvimConfig", "e ~/.config/nvim/init.lua", {})
-
--- project config
-require('dotfiles/projectconfig').setup {}
