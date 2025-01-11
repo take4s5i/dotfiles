@@ -99,18 +99,15 @@ vim.cmd.autocmd('BufNewFile,BufRead *.astro set ft=astro')
 vim.cmd.autocmd('BufNewFile,BufRead .envrc set ft=sh')
 vim.cmd.augroup('END')
 
--- update qflist and loclist on diagnostics change
-vim.api.nvim_create_autocmd('DiagnosticChanged', {
-  callback = function(args)
-    vim.diagnostic.setqflist {
-      open = false,
-    }
+vim.api.nvim_create_user_command('Setqflist', (function()
+  vim.diagnostic.setqflist {}
+  vim.cmd.copen()
+end), {})
 
-    vim.diagnostic.setloclist {
-      open = false,
-    }
-  end,
-})
+vim.api.nvim_create_user_command('Setloclist', (function()
+  vim.diagnostic.setloclist {}
+  vim.cmd.lopen()
+end), {})
 
 vim.g.astro_typescript = 'enable'
 vim.g.gh_use_canonical = 0

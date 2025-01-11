@@ -3,10 +3,10 @@ snippet ife
         	${0}
         }
 
-snippet ew
+snippet fmew
         fmt.Errorf("${1}: %w", err)
 
-snippet ef
+snippet fme
         fmt.Errorf("${1}")
 
 snippet parseint
@@ -17,7 +17,7 @@ snippet test
         	${0}
         }
 
-snippet testrun
+snippet trun
         t.Run("${1}", func(t *testing.T){
         	${0}
         })
@@ -35,8 +35,11 @@ snippet ctx
 snippet ctxb
         ctx := context.Background()
 
-snippet sprintf
+snippet fms
         fmt.Sprintf("${1}")
+
+snippet fmp
+        fmt.Printf("${1}")
 
 snippet st
         type ${1:Name} struct {

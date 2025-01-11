@@ -76,7 +76,8 @@ hotkeys:
   new-window:
     - ⌘-N
   profile: {}
-  profile-selectors: {}
+  profile-selectors:
+    local: []
   toggle-fullscreen:
     - Ctrl+⌘+F
   close-tab:
@@ -225,7 +226,8 @@ terminal:
   scrollbackLines: 50000
   showTabProfileIcon: true
 ssh: {}
-clickableLinks: {}
+clickableLinks:
+  modifier: metaKey
 accessibility: {}
 appearance:
   tabsInFullscreen: true
