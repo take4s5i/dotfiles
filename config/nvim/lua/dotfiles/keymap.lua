@@ -13,7 +13,7 @@ vim.keymap.set('n', '<leader>d', ':bp|bd#<CR>', { noremap = true, silent = true 
 vim.keymap.set('n', '<leader>n', ':tabnew ./<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>N', ':tabnew %:p<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>t', ':10split +term<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>t', ':15split +term<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>T', ':term<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>s', ':split %:h/<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>v', ':vsplit %:h/<CR>', { noremap = true, silent = true })

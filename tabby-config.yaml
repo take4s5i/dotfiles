@@ -173,6 +173,7 @@ hotkeys:
     - ⌘-Shift-E
   command-selector:
     - ⌘-Shift-P
+  group-selectors: {}
 terminal:
   searchOptions: {}
   colorScheme:

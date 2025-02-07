@@ -159,7 +159,6 @@ if enabled go; then
 	go install github.com/mitranim/gow@latest
 	go install honnef.co/go/tools/cmd/staticcheck@latest
 	go install github.com/hashicorp/terraform-config-inspect@latest
-	go install github.com/golang-jwt/jwt/v5/cmd/jwt@latest
 	go install github.com/fatih/gomodifytags@latest
 	go install github.com/josharian/impl@latest
 fi
