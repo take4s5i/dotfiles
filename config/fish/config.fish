@@ -109,6 +109,9 @@ if status is-interactive
         pnpm run $argv
     end
 
+    # mise
+    mise activate --shell fish | source
+
     function t
         set -x TASK_OUTPUT_EVAL "$HOME/.config/taskfile.output.fish"
         rm -f $TASK_OUTPUT_EVAL

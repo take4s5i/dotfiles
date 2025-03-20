@@ -61,3 +61,12 @@
 [submodule "config/nvim/pack/dotfiles/start/cmp-snippy"]
 	path = config/nvim/pack/dotfiles/start/cmp-snippy
 	url = https://github.com/dcampos/cmp-snippy
+[submodule "config/nvim/pack/dotfiles/start/vim-qfedit"]
+	path = config/nvim/pack/dotfiles/start/vim-qfedit
+	url = https://github.com/itchyny/vim-qfedit
+[submodule "config/nvim/pack/dotfiles/start/CopilotChat.nvim"]
+	path = config/nvim/pack/dotfiles/start/CopilotChat.nvim
+	url = https://github.com/CopilotC-Nvim/CopilotChat.nvim
+[submodule "config/nvim/pack/dotfiles/start/vim-abolish"]
+	path = config/nvim/pack/dotfiles/start/vim-abolish
+	url = https://github.com/tpope/vim-abolish

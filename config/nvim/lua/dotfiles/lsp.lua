@@ -88,6 +88,11 @@ lspconfig.golangci_lint_ls.setup {
 
 }
 
+lspconfig.typos_lsp.setup {
+  capabilities = capabilities,
+
+}
+
 -- mason
 -- masonはLSPに対応したlanguage serverを管理するためのプラグイン
 require('mason').setup()
@@ -102,6 +107,7 @@ require("mason-lspconfig").setup {
     "intelephense",
     "taplo",
     "golangci_lint_ls",
+    "typos_lsp",
   },
 }
 

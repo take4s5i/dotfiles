@@ -222,7 +222,7 @@ terminal:
       - '#ffffff'
   customColorSchemes: []
   profile: local:custom:fish:ec18ca09-8808-4655-b83e-5ad29890707a
-  fontSize: 12
+  fontSize: 11
   font: Hack Nerd Font Mono
   scrollbackLines: 50000
   showTabProfileIcon: true

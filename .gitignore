@@ -4,3 +4,6 @@
 .local/
 .DS_Store
 .envrc
+docker-compose.override.yml
+mise.local.toml
+mise.local.lock

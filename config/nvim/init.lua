@@ -109,6 +109,15 @@ vim.api.nvim_create_user_command('Setloclist', (function()
   vim.cmd.lopen()
 end), {})
 
+-- update qflist and loclist on diagnostics change
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+  callback = function(args)
+    vim.diagnostic.setloclist {
+      open = false,
+    }
+  end,
+})
+
 vim.g.astro_typescript = 'enable'
 vim.g.gh_use_canonical = 0
 
@@ -120,4 +129,8 @@ require('dotfiles/keymap')
 require('dotfiles/lsp')
 require('dotfiles/cmp')
 
+-- CopilotChat
+require('CopilotChat').setup {
+
+}
 vim.api.nvim_create_user_command("NvimConfig", "e ~/.config/nvim/init.lua", {})

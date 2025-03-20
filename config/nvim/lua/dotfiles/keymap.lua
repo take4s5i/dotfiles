@@ -8,6 +8,7 @@ vim.keymap.set('v', 'p', '"_s<C-R>+<esc>', { noremap = true, silent = true })
 
 -- File & buffer key mappings
 vim.keymap.set('n', '`', '@q', { noremap = true })
+vim.keymap.set('n', '<leader>a', ':CopitlotChatToggle/<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>e', ':e %:h/<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>d', ':bp|bd#<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>n', ':tabnew ./<CR>', { noremap = true, silent = true })
@@ -24,8 +25,8 @@ vim.keymap.set('n', '<leader>c', ':Setqflist<CR>', { noremap = true, silent = tr
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>r', ':Telescope live_grep<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Right>', ':cnext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<Left>', ':cprevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Right>', ':lnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Left>', ':lprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Tab>', '<C-^>', { noremap = true })
 vim.keymap.set('n', '<C-j>', ':bn<CR>', { noremap = true })
 vim.keymap.set('n', '<C-k>', ':bp<CR>', { noremap = true })

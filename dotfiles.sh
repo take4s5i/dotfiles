@@ -141,8 +141,8 @@ if enabled rust; then
 
 	# rust
 	hash -r
-	cargo install cargo-binstall
-	cargo binstall -y cargo-expand cargo-watch
+#	cargo install cargo-binstall
+#	cargo binstall -y cargo-expand cargo-watch
 	rustup component add clippy rustfmt
 fi
 
@@ -155,12 +155,12 @@ if enabled go; then
 
 	# go
 	hash -r
-	go install golang.org/x/tools/gopls@latest
-	go install github.com/mitranim/gow@latest
-	go install honnef.co/go/tools/cmd/staticcheck@latest
-	go install github.com/hashicorp/terraform-config-inspect@latest
-	go install github.com/fatih/gomodifytags@latest
-	go install github.com/josharian/impl@latest
+#	go install golang.org/x/tools/gopls@latest
+#	go install github.com/mitranim/gow@t
+#	go install honnef.co/go/tools/cmd/staticcheck@latest
+#	go install github.com/hashicorp/terraform-config-inspect@latest
+#	go install github.com/fatih/gomodifytags@latest
+#	go install github.com/josharian/impl@latest
 fi
 
 # hyper
@@ -193,9 +193,9 @@ fi
 
 # sops
 # see: https://github.com/getsops/sops
-SOPS_VERIONS=v3.8.1
-curl -Lo ~/bin/sops https://github.com/getsops/sops/releases/download/$SOPS_VERIONS/sops-$SOPS_VERIONS.darwin.amd64
-chmod 755 ~/bin/sops
+# SOPS_VERIONS=v3.8.1
+# curl -Lo ~/bin/sops https://github.com/getsops/sops/releases/download/$SOPS_VERIONS/sops-$SOPS_VERIONS.darwin.amd64
+# chmod 755 ~/bin/sops
 
 # pipx
 if enabled aws; then
