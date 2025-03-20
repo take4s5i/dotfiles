@@ -94,6 +94,9 @@ if enabled brew; then
 	brew bundle --file "$DOTFILES_HOME/Brewfile" -v
 fi
 
+# mise
+ln -sf $DOTFILES_HOME/config/mise ~/.config/mise
+
 # fish
 if enabled core; then
 	hash -r

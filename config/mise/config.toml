@@ -1,0 +1,26 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[tools]
+node = "lts"
+go = "latest"
+terraform = "latest"
+
+# cargo
+"cargo:cargo-expand" = "latest"
+"cargo:cargo-watch" = "latest"
+
+# go
+"go:golang.org/x/tools/gopls" = "latest"
+"go:github.com/mitranim/gow" = "latest"
+"go:honnef.co/go/tools/cmd/staticcheck" = "latest"
+"go:github.com/hashicorp/terraform-config-inspect" = "latest"
+"go:github.com/fatih/gomodifytags" = "latest"
+"go:github.com/josharian/impl" = "latest"
+
+# ubi
+"ubi:getsops/sops" = "latest"
+
+[settings]
+experimental = true
+auto_install = true
+not_found_auto_install = true
