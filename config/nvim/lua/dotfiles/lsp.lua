@@ -85,10 +85,22 @@ lspconfig.taplo.setup {
 
 lspconfig.golangci_lint_ls.setup {
   capabilities = capabilities,
+  init_options = {
+    command = {
+      "golangci-lint",
+      "run",
+      "--output.json.path=stdout",
+      "--show-stats=false" },
 
+  },
 }
 
 lspconfig.typos_lsp.setup {
+  capabilities = capabilities,
+
+}
+
+lspconfig.pylsp.setup {
   capabilities = capabilities,
 
 }
@@ -108,6 +120,7 @@ require("mason-lspconfig").setup {
     "taplo",
     "golangci_lint_ls",
     "typos_lsp",
+    "pylsp",
   },
 }
 

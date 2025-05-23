@@ -36,6 +36,8 @@ if status is-interactive
     alias ls="ls $ls_color_opt"
     alias ll="ls $ls_color_opt -la"
 
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
     if here_is Linux
         set PATH /home/linuxbrew/.linuxbrew/bin $PATH
     end
@@ -111,6 +113,9 @@ if status is-interactive
 
     # mise
     mise activate --shell fish | source
+
+    # krew
+    set -gx PATH $PATH $HOME/.krew/bin
 
     function t
         set -x TASK_OUTPUT_EVAL "$HOME/.config/taskfile.output.fish"

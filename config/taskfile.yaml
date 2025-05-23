@@ -113,3 +113,16 @@ tasks:
           if [ "$addr" != "" ] ; then
             terraform state show "$addr"
           fi
+
+  k8s:context:
+    desc: select kubernetes context
+    interactive: true
+    cmds:
+      - cmd: |
+          name="$(kubectl config get-contexts | peco --prompt 'select k8s context >' | tr '*' ' ' | awk '{ print $1}')"
+          if [ "$name" == "" ] ; then
+            echo "set -e STARSHIP_K8S" > '{{.TASK_OUTPUT_EVAL}}'
+          else
+            kubectl config use-context $name
+            echo "set -gx STARSHIP_K8S 1" > '{{.TASK_OUTPUT_EVAL}}'
+          fi

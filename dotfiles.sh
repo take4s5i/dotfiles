@@ -158,12 +158,13 @@ if enabled go; then
 
 	# go
 	hash -r
-#	go install golang.org/x/tools/gopls@latest
+	go install golang.org/x/tools/gopls@latest
 #	go install github.com/mitranim/gow@t
 #	go install honnef.co/go/tools/cmd/staticcheck@latest
 #	go install github.com/hashicorp/terraform-config-inspect@latest
 #	go install github.com/fatih/gomodifytags@latest
 #	go install github.com/josharian/impl@latest
+	go install github.com/evilmartians/lefthook@latest
 fi
 
 # hyper
@@ -296,3 +297,22 @@ if enabled nvim; then
 	# nvimpack_del_after github.com/neoclide/coc.nvim release "pwd"
 	#nvim -c 'CocUpdateSync | q' --headless
 fi
+
+# krew
+(
+  set -x; cd "$(mktemp -d)" &&
+  OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
+  ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
+  KREW="krew-${OS}_${ARCH}" &&
+  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
+  tar zxvf "${KREW}.tar.gz" &&
+  ./"${KREW}" install krew
+)
+
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+kubectl krew install <<EOS
+ctx
+ns
+iexec
+stern
+EOS

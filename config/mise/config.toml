@@ -24,3 +24,4 @@ terraform = "latest"
 experimental = true
 auto_install = true
 not_found_auto_install = true
+idiomatic_version_file_enable_tools = ["terrafor"]

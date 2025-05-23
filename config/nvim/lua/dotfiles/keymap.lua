@@ -8,7 +8,7 @@ vim.keymap.set('v', 'p', '"_s<C-R>+<esc>', { noremap = true, silent = true })
 
 -- File & buffer key mappings
 vim.keymap.set('n', '`', '@q', { noremap = true })
-vim.keymap.set('n', '<leader>a', ':CopitlotChatToggle/<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>a', ':CopilotChatToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>e', ':e %:h/<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>d', ':bp|bd#<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>n', ':tabnew ./<CR>', { noremap = true, silent = true })
